@@ -1,6 +1,7 @@
 #pragma once
 
 #include "logCore.h"
+#include <sstream>
 
 FASTLOG_BEGIN
 
