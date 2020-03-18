@@ -1,11 +1,12 @@
-#include "levelUtils.h"
+//#include "levelUtils.h"
 #include <iostream>
-#include "clock.h"
+//#include "clock.h"
 #include "logCore.h"
 #include "version.h"
 //#include <source_location> c++20
 int main()
 {
+	/*
 	std::cout << FastLog::clock::getTimestamp() << std::endl;
 
 	std::cout << FastLog::levelUtils::toColorString(FastLog::LEVEL::FATAL) << "sssssss" << std::endl;
@@ -19,4 +20,5 @@ int main()
 	std::cout << FastLog::clock::getTimestamp() << std::endl;
 	FastLog::clock::setTimeFormat(FastLog::TIMEFORMAT::ALTERNATIVE);
 	std::cout << FastLog::clock::getTimestamp() << std::endl;
+	*/
 }
