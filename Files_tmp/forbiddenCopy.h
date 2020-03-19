@@ -5,11 +5,12 @@ FASTLOG_BEGIN
 
 class ForbiddenCopy
 {
-protected:
-	ForbiddenCopy(void) {}
-private:
-	ForbiddenCopy(const ForbiddenCopy&);
-	ForbiddenCopy& operator=(const ForbiddenCopy&) = delete;
+	protected:
+		ForbiddenCopy(void) {}
+
+	private:
+		ForbiddenCopy(const ForbiddenCopy&);
+		ForbiddenCopy& operator=(const ForbiddenCopy&) = delete;
 };
 
 FASTLOG_END

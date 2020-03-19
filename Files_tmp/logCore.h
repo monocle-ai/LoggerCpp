@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #define SWFT_LITERAL(txt) (txt);
 #define FASTLOG_CONSTEXPR constexpr auto 
 #define FSTL_STATIC_CONSTEXPR static FASTLOG_CONSTEXPR

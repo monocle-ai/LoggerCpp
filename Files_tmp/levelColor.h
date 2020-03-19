@@ -1,4 +1,5 @@
 #pragma once
+
 #include "staticBase.h"
 #include "logCore.h"
 #include <iostream>
