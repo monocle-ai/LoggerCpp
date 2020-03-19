@@ -17,4 +17,6 @@ enum class Mode : uint32_t
 	lastMode = manual,
 };
 
+// TODO: Add Static Assert when .cpp is created.
+
 FASTLOG_END

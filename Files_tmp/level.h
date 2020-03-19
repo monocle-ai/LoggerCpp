@@ -26,4 +26,6 @@ enum class Level : uint32_t
 	lastLevel = error,
 };
 
+// TODO: Add Static Assert when .cpp is created.
+
 FASTLOG_END
