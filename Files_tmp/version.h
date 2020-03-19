@@ -12,7 +12,8 @@ FASTLOG_CONSTEXPR PROJECT = "SwiFTLog";
 
 FASTLOG_CONSTEXPR VERSION(VER_MAJOR * 1000 + VER_MINOR * 100 + VER_PATCH);
 
-static std::string getProjectVersion() {
+static std::string getProjectVersion()
+{
 	std::stringstream stream;
 	stream << PROJECT << ":" << VER_MAJOR * 1000 << "."  <<VER_MINOR * 100 << "." << VER_PATCH;	
 	return  stream.str();

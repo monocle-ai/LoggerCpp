@@ -3,7 +3,8 @@
 
 FASTLOG_BEGIN
 
-class StaticBase {
+class StaticBase 
+{
 private:
 	StaticBase(void);
 	StaticBase(const StaticBase&);
