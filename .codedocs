@@ -1,7 +1,7 @@
 # CodeDocs.xyz Configuration File
 
 # Optional project name, if left empty the GitHub repository name will be used.
-PROJECT_NAME =
+PROJECT_NAME = SwiFTLog
 
 # One or more directories and files that contain example code to be included.
 EXAMPLE_PATH =
