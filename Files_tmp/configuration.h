@@ -3,18 +3,18 @@
 
 FASTLOG_BEGIN
 
-constexpr auto DEF_MODE		= MODE::DEFAULT;
-constexpr auto ARG_MODE		= MODE::ARG;
-constexpr auto FILE_MODE	= MODE::FILE;
-constexpr auto MANUAL_MODE	= MODE::MANUAL;
+constexpr auto DEF_MODE		= Mode::defaultMode;
+constexpr auto ARG_MODE		= Mode::arg;
+constexpr auto FILE_MODE	= Mode::file;
+constexpr auto MANUAL_MODE	= Mode::manual;
 
-enum class MODE : uint32_t
+enum class Mode : uint32_t
 {
-	DEFAULT = 0, // pre made
-	ARG = 1, // command line
-	FILE = 2, // from file
-	MANUAL = 3, // set in code
-	LASTMODE = MANUAL,
+	defaultMode = 0, // pre made
+	arg = 1, // command line
+	file = 2, // from file
+	manual = 3, // set in code
+	lastMode = manual,
 };
 
 FASTLOG_END
