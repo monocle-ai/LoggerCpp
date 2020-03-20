@@ -11,5 +11,5 @@ install:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
 
 script: 
-  - g++ src/main.cpp -std=c++17 -o loggerCpp
+  - g++ src/main.cpp -std=c++17 -Iinclude -o loggerCpp
   - ./loggerCpp
