@@ -1,9 +1,11 @@
+// include directory added to visual studio VC++ directory, don't need relative path.
+// TODO: remove this comment, later.
 #include "levelUtils.h"
 #include <iostream>
 #include "clock.h"
 #include "logCore.h"
 #include "version.h"
-//#include <source_location> c++20
+
 int main()
 {
 	std::cout << FastLog::clock::getTimestamp() << std::endl;
@@ -19,4 +21,5 @@ int main()
 	std::cout << FastLog::clock::getTimestamp() << std::endl;
 	FastLog::clock::setTimeFormat(FastLog::TIMEFORMAT::ALTERNATIVE);
 	std::cout << FastLog::clock::getTimestamp() << std::endl;
+	return 0;
 }
