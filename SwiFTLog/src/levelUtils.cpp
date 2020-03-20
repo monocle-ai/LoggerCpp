@@ -90,10 +90,12 @@ FastLog::Level FastLog::levelUtils::toLevel(int levelInt)
 
 FastLog::Level FastLog::levelUtils::toLevel(STRING_VIEW levelStr)
 {	
-	for (auto& item : colorLevelStringMap) {
-		if (item.levelString.c_str() == levelStr) {
+	for (auto& item : colorLevelStringMap)
+	{
+		if (item.levelString.c_str() == levelStr)
+		{
 			return item.level;
-		}		
+		}
 	}
 	return Level::lastLevel;
 }

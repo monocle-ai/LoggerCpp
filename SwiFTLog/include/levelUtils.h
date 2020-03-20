@@ -1,4 +1,5 @@
 #pragma once
+
 #if defined(__GNUC__) && __GNUC__ < 7
 # include <experimental/string_view>
 # define STRING_VIEW std::experimental::string_view
@@ -6,6 +7,7 @@
 # include <string_view>
 #define STRING_VIEW std::string_view
 #endif
+
 #include "level.h"
 #include "levelColor.h"
 #include "staticBase.h"

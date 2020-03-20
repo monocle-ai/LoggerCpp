@@ -15,7 +15,7 @@ install:
   - sudo apt-get install -qq cppcheck
 
 script: 
-  - g++ src/main.cpp src/clock.cpp src/levelUtils.cpp -std=c++17 -Iinclude -o loggerCpp
+  - g++ SwiFTLog/src/main.cpp SwiFTLog/src/clock.cpp SwiFTLog/src/levelUtils.cpp -std=c++17 -ISwiFTLog/include -o loggerCpp
   - ./loggerCpp
   # cppcheck
   - cppcheck --quiet --error-exitcode=1 . 

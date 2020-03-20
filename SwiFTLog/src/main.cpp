@@ -10,12 +10,12 @@ int main()
 {
 	std::cout << FastLog::clock::getTimestamp() << std::endl;
 
-	std::cout << FastLog::levelUtils::toColorString(FastLog::Level::fatal) << "sssssss" << std::endl;
+	/*std::cout << FastLog::levelUtils::toColorString(FastLog::Level::fatal) << "sssssss" << std::endl;
 	std::cout << FastLog::levelUtils::toColorString(FastLog::Level::warn) << "sssssss" << std::endl;
 	std::cout << FastLog::levelUtils::toColorString(FastLog::levelUtils::toLevel(5)) << "sssssdddss" << std::endl;
 	std::cout << FastLog::levelUtils::toFormattedColorShortString(FastLog::Level::info) << "sssssss" << std::endl;
 	std::cout << FastLog::levelUtils::toShortString(FastLog::Level::trace) << FastLog::getProjectVersion() << std::endl;
-	std::cout << FastLog::levelUtils::toColorString(FastLog::Level::error) << FastLog::VERSION << std::endl;
+	std::cout << FastLog::levelUtils::toColorString(FastLog::Level::error) << FastLog::VERSION << std::endl;*/
 	std::cout << FastLog::clock::getTimestamp() << std::endl;
 	FastLog::clock::setTimeFormat(FastLog::TIMEFORMAT::SHORT);
 	std::cout << FastLog::clock::getTimestamp() << std::endl;
