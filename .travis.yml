@@ -7,9 +7,14 @@ before_install:
   - sudo apt-get update -qq
 
 install: 
+  #g++
   - sudo apt-get install -qq g++-6
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
+  # cppcheck
+  - sudo apt-get install -qq cppcheck
 
 script: 
   - g++ src/main.cpp src/clock.cpp src/levelUtils.cpp -std=c++17 -Iinclude -o loggerCpp
   - ./loggerCpp
+  # cppcheck
+  - cppcheck --quiet --error-exitcode=1 . 
