@@ -88,7 +88,7 @@ FastLog::Level FastLog::levelUtils::toLevel(int levelInt)
 	}
 }
 
-FastLog::Level FastLog::levelUtils::toLevel(std::string_view levelStr)
+FastLog::Level FastLog::levelUtils::toLevel(STRING_VIEW levelStr)
 {	
 	for (auto& item : colorLevelStringMap) {
 		if (item.levelString.c_str() == levelStr) {

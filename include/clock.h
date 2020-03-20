@@ -1,10 +1,4 @@
 #pragma once
-#if defined(__GNUC__) && __GNUC__ < 7
-# include <experimental/string_view>
-# define string_view experimental::string_view
-#else
-# include <string_view>
-#endif
 
 #include <chrono>
 #include <sstream>      // std::stringstream
@@ -24,7 +18,7 @@ FASTLOG_BEGIN
 enum class TIMEFORMAT { STANDARD, SHORT, ALTERNATIVE };
 class clock : StaticBase
 {
-	static inline  TIMEFORMAT format = TIMEFORMAT::STANDARD;
+	static TIMEFORMAT format ;
 	static std::string getTimestamp(FastLog::TIMEFORMAT format);
 public:
 	static void setTimeFormat(TIMEFORMAT value);
