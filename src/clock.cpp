@@ -29,8 +29,16 @@ std::string FastLog::clock::getTimestamp(TIMEFORMAT format)
 	const auto now = std::chrono::system_clock::now();
 	const auto nowAsTimeT = std::chrono::system_clock::to_time_t(now);
 	const auto nowMs = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000; // change precision
+	
+	localtime(&nowAsTimeT);
+#if defined(__GNUC__) && __GNUC__ < 7
 	tm timeinfo;
 	localtime_s(&timeinfo, &nowAsTimeT);
+#else
+ 
+	tm timeinfo;
+	timeinfo = *localtime(&nowAsTimeT);
+#endif
 	std::stringstream nowSs;
 	switch (format) {
 	case TIMEFORMAT::STANDARD:
