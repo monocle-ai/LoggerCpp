@@ -1,10 +1,4 @@
 #pragma once
-#if defined(__GNUC__) && __GNUC__ < 7
-# include <experimental/string_view>
-# define std::string_view std::experimental::string_view
-#else
-# include <string_view>
-#endif
 
 #include <chrono>
 #include <sstream>      // std::stringstream

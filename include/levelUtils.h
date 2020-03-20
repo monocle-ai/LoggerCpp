@@ -1,5 +1,11 @@
 #pragma once
-
+#if defined(__GNUC__) && __GNUC__ < 7
+# include <experimental/string_view>
+# define STRING_VIEW std::experimental::string_view
+#else
+# include <string_view>
+#define STRING_VIEW std::string_view
+#endif
 #include "level.h"
 #include "levelColor.h"
 #include "staticBase.h"
@@ -41,7 +47,7 @@ public:
 	static std::string toString(Level level);
 	static std::string toString(int level);
 	static Level       toLevel(int level);
-	static Level       toLevel(std::string_view level);
+	static Level       toLevel(STRING_VIEW level);
 	static int         toInt(Level level);
 };
 
