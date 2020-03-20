@@ -1,6 +1,6 @@
 #include "clock.h"
 
-
+FastLog::TIMEFORMAT FastLog::clock::format;
 
 void FastLog::clock::setTimeFormat(TIMEFORMAT value)
 {
