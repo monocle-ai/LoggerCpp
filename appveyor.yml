@@ -25,7 +25,7 @@ platform:
 
 before_build:
    # Generate solution files using premake.
-  -  "vendor/premale/premake5.exe" %PREMAKE_ACTION% 
+  -  "vendor/premake/premake5.exe" %PREMAKE_ACTION% 
 
 build:
   project: SwiFTLog.sln
