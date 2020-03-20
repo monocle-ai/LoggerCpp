@@ -22,7 +22,8 @@ configuration:
 
 platform:
   - Win64
-install:
+
+before_build:
    # Generate solution files using premake.
   -  "vendor/premale/premake5.exe" %PREMAKE_ACTION% 
 
