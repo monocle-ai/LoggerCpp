@@ -6,8 +6,11 @@ Log right, Log fast
 
 Branch Status
 -------------
-master          : [![Build Status](https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=master)](https://travis-ci.com/sayantanroy47/LoggerCpp)
+master &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : [![Build Status](https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=master)](https://travis-ci.com/sayantanroy47/LoggerCpp) [![Build status](https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/master?svg=true)](https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/master)
+
 
 development :  [![Build Status](https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=development)](https://travis-ci.com/sayantanroy47/LoggerCpp)
+[![Build status](https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/development?svg=true)](https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/development)
+
 
 Central Logging in C++
