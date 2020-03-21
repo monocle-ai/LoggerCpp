@@ -3,8 +3,6 @@ shallow_clone: true
 
 environment:
   matrix:
-      fast_finish: true
-      
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
       PREMAKE_ACTION: vs2019
       ENABLE_CMAKE: doit
