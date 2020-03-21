@@ -11,7 +11,7 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 16 2019
-      ENABLE_CMAKE: doit
+      #ENABLE_CMAKE: doit
       
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019     
       configuration: Debug
@@ -19,7 +19,7 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 16 2019
-      ENABLE_CMAKE: trdoitue
+      #ENABLE_CMAKE: trdoitue
       
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       PREMAKE_ACTION: vs2017
@@ -28,7 +28,7 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 15 2017
-      ENABLE_CMAKE: doit
+      #ENABLE_CMAKE: doit
       
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017      
       configuration: Debug
@@ -36,7 +36,7 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 15 2017
-      ENABLE_CMAKE: doit
+      #ENABLE_CMAKE: doit
       
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       PREMAKE_ACTION: vs2015
@@ -45,7 +45,7 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 14 2015
-      ENABLE_CMAKE: nope
+      #ENABLE_CMAKE: nope
       
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015      
       configuration: Debug
@@ -53,7 +53,7 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 14 2015
-      ENABLE_CMAKE: nope
+      #ENABLE_CMAKE: nope
       
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
       PREMAKE_ACTION: vs2013
@@ -62,7 +62,7 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 12 2013
-      ENABLE_CMAKE: nope
+      #ENABLE_CMAKE: nope
       
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013      
       configuration: Debug
@@ -70,7 +70,7 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 12 2013
-      ENABLE_CMAKE: nope
+      #ENABLE_CMAKE: nope
       
    #- APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
    #  PREMAKE_ACTION: vs2015
@@ -92,7 +92,7 @@ install:
 before_build:
    # Generate solution files using premake.
   #- cd solution & "vendor/premake/premake5.exe" %PREMAKE_ACTION% && cd ..
-  - if %ENABLE_CMAKE%" == "doit" (cmake . -G "%GENERATOR%" -A "%GENERATOR_PLATFORM%" -DCMAKE_CXX_FLAGS="%CXX_FLAGS%" -DCMAKE_EXE_LINKER_FLAGS="%LINKER_FLAGS%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin")
+  - cmake . -G "%GENERATOR%" -A "%GENERATOR_PLATFORM%" -DCMAKE_CXX_FLAGS="%CXX_FLAGS%" -DCMAKE_EXE_LINKER_FLAGS="%LINKER_FLAGS%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin")
   
   
 build:  
@@ -100,5 +100,5 @@ build:
   parallel: true 
   
 build_script:
-  - if %ENABLE_CMAKE%" == "doit" cmake --build . --config "%configuration%"
+  - cmake --build . --config "%configuration%"
   - if "%platform%"=="x64" (cd solution & "vendor/premake/premake5.exe" %PREMAKE_ACTION% && cd ..)
