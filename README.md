@@ -1,16 +1,34 @@
-# SwiFTLog  [![Documentation](https://codedocs.xyz/sayantanroy47/LoggerCpp.svg)](https://codedocs.xyz/sayantanroy47/LoggerCpp/) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
-Log right, Log fast
+# SwiFTLog 
 
-[![HitCount](http://hits.dwyl.com/sayantanroy47/LoggerCpp.svg)](http://hits.dwyl.com/sayantanroy47/LoggerCpp) 
-
-
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Documentation](https://codedocs.xyz/sayantanroy47/LoggerCpp.svg)](https://codedocs.xyz/sayantanroy47/LoggerCpp/) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![HitCount](http://hits.dwyl.com/sayantanroy47/LoggerCpp.svg)](http://hits.dwyl.com/sayantanroy47/LoggerCpp) 
+-------------
 Branch Status
 -------------
-master &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : [![Build Status](https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=master)](https://travis-ci.com/sayantanroy47/LoggerCpp) [![Build status](https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/master?svg=true)](https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/master)
+<b>
+<table>
+    <tr>
+        <td>
+            master 
+        </td>
+        <td>
+           <a href="https://travis-ci.com/sayantanroy47/LoggerCpp/"><img src="https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=master"></a>
+        </td>
+        <td>
+             <a href="https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/master"><img src="https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/master?svg=true"></a>
+        </td>        
+    </tr>
+    <tr>
+        <td>
+            development
+        </td>
+        <td> <a href="https://travis-ci.com/sayantanroy47/LoggerCpp/"><img src="https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=development"></a>
+        </td>
+        <td>
+             <a href="https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/development"><img src="https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/development?svg=true"></a>
+        </td>       
+    </tr>
+</table
 
-
-development :  [![Build Status](https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=development)](https://travis-ci.com/sayantanroy47/LoggerCpp)
-[![Build status](https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/development?svg=true)](https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/development)
 
 
 Central Logging in C++
