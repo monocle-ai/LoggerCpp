@@ -3,11 +3,19 @@ shallow_clone: true
 
 environment:
   matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      PREMAKE_ACTION: vs2019
+      configuration: Debug
+      platform: x86
+      CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
+      LINKER_FLAGS: ""
+      GENERATOR: Visual Studio 16 2019
+
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       PREMAKE_ACTION: vs2017
       configuration: Debug
       platform: x86
-      CXX_FLAGS: "/permissive- /std:c++latest /utf-8"
+      CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 15 2017
 
@@ -39,3 +47,6 @@ build:
   
 build_script:
   - cmake --build . --config "%configuration%"
+after_build:
+  # Generate solution files using premake.
+  - cd solution & "vendor/premake/premake5.exe" %PREMAKE_ACTION% && cd ..
