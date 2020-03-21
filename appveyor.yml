@@ -9,7 +9,7 @@ environment:
       platform: x86
       CXX_FLAGS: ""
       LINKER_FLAGS: ""
-      CMAKE_GENERATOR: Visual Studio 15 2017
+      GENERATOR: Visual Studio 15 2017
 
    #- APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
    #  PREMAKE_ACTION: vs2015
