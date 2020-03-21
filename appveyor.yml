@@ -11,6 +11,7 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 16 2019
+      
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019     
       configuration: Debug
       platform: x86
@@ -18,12 +19,50 @@ environment:
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 16 2019
 
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      PREMAKE_ACTION: vs2017
+      configuration: Debug
+      platform: x64
+      CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
+      LINKER_FLAGS: ""
+      GENERATOR: Visual Studio 15 2017
+      
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017      
       configuration: Debug
       platform: x86
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 15 2017
+      
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      PREMAKE_ACTION: vs2015
+      configuration: Debug
+      platform: x64
+      CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
+      LINKER_FLAGS: ""
+      GENERATOR: Visual Studio 14 2015
+      
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015      
+      configuration: Debug
+      platform: x86
+      CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
+      LINKER_FLAGS: ""
+      GENERATOR: Visual Studio 14 2015
+      
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+      PREMAKE_ACTION: vs2013
+      configuration: Debug
+      platform: x64
+      CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
+      LINKER_FLAGS: ""
+      GENERATOR: Visual Studio 12 2013
+      
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013      
+      configuration: Debug
+      platform: x86
+      CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
+      LINKER_FLAGS: ""
+      GENERATOR: Visual Studio 12 2013
 
    #- APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
    #  PREMAKE_ACTION: vs2015
