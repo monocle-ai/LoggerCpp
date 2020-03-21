@@ -11,6 +11,7 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 16 2019
+      ENABLE_CMAKE: true
       
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019     
       configuration: Debug
@@ -18,7 +19,8 @@ environment:
       CXX_FLAGS: "/permissive- /std:c++latest /utf-8 /EHsc"
       LINKER_FLAGS: ""
       GENERATOR: Visual Studio 16 2019
-
+      ENABLE_CMAKE: true
+      
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       PREMAKE_ACTION: vs2017
       configuration: Debug
@@ -84,7 +86,7 @@ install:
 before_build:
    # Generate solution files using premake.
   #- cd solution & "vendor/premake/premake5.exe" %PREMAKE_ACTION% && cd ..
-  - if %GENERATOR%" == "Visual Studio 15 2017" cmake . -G "%GENERATOR%" -A "%GENERATOR_PLATFORM%" -DCMAKE_CXX_FLAGS="%CXX_FLAGS%" -DCMAKE_EXE_LINKER_FLAGS="%LINKER_FLAGS%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
+  - if % ENABLE_CMAKE%" == "true" (cmake . -G "%GENERATOR%" -A "%GENERATOR_PLATFORM%" -DCMAKE_CXX_FLAGS="%CXX_FLAGS%" -DCMAKE_EXE_LINKER_FLAGS="%LINKER_FLAGS%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin")
   
   
 build:  
