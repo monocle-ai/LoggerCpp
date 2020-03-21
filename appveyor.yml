@@ -3,8 +3,8 @@ shallow_clone: true
 
 environment:
   matrix:
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-      PREMAKE_ACTION: vs2013
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      PREMAKE_ACTION: vs2017
       configuration: Debug
       platform: x86
       CXX_FLAGS: ""
