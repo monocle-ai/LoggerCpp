@@ -43,5 +43,5 @@ before_build:
   - cmake --build . --config "%configuration%"
   #- if "%platform%"=="x64" (cd solution & "vendor/premake/premake5.exe" %PREMAKE_ACTION% && cd ..)
 build:  
-  project: SwiFTLog.sln
+  project: if "%platform%"=="x64" (SwiFTLog.sln)
   parallel: true 
