@@ -77,7 +77,7 @@ environment:
    #  PREMAKE_ACTION: vs2019
       
 init:
-  - if % ENABLE_CMAKE%" == "true" cmake --version
+  - cmake --version
   - msbuild /version
 
 install:
