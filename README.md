@@ -11,7 +11,7 @@ Branch Status
             master 
         </td>
         <td>
-           <a href="https://travis-ci.com/sayantanroy47/LoggerCpp/branch/master"><img src="https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=master"></a>
+           <a href="https://travis-ci.com/sayantanroy47/LoggerCpp/"><img src="https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=master"></a>
         </td>
         <td>
              <a href="https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/master"><img src="https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/master?svg=true"></a>
@@ -21,7 +21,7 @@ Branch Status
         <td>
             development
         </td>
-        <td> <a href="https://travis-ci.com/sayantanroy47/LoggerCpp/branch/development"><img src="https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=development"></a>
+        <td> <a href="https://travis-ci.com/sayantanroy47/LoggerCpp/"><img src="https://travis-ci.com/sayantanroy47/LoggerCpp.svg?branch=development"></a>
         </td>
         <td>
              <a href="https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/development"><img src="https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/development?svg=true"></a>
