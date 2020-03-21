@@ -30,12 +30,12 @@ install:
 
 before_build:
    # Generate solution files using premake.
-  - cd solution & "vendor/premake/premake5.exe" %PREMAKE_ACTION% && cd ..
+  #- cd solution & "vendor/premake/premake5.exe" %PREMAKE_ACTION% && cd ..
   - cmake . -G "%GENERATOR%" -A "%GENERATOR_PLATFORM%" -DCMAKE_CXX_FLAGS="%CXX_FLAGS%" -DCMAKE_EXE_LINKER_FLAGS="%LINKER_FLAGS%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
 
 build:  
   project: SwiFTLog.sln
   parallel: true
   
-#build_script:
-  #- cmake --build . --config "%configuration%"
+build_script:
+  - cmake --build . --config "%configuration%"
