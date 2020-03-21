@@ -50,4 +50,4 @@ build_script:
 after_build:
   # Generate solution files using premake.
   - cd solution & "vendor/premake/premake5.exe" %PREMAKE_ACTION% && cd ..
-   project: SwiFTLog.sln
+  - cmake --build . --config "%configuration%"
