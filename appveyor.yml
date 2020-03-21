@@ -77,7 +77,7 @@ environment:
    #  PREMAKE_ACTION: vs2019
       
 init:
-  - cmake --version
+  - if % ENABLE_CMAKE%" == "true" cmake --version
   - msbuild /version
 
 install:
@@ -94,5 +94,5 @@ build:
   parallel: true 
   
 build_script:
-  - cmake --build . --config "%configuration%"
+  - if % ENABLE_CMAKE%" == "true" cmake --build . --config "%configuration%"
   - if "%platform%"=="x64" (cd solution & "vendor/premake/premake5.exe" %PREMAKE_ACTION% && cd ..)
