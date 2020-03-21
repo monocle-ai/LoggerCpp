@@ -19,8 +19,8 @@ project "SwiFTLog"
 
    files 
    {
-    "include/**.h",    
-    "src/**.cpp" 
+    "%{prj.name}/include/**.h",    
+    "%{prj.name}/src/**.cpp" 
    }
    
    defines
@@ -29,7 +29,7 @@ project "SwiFTLog"
    }
 
    includedirs {
-   "include", 
+   "%{prj.name}/include", 
    }
 
    filter "system.windows"
