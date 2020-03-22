@@ -1,0 +1,29 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build-ubuntu:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: configure
+      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=debug ..
+    - name: build
+      run: cmake --build build
+   
+
+  build-windows:
+
+    runs-on: windows-latest
+    
+    steps:
+    - name: configure
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+    - name: build
+      run: cmake --build build
+    
