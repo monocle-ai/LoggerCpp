@@ -9,7 +9,7 @@ jobs:
     
     steps:
     - name: configure
-      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=debug ..
+      run: cmake -DCMAKE_BUILD_TYPE=debug ..
     - name: build
       run: cmake --build build
    
@@ -21,9 +21,7 @@ jobs:
     steps:
     - name: configure
       run: |
-        mkdir build
-        cd build
-        cmake ..
+         cmake ..
     - name: build
       run: cmake --build build
     
