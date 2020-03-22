@@ -41,7 +41,7 @@ target_link_libraries(SwiFTLogExe PRIVATE ${LIBRARY_NAME})  # Link the executabl
 #target_set_warnings(SwiFTLogExe ENABLE ALL AS_ERROR ALL DISABLE Annoying) # Set warnings (if needed).
 
 set_target_properties(
-    ${LIBRARY_NAME} SwiFTLog 
+    ${LIBRARY_NAME} SwiFTLogExe 
       PROPERTIES 
         CXX_STANDARD 17 
         CXX_STANDARD_REQUIRED YES 
