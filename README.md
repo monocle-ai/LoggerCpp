@@ -21,7 +21,12 @@ Branch Status
         </td>
          <td> 
             <a href="https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp?branch=master"><img src="https://img.shields.io/circleci/build/gh/sayantanroy47/LoggerCpp?logo=circleci&style=plastic"></a>           
-        </td>      
+        </td>
+        <td> 
+            <a href="https%3A%2F%2Fg.codefresh.io%2Fpipelines%2FCodeFresh%20Pipe%2Fbuilds%3FrepoOwner%3Dsayantanroy47%26repoName%3DLoggerCpp%26serviceName%3Dsayantanroy47%252FLoggerCpp%26filter%3Dtrigger%3Abuild~Build%3Bbranch%3Amaster%3Bpipeline%3A5e774d070c0a28272084c618~CodeFresh%20Pipe">
+	<img alt="Codefresh build status" src="https://g.codefresh.io/api/badges/pipeline/sayantan/SwiFTLog%2FCodeFresh%20Pipe?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWU3NzQwYWM4YWI3NWQzNGVlYjkxZjkw.QMynCSIXB7J72wsAjzC8Gm_iG9He725UIUAdgfTSWqw&type=cf-1">
+</a>          
+        </td> 
     </tr>
     <tr>
         <td>
@@ -37,7 +42,12 @@ Branch Status
         </td>        
         <td> 
             <a href="https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp?branch=development"><img src="https://img.shields.io/circleci/build/gh/sayantanroy47/LoggerCpp/development?logo=circleci&style=plastic"></a>           
-        </td>   
+        </td> 
+        <td>
+           <a href="https%3A%2F%2Fg.codefresh.io%2Fpipelines%2FCodeFresh%20Pipe%2Fbuilds%3FrepoOwner%3Dsayantanroy47%26repoName%3DLoggerCpp%26serviceName%3Dsayantanroy47%252FLoggerCpp%26filter%3Dtrigger%3Abuild~Build%3Bbranch%3Adevelopment%3Bpipeline%3A5e774d070c0a28272084c618~CodeFresh%20Pipe">
+	<img alt="Codefresh build status" src="https://g.codefresh.io/api/badges/pipeline/sayantan/SwiFTLog%2FCodeFresh%20Pipe?branch=development&key=eyJhbGciOiJIUzI1NiJ9.NWU3NzQwYWM4YWI3NWQzNGVlYjkxZjkw.QMynCSIXB7J72wsAjzC8Gm_iG9He725UIUAdgfTSWqw&type=cf-1">
+</a>
+        </td>
     </tr>
 </table
 
