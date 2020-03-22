@@ -1,9 +1,11 @@
 # SwiFTLog 
 
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Documentation](https://codedocs.xyz/sayantanroy47/LoggerCpp.svg)](https://codedocs.xyz/sayantanroy47/LoggerCpp/) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![HitCount](http://hits.dwyl.com/sayantanroy47/LoggerCpp.svg)](http://hits.dwyl.com/sayantanroy47/LoggerCpp) 
--------------
-Branch Status
--------------
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Lang](https://badgen.net/lgtm/langs/g/sayantanroy47/LoggerCpp/cpp?color=green)](https://abc.com) [![Documentation](https://codedocs.xyz/sayantanroy47/LoggerCpp.svg)](https://codedocs.xyz/sayantanroy47/LoggerCpp/) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![HitCount](http://hits.dwyl.com/sayantanroy47/LoggerCpp.svg)](http://hits.dwyl.com/sayantanroy47/LoggerCpp) 
+
+[![CodeFactor](https://www.codefactor.io/repository/github/sayantanroy47/loggercpp/badge)](https://www.codefactor.io/repository/github/sayantanroy47/loggercpp)
+---
+Build Status
+---
 <b>
 <table>
     <tr>
@@ -49,8 +51,16 @@ Branch Status
 </a>
         </td>
     </tr>
-</table
+</table>
+	
+---
+Build History
+---
+**Appveyor** &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  **Travis** &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;**CircleCI**
 
+[![Build history](https://buildstats.info/appveyor/chart/sayantanroy47/LoggerCpp)](https://ci.appveyor.com/project/sayantanroy47/LoggerCpp/history) 
+[![Build history](https://buildstats.info/travisci/chart/sayantanroy47/LoggerCpp?showStats=true)](https://travis-ci.com/github/sayantanroy47/LoggerCpp/builds)
+[![Build history](https://buildstats.info/circleci/chart/sayantanroy47/LoggerCpp?showStats=true)](https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp/mine)
 
 
 Central Logging in C++
