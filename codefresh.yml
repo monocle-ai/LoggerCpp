@@ -34,6 +34,6 @@ steps:
   compile_my_sources:
     title: Compile
     stage: build
-    image: gcc
+    image: ${{build_dev_image}}
     commands:
       - make
