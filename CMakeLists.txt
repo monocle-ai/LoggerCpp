@@ -36,9 +36,9 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 # Add an executable for the file SwiFTLog/main.cpp.
 # copy these lines if more executable needed.
-add_executable(SwiFTLog SwiFTLog/main.cpp)   # Name of exec. and location of file.
-target_link_libraries(SwiFTLog PRIVATE ${LIBRARY_NAME})  # Link the executable to library (if it uses it).
-#target_set_warnings(SwiFTLog ENABLE ALL AS_ERROR ALL DISABLE Annoying) # Set warnings (if needed).
+add_executable(SwiFTLogExe SwiFTLog/main.cpp)   # Name of exec. and location of file.
+target_link_libraries(SwiFTLogExe PRIVATE ${LIBRARY_NAME})  # Link the executable to library (if it uses it).
+#target_set_warnings(SwiFTLogExe ENABLE ALL AS_ERROR ALL DISABLE Annoying) # Set warnings (if needed).
 
 set_target_properties(
     ${LIBRARY_NAME} SwiFTLog 
