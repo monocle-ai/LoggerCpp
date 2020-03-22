@@ -22,11 +22,9 @@ jobs:
     runs-on: windows-latest
     
     steps:
-    - uses: actions/checkout@v1
-    - name: prepare
-      run: mkdir build
-    - name: cmake
-      run: cd build ; cmake ..
+    - uses: actions/checkout@v2
+    - name: configure
+      run: cmake -DCMAKE_CXX_FLAGS="/permissive- /std:c++latest /utf-8 /EHsc" -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
     - name: build
-      run: make -C build
+      run: cmake --build . --config "Debug"
     
