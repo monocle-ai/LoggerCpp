@@ -12,7 +12,8 @@ jobs:
           command: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
       - run:
           name: Install GCC
-          command: 'apt-get update && apt-get install -y gcc g++'
+          command: 'sudo apt-get update -qq && sudo apt-get install -qq g++-7 && sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90'
+          
       - run:
           name: Install CMake
           command: 'apt-get update && sudo apt-get install -y cmake'
