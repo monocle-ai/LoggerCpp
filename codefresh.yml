@@ -22,7 +22,7 @@ steps:
     stage: prepare
     type: build
     image_name: cmake
-    working_directory: ./dev/
+    working_directory: ./docker/
     tag: 'latest'
     dockerfile: Dockerfile
   create_makefiles:
