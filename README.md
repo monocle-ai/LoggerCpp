@@ -19,6 +19,9 @@ Branch Status
         <td> 
             <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Amaster%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/master:CI/badge.svg?branch=master"></a>           
         </td>
+         <td> 
+            <a href="https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp?branch=master"><img src="https://img.shields.io/circleci/build/gh/sayantanroy47/LoggerCpp?logo=circleci&style=plastic"></a>           
+        </td>      
     </tr>
     <tr>
         <td>
@@ -31,7 +34,10 @@ Branch Status
         </td>   
         <td> 
             <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Adevelopment%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/development:CI/badge.svg?branch=development"></a>           
-        </td>
+        </td>        
+        <td> 
+            <a href="https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp?branch=development"><img src="https://img.shields.io/circleci/build/gh/sayantanroy47/LoggerCpp/development?logo=circleci&style=plastic"></a>           
+        </td>   
     </tr>
 </table
 
