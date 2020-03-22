@@ -41,7 +41,7 @@ Branch Status
             <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Adevelopment%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/development:CI/badge.svg?branch=development"></a>           
         </td>        
         <td> 
-            <a href="https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp?branch=development"><img src="https://img.shields.io/circleci/build/gh/sayantanroy47/LoggerCpp/development?logo=circleci&style=plastic"></a>           
+            <a href="https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp?branch=development"><img src="https://img.shields.io/circleci/build/gh/sayantanroy47/LoggerCpp?logo=circleci&style=plastic"></a>           
         </td> 
         <td>
            <a href="https://g.codefresh.io/pipelines/CodeFresh%20Pipe/builds?repoOwner=sayantanroy47&repoName=LoggerCpp&serviceName=sayantanroy47%252FLoggerCpp&filter=trigger:build~Build;branch:development;pipeline%3A5e774d070c0a28272084c618~CodeFresh%20Pipe">
