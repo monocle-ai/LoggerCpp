@@ -17,7 +17,7 @@ Branch Status
              <a href="https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/master"><img src="https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/master?svg=true"></a>
         </td>  
         <td> 
-            <a href="https://github.com/sayantanroy47/LoggerCpp/branch/master"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/master:CI/badge.svg?branch=master"></a>           
+            <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Amaster%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/master:CI/badge.svg?branch=master"></a>           
         </td>
     </tr>
     <tr>
@@ -30,7 +30,7 @@ Branch Status
              <a href="https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/development"><img src="https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/development?svg=true"></a>
         </td>   
         <td> 
-            <a href="https://github.com/sayantanroy47/LoggerCpp/branch/development"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/development:CI/badge.svg?branch=development"></a>           
+            <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Adevelopment%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/development:CI/badge.svg?branch=development"></a>           
         </td>
     </tr>
 </table
