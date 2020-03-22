@@ -6,12 +6,14 @@ project(SwiFTLog VERSION 1.0 LANGUAGES CXX)
 # option(ENABLE_WARNINGS_SETTINGS "Allow target_set_warnings to add flags and defines.
 #                                  Set this to OFF if you want to provide your own warning parameters." ON)
 # option(ENABLE_LTO "Enable link time optimization" ON)
-# option(ENABLE_DOCTESTS "Include tests in the library. Setting this to OFF will remove all doctest related code.
-#                         Tests in tests/*.cpp will still be enabled." ON)
+option(ENABLE_DOCTESTS "Include tests in the library. Setting this to OFF will remove all doctest related code.
+                         Tests in tests/*.cpp will still be enabled." ON)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 include(Colors)
+include(CTest)
+include(Doctest)
 
 # --------------------------------------------------------------------------------
 #                         Locate files (change as needed).
@@ -19,6 +21,10 @@ include(Colors)
 set(SOURCES          # All .cpp files in src/
     src/clock.cpp
     src/levelUtils.cpp
+    src/example.cpp
+)
+set(TESTFILES        # All .cpp files in tests/
+    tests/main.cpp
 )
 set(LIBRARY_NAME swiftlogEngine)
 
@@ -29,6 +35,8 @@ set(LIBRARY_NAME swiftlogEngine)
 add_library(${LIBRARY_NAME} OBJECT ${SOURCES})
 
 target_include_directories(${LIBRARY_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+
+target_link_libraries(${LIBRARY_NAME} PUBLIC doctest)
 
 # Set the compile options you want (change as needed). We'll have to enable this to treat all warning as error.
 # target_set_warnings(${LIBRARY_NAME} ENABLE ALL AS_ERROR ALL DISABLE Annoying) 
@@ -47,3 +55,6 @@ set_target_properties(
         CXX_STANDARD_REQUIRED YES 
         CXX_EXTENSIONS NO
 )
+
+# Set up tests (see tests/CMakeLists.txt).
+add_subdirectory(tests)

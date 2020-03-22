@@ -1,6 +1,6 @@
 name: development:CI
 
-on: 
+on:
   push:
     branches:
       - development
@@ -9,23 +9,39 @@ jobs:
   build-ubuntu:
 
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: prepare
       run: mkdir build
+    - name: Checkout submodules
+      shell: bash
+      run: |
+        auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+        git submodule sync --recursive
+        git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
+    - name: configure
+      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=debug ..
     - name: cmake
       run: cd build ; cmake ..
     - name: build
       run: make -C build
-   
+
 
   build-windows:
 
     runs-on: windows-latest
-    
+
     steps:
     - uses: actions/checkout@v2
+    - name: configure
+      run: cmake -DCMAKE_CXX_FLAGS="/permissive- /std:c++latest /utf-8 /EHsc" -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
+    - name: Checkout submodules
+      shell: bash
+      run: |
+        auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+        git submodule sync --recursive
+        git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
     - name: configure
       run: cmake -DCMAKE_CXX_FLAGS="/permissive- /std:c++latest /utf-8 /EHsc" -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
     - name: build
