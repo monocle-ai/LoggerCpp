@@ -9,7 +9,7 @@ jobs:
     
     steps:
     - name: configure
-      run: cmake . -G "Visual Studio 15 2017" -A "x64" -DCMAKE_CXX_FLAGS="/permissive- /std:c++latest /utf-8 /EHsc" -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
+      run: cmake -DCMAKE_CXX_FLAGS="/permissive- /std:c++latest /utf-8 /EHsc" -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
     - name: build
       run: cmake --build . --config "Debug"
    
@@ -20,7 +20,7 @@ jobs:
     
     steps:
     - name: configure
-      run: cmake . -G "Visual Studio 15 2017" -A "x64" -DCMAKE_CXX_FLAGS="/permissive- /std:c++latest /utf-8 /EHsc" -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
+      run: cmake -DCMAKE_CXX_FLAGS="/permissive- /std:c++latest /utf-8 /EHsc" -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
     - name: build
       run: cmake --build . --config "Debug"
     
