@@ -18,7 +18,7 @@ void write_date_time(char* buff, size_t buff_size)
 	long long ms_since_epoch = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
 	time_t sec_since_epoch = time_t(ms_since_epoch / 1000);
 	tm time_info;
-#if defined(__GNUC__) && __GNUC__ <= 7
+#if defined(__GNUC__)
 	time_info = *localtime(&sec_since_epoch);
 #else
 	localtime_s(&time_info, &sec_since_epoch);
@@ -36,7 +36,7 @@ std::string FastLog::clock::getTimestamp(TIMEFORMAT format)
 	const auto nowMs = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000; // change precision
 	tm timeinfo;
 	
-#if defined(__GNUC__) && __GNUC__ <= 7
+#if defined(__GNUC__)
 	timeinfo = *localtime(&nowAsTimeT);	
 #else
 	localtime_s(&timeinfo, &nowAsTimeT);	

@@ -1,0 +1,39 @@
+# More examples of Codefresh YAML can be found at
+# https://codefresh.io/docs/docs/yaml-examples/examples/
+
+version: "1.0"
+# Stages can help you organize your steps in stages
+stages:
+  - checkout
+  - prepare
+  - build
+
+steps:
+  main_clone:
+    title: "Cloning repository"  
+    type: "git-clone"
+    repo: "sayantanroy47/LoggerCpp"
+    # CF_BRANCH value is auto set when pipeline is triggered
+    # Learn more at codefresh.io/docs/docs/codefresh-yaml/variables/
+    revision: "${{CF_BRANCH}}"
+    stage: "checkout"
+  build_dev_image:
+    title: Building Dev Image
+    stage: prepare
+    type: build
+    image_name: cmake
+    working_directory: ./docker/
+    tag: 'latest'
+    dockerfile: Dockerfile
+  create_makefiles:
+    title: Create Makefiles
+    stage: prepare
+    image: ${{build_dev_image}}
+    commands:
+      - cmake .
+  compile_my_sources:
+    title: Compile
+    stage: build
+    image: ${{build_dev_image}}
+    commands:
+      - make

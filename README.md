@@ -15,7 +15,18 @@ Branch Status
         </td>
         <td>
              <a href="https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/master"><img src="https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/master?svg=true"></a>
-        </td>        
+        </td>  
+        <td> 
+            <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Amaster%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/master:CI/badge.svg?branch=master"></a>           
+        </td>
+         <td> 
+            <a href="https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp?branch=master"><img src="https://img.shields.io/circleci/build/gh/sayantanroy47/LoggerCpp?logo=circleci&style=plastic"></a>           
+        </td>
+        <td> 
+            <a href="https://g.codefresh.io/pipelines/CodeFresh%20Pipe/builds?repoOwner=sayantanroy47&repoName=LoggerCpp&serviceName=sayantanroy47%252FLoggerCpp&filter=trigger:build~Build;branch:master;pipeline%3A5e774d070c0a28272084c618~CodeFresh%20Pipe">
+	<img alt="Codefresh build status" src="https://g.codefresh.io/api/badges/pipeline/sayantan/SwiFTLog%2FCodeFresh%20Pipe?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWU3NzQwYWM4YWI3NWQzNGVlYjkxZjkw.QMynCSIXB7J72wsAjzC8Gm_iG9He725UIUAdgfTSWqw&type=cf-1">
+</a>          
+        </td> 
     </tr>
     <tr>
         <td>
@@ -25,7 +36,18 @@ Branch Status
         </td>
         <td>
              <a href="https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/development"><img src="https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/development?svg=true"></a>
-        </td>       
+        </td>   
+        <td> 
+            <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Adevelopment%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/development:CI/badge.svg?branch=development"></a>           
+        </td>        
+        <td> 
+            <a href="https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp?branch=development"><img src="https://img.shields.io/circleci/build/gh/sayantanroy47/LoggerCpp/development?logo=circleci&style=plastic"></a>           
+        </td> 
+        <td>
+           <a href="https://g.codefresh.io/pipelines/CodeFresh%20Pipe/builds?repoOwner=sayantanroy47&repoName=LoggerCpp&serviceName=sayantanroy47%252FLoggerCpp&filter=trigger:build~Build;branch:development;pipeline%3A5e774d070c0a28272084c618~CodeFresh%20Pipe">
+	<img alt="Codefresh build status" src="https://g.codefresh.io/api/badges/pipeline/sayantan/SwiFTLog%2FCodeFresh%20Pipe?branch=development&key=eyJhbGciOiJIUzI1NiJ9.NWU3NzQwYWM4YWI3NWQzNGVlYjkxZjkw.QMynCSIXB7J72wsAjzC8Gm_iG9He725UIUAdgfTSWqw&type=cf-1">
+</a>
+        </td>
     </tr>
 </table
 
