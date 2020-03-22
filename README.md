@@ -1,5 +1,6 @@
 # SwiFTLog 
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a753190bbca44dcb8d3d2a903fb34eb)](https://app.codacy.com/manual/sayantanroy47/LoggerCpp?utm_source=github.com&utm_medium=referral&utm_content=sayantanroy47/LoggerCpp&utm_campaign=Badge_Grade_Dashboard)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Lang](https://badgen.net/lgtm/langs/g/sayantanroy47/LoggerCpp/cpp?color=green)](https://abc.com) [![Documentation](https://codedocs.xyz/sayantanroy47/LoggerCpp.svg)](https://codedocs.xyz/sayantanroy47/LoggerCpp/) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![HitCount](http://hits.dwyl.com/sayantanroy47/LoggerCpp.svg)](http://hits.dwyl.com/sayantanroy47/LoggerCpp) 
 
 [![CodeFactor](https://www.codefactor.io/repository/github/sayantanroy47/loggercpp/badge)](https://www.codefactor.io/repository/github/sayantanroy47/loggercpp)
