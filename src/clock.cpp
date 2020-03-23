@@ -35,11 +35,11 @@ std::string Lgfypp::lgftime::getTimestamp(TIMEFORMAT format)
 	const auto nowAsTimeT = std::chrono::system_clock::to_time_t(now);
 	const auto nowMs = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000; // change precision
 	tm timeinfo;
-	
+
 #if defined(__GNUC__)
 	localtime_r(&nowAsTimeT, &timeinfo);
 #else
-	localtime_s(&timeinfo, &nowAsTimeT);	
+	localtime_s(&timeinfo, &nowAsTimeT);
 #endif
 	std::stringstream nowSs;
 	switch (format) {

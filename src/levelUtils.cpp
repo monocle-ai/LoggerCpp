@@ -1,35 +1,37 @@
 #include "levelUtils.h"
 
 
-std::string Lgfypp::levelUtils::toFormattedShortString(Level level)
+std::string FastLog::levelUtils::toFormattedShortString(Level level)
+
 {
-	std::string str;
-	str = toShortString(level);
-	 
-	return "[" + str + "]" ;
+	return "[" + toShortString(level) + "]" ;
 }
 
 std::string Lgfypp::levelUtils::toFormattedColorShortString(Level level)
 {
-	std::string str;
-	str = toColorShortString(level);
-	return "[" + str + "]";
+	return "[" + toColorShortString(level) + "]";
 }
 
 std::string Lgfypp::levelUtils::toColorShortString(Level level)
 {
-	for (auto& item : colorLevelStringMap) {
-		if (level == item.level) {
+	for (auto& item : colorLevelStringMap)
+	{
+		if (level == item.level)
+		{
 			return (item.colorString + item.levelShortString + Color::RESET_COLOR);
 		}
 	}
 	return "";
 }
 
-std::string Lgfypp::levelUtils::toShortString(Level level){
-	
-	for (auto& item : colorLevelStringMap) {
-		if (level == item.level) {
+
+std::string FastLog::levelUtils::toShortString(Level level)
+{
+	for (auto& item : colorLevelStringMap)
+	{
+		if (level == item.level)
+		{
+
 			return item.levelShortString;
 		}
 	}
@@ -41,27 +43,30 @@ std::string Lgfypp::levelUtils::toFormattedString(Level level)
 	return "[" + toString(level) + "]";
 }
 
-std::string Lgfypp::levelUtils::toFormattedColorString(Level level)
-{	
+
+std::string FastLog::levelUtils::toFormattedColorString(Level level)
+{
 	return "[" + toColorString(level) + "]";
 }
 
 std::string Lgfypp::levelUtils::toColorString(Level level)
 {
-	
-	for (auto& item : colorLevelStringMap) {
-		if (level == item.level) {
+	for (auto& item : colorLevelStringMap)
+	{
+		if (level == item.level)
+		{
 			return (item.colorString + item.levelString + Color::RESET_COLOR);
-		}		
+		}
 	}
-	return "";	
+	return "";
 }
 
 std::string Lgfypp::levelUtils::toString(Level level)
 {
-	
-	for (auto& item : colorLevelStringMap) {
-		if (level == item.level) {
+	for (auto& item : colorLevelStringMap)
+	{
+		if (level == item.level)
+		{
 			return item.levelString;
 		}
 	}
@@ -88,8 +93,10 @@ Lgfypp::Level Lgfypp::levelUtils::toLevel(int levelInt)
 	}
 }
 
-Lgfypp::Level Lgfypp::levelUtils::toLevel(STRING_VIEW levelStr)
-{	
+
+FastLog::Level FastLog::levelUtils::toLevel(STRING_VIEW levelStr)
+{
+
 	for (auto& item : colorLevelStringMap)
 	{
 		if (item.levelString.c_str() == levelStr)
