@@ -1,7 +1,7 @@
 #pragma once
-#include "logCore.h"
+#include "lgfcore.h"
 
-FASTLOG_BEGIN
+LGF_BEGIN
 
 class ForbiddenCopy
 {
@@ -13,4 +13,4 @@ class ForbiddenCopy
 		ForbiddenCopy& operator=(const ForbiddenCopy&) = delete;
 };
 
-FASTLOG_END
+LGF_END

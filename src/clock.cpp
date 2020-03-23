@@ -1,13 +1,13 @@
-#include "clock.h"
+#include "lgftime.h"
 
-FastLog::TIMEFORMAT FastLog::clock::format;
+Lgfypp::TIMEFORMAT Lgfypp::lgftime::format;
 
-void FastLog::clock::setTimeFormat(TIMEFORMAT value)
+void Lgfypp::lgftime::setTimeFormat(TIMEFORMAT value)
 {
 	format = value;
 }
 
-std::string FastLog::clock::getTimestamp()
+std::string Lgfypp::lgftime::getTimestamp()
 {
 	return getTimestamp(format);
 }
@@ -29,7 +29,7 @@ void write_date_time(char* buff, size_t buff_size)
 		time_info.tm_hour, time_info.tm_min, time_info.tm_sec, ms_since_epoch % 1000);
 }
 
-std::string FastLog::clock::getTimestamp(TIMEFORMAT format)
+std::string Lgfypp::lgftime::getTimestamp(TIMEFORMAT format)
 {
 	const auto now = std::chrono::system_clock::now();
 	const auto nowAsTimeT = std::chrono::system_clock::to_time_t(now);

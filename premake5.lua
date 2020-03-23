@@ -20,7 +20,8 @@ project "SwiFTLog"
    files 
    {
     "include/**.h",    
-    "src/**.cpp" 
+    "src/**.cpp",
+    "app/**.cpp"
    }
    
    defines

@@ -12,13 +12,13 @@
 #include "levelColor.h"
 #include "staticBase.h"
 #include <string>
-#include "logCore.h"
+#include "lgfcore.h"
 
-FASTLOG_BEGIN
+LGF_BEGIN
 
-FASTLOG_CONSTEXPR MIN_LEVEL = Level::all;
-FASTLOG_CONSTEXPR MAX_LEVEL = Level::info;
-FASTLOG_CONSTEXPR DEF_LEVEL = Level::all;
+LGF_CONSTEXPR MIN_LEVEL = Level::all;
+LGF_CONSTEXPR MAX_LEVEL = Level::info;
+LGF_CONSTEXPR DEF_LEVEL = Level::all;
 
 struct ColorLevelStringItem {
 	std::string levelShortString;
@@ -53,4 +53,4 @@ public:
 	static int         toInt(Level level);
 };
 
-FASTLOG_END
+LGF_END

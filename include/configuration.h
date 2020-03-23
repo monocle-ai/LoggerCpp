@@ -1,7 +1,7 @@
 #pragma once
-#include "logCore.h"
+#include "lgfcore.h"
 
-FASTLOG_BEGIN
+LGF_BEGIN
 
 constexpr auto DEF_MODE		= Mode::defaultMode;
 constexpr auto ARG_MODE		= Mode::arg;
@@ -19,4 +19,4 @@ enum class Mode : uint32_t
 
 // TODO: Add Static Assert when .cpp is created.
 
-FASTLOG_END
+LGF_END
