@@ -4,6 +4,10 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a753190bbca44dcb8d3d2a903fb34eb)](https://app.codacy.com/manual/sayantanroy47/LoggerCpp?utm_source=github.com&utm_medium=referral&utm_content=sayantanroy47/LoggerCpp&utm_campaign=Badge_Grade_Dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/sayantanroy47/loggercpp/badge)](https://www.codefactor.io/repository/github/sayantanroy47/loggercpp)
+[![CodeInspector](https://www.code-inspector.com/project/5296/score/svg)](https://frontend.code-inspector.com/public/project/5296/LoggerCpp/dashboard)
+[![CodeInspector](https://www.code-inspector.com/project/5296/status/svg)](https://frontend.code-inspector.com/project/5296/dashboard)
+---
+
 ---
 Build Status
 ---
