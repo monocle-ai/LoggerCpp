@@ -33,37 +33,41 @@ enum class Level : uint32_t {
 LGF_CONSTEXPR MIN_LEVEL = Level::all;
 LGF_CONSTEXPR MAX_LEVEL = Level::info;
 LGF_CONSTEXPR DEF_LEVEL = Level::all;
-struct ColorLevelStringItem {
-	std::string levelShortString;
-	std::string levelString;
-	std::string colorString;
-	Level level;
-};
 
-static struct ColorLevelStringItem colorLevelStringMap[] = {
-   { "A", "ALL",  Color::LIGHT_BLUE, Level::all },
-   { "D","DEBUG", Color::GREEN, Level::debug },
-   { "I","INFO",  Color::CYAN, Level::info },
-   { "W","WARN",  Color::YELLOW, Level::warn },
-   { "E","ERROR", Color::RED, Level::error },
-   { "F","FATAL", Color::RED , Level::fatal },
-   { "T","TRACE", Color::LIGHT_CYAN, Level::trace }
-};
 
-class lgfLevelUtils : LgfStaticBase {
+
+class LgfLevelUtils  {
+
 public:
-	static std::string toFormattedShortString(Level level);
-	static std::string toFormattedColorShortString(Level level);
-	static std::string toColorShortString(Level level);
-	static std::string toShortString(Level level);
-	static std::string toFormattedString(Level level);
-	static std::string toFormattedColorString(Level level);
-	static std::string toColorString(Level level);
-	static std::string toString(Level level);
-	static std::string toString(int level);
-	static Level       toLevel(int level);
-	static Level       toLevel(STRING_VIEW level);
-	static int         toInt(Level level);
+	struct ColorLevelStringItem {
+		std::string levelShortString;
+		std::string levelString;
+		std::string colorString;
+		Level level;
+	};
+
+	struct ColorLevelStringItem colorLevelStringMap[7] = {
+	  { "A", "ALL",  Color::LIGHT_BLUE, Level::all },
+	  { "D","DEBUG", Color::GREEN, Level::debug },
+	  { "I","INFO",  Color::CYAN, Level::info },
+	  { "W","WARN",  Color::YELLOW, Level::warn },
+	  { "E","ERROR", Color::RED, Level::error },
+	  { "F","FATAL", Color::RED , Level::fatal },
+	  { "T","TRACE", Color::LIGHT_CYAN, Level::trace }
+	};
+
+	std::string toFormattedShortString(Level level);
+	std::string toFormattedColorShortString(Level level);
+	std::string toColorShortString(Level level);
+	std::string toShortString(Level level);
+	std::string toFormattedString(Level level);
+	std::string toFormattedColorString(Level level);
+	std::string toColorString(Level level);
+	std::string toString(Level level);
+	std::string toString(int level);
+	Level       toLevel(int level);
+	Level       toLevel(STRING_VIEW level);
+	int         toInt(Level level);
 };
 
 LGF_END

@@ -1,18 +1,18 @@
 #include "lgfLevelUtils.h"
 
 
-std::string Lgfypp::lgfLevelUtils::toFormattedShortString(Level level)
+std::string Lgfypp::LgfLevelUtils::toFormattedShortString(Level level)
 
 {
 	return "[" + toShortString(level) + "]" ;
 }
 
-std::string Lgfypp::lgfLevelUtils::toFormattedColorShortString(Level level)
+std::string Lgfypp::LgfLevelUtils::toFormattedColorShortString(Level level)
 {
 	return "[" + toColorShortString(level) + "]";
 }
 
-std::string Lgfypp::lgfLevelUtils::toColorShortString(Level level)
+std::string Lgfypp::LgfLevelUtils::toColorShortString(Level level)
 {
 	for (auto& item : colorLevelStringMap)
 	{
@@ -25,31 +25,30 @@ std::string Lgfypp::lgfLevelUtils::toColorShortString(Level level)
 }
 
 
-std::string Lgfypp::lgfLevelUtils::toShortString(Level level)
+std::string Lgfypp::LgfLevelUtils::toShortString(Level level)
 {
 	for (auto& item : colorLevelStringMap)
 	{
 		if (level == item.level)
 		{
-
 			return item.levelShortString;
 		}
 	}
 	return "";
 }
 
-std::string Lgfypp::lgfLevelUtils::toFormattedString(Level level)
+std::string Lgfypp::LgfLevelUtils::toFormattedString(Level level)
 {
 	return "[" + toString(level) + "]";
 }
 
 
-std::string Lgfypp::lgfLevelUtils::toFormattedColorString(Level level)
+std::string Lgfypp::LgfLevelUtils::toFormattedColorString(Level level)
 {
 	return "[" + toColorString(level) + "]";
 }
 
-std::string Lgfypp::lgfLevelUtils::toColorString(Level level)
+std::string Lgfypp::LgfLevelUtils::toColorString(Level level)
 {
 	for (auto& item : colorLevelStringMap)
 	{
@@ -61,7 +60,7 @@ std::string Lgfypp::lgfLevelUtils::toColorString(Level level)
 	return "";
 }
 
-std::string Lgfypp::lgfLevelUtils::toString(Level level)
+std::string Lgfypp::LgfLevelUtils::toString(Level level)
 {
 	for (auto& item : colorLevelStringMap)
 	{
@@ -73,12 +72,12 @@ std::string Lgfypp::lgfLevelUtils::toString(Level level)
 	return "";
 }
 
-std::string Lgfypp::lgfLevelUtils::toString(int levelInt)
+std::string Lgfypp::LgfLevelUtils::toString(int levelInt)
 {
 	return toString(toLevel(levelInt));
 }
 
-Lgfypp::Level Lgfypp::lgfLevelUtils::toLevel(int levelInt)
+Lgfypp::Level Lgfypp::LgfLevelUtils::toLevel(int levelInt)
 {
 	switch (levelInt) {
 	case 0: return Level::none;
@@ -94,7 +93,7 @@ Lgfypp::Level Lgfypp::lgfLevelUtils::toLevel(int levelInt)
 }
 
 
-Lgfypp::Level Lgfypp::lgfLevelUtils::toLevel(STRING_VIEW levelStr)
+Lgfypp::Level Lgfypp::LgfLevelUtils::toLevel(STRING_VIEW levelStr)
 {
 
 	for (auto& item : colorLevelStringMap)
@@ -107,7 +106,7 @@ Lgfypp::Level Lgfypp::lgfLevelUtils::toLevel(STRING_VIEW levelStr)
 	return Level::lastLevel;
 }
 
-int Lgfypp::lgfLevelUtils::toInt(Level level)
+int Lgfypp::LgfLevelUtils::toInt(Level level)
 {
 	return static_cast<int>(level);
 }
