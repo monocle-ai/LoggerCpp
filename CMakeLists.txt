@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(SwiFTLog VERSION 1.0 LANGUAGES CXX)
+project(Logifypp VERSION 1.0 LANGUAGES CXX)
 
 # Will be Needed Later
 # option(ENABLE_WARNINGS_SETTINGS "Allow target_set_warnings to add flags and defines.
@@ -26,7 +26,7 @@ set(SOURCES          # All .cpp files in src/
 set(TESTFILES        # All .cpp files in tests/
     tests/main.cpp
 )
-set(LIBRARY_NAME swiftlogEngine)
+set(LIBRARY_NAME LogifyppEngine)
 
 # --------------------------------------------------------------------------------
 #                            Build! (Change as needed)
@@ -39,20 +39,20 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(${LIBRARY_NAME} PUBLIC doctest)
 
 # Set the compile options you want (change as needed). We'll have to enable this to treat all warning as error.
-# target_set_warnings(${LIBRARY_NAME} ENABLE ALL AS_ERROR ALL DISABLE Annoying) 
+# target_set_warnings(${LIBRARY_NAME} ENABLE ALL AS_ERROR ALL DISABLE Annoying)
 # target_compile_options(${LIBRARY_NAME} ... )  # For setting manually.
 
-# Add an executable for the file SwiFTLog/main.cpp.
+# Add an executable for the file app/main.cpp.
 # copy these lines if more executable needed.
-add_executable(SwiFTLogExe SwiFTLog/main.cpp)   # Name of exec. and location of file.
-target_link_libraries(SwiFTLogExe PRIVATE ${LIBRARY_NAME})  # Link the executable to library (if it uses it).
-#target_set_warnings(SwiFTLogExe ENABLE ALL AS_ERROR ALL DISABLE Annoying) # Set warnings (if needed).
+add_executable(LogifyppBin app/main.cpp)   # Name of exec. and location of file.
+target_link_libraries(LogifyppBin PRIVATE ${LIBRARY_NAME})  # Link the executable to library (if it uses it).
+#target_set_warnings(LogifyppBin ENABLE ALL AS_ERROR ALL DISABLE Annoying) # Set warnings (if needed).
 
 set_target_properties(
-    ${LIBRARY_NAME} SwiFTLogExe 
-      PROPERTIES 
-        CXX_STANDARD 17 
-        CXX_STANDARD_REQUIRED YES 
+    ${LIBRARY_NAME} LogifyppBin
+      PROPERTIES
+        CXX_STANDARD 17
+        CXX_STANDARD_REQUIRED YES
         CXX_EXTENSIONS NO
 )
 

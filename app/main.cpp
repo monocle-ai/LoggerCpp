@@ -15,6 +15,7 @@ int main()
 	std::cout << FastLog::lgfLevelUtils::toFormattedColorShortString(FastLog::Level::info) << "sssssss" << std::endl;
 	std::cout << FastLog::lgfLevelUtils::toShortString(FastLog::Level::trace) << FastLog::getProjectVersion() << std::endl;
 	std::cout << FastLog::lgfLevelUtils::toColorString(FastLog::Level::error) << FastLog::VERSION << std::endl;*/
+
 	std::cout << Lgfypp::lgfTime::getTimestamp() << std::endl;
 	Lgfypp::lgfTime::setTimeFormat(Lgfypp::TIMEFORMAT::SHORT);
 	std::cout << Lgfypp::lgfTime::getTimestamp() << std::endl;
