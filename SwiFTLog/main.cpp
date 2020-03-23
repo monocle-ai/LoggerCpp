@@ -5,6 +5,15 @@
 #include "clock.h"
 #include "logCore.h"
 #include "version.h"
+// Executables must have the following defined if the library contains
+// doctest definitions. For builds with this disabled, e.g. code shipped to
+// users, this can be left out.
+#ifdef ENABLE_DOCTEST_IN_LIBRARY
+#define DOCTEST_CONFIG_IMPLEMENT
+#include "doctest.h"
+#endif
+
+#include "example.h"
 
 int main()
 {

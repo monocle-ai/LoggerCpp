@@ -17,6 +17,12 @@ steps:
     # Learn more at codefresh.io/docs/docs/codefresh-yaml/variables/
     revision: "${{CF_BRANCH}}"
     stage: "checkout"
+  updateSubmodules:
+    image: codefresh/cfstep-gitsubmodules
+    environment:
+      - GITHUB_TOKEN=$(sayantanroy47 get context github --decrypt -o yaml | yq -y .spec.data.auth.password)
+      - CF_SUBMODULE_SYNC=true
+      - CF_SUBMODULE_UPDATE_RECURSIVE=true
   build_dev_image:
     title: Building Dev Image
     stage: prepare
