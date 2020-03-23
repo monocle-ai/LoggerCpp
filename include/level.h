@@ -1,8 +1,8 @@
 #pragma once
 
-#include "logCore.h"
+#include "lgfcore.h"
 
-FASTLOG_BEGIN
+LGF_BEGIN
 
 enum class Level : uint32_t
 {
@@ -28,4 +28,4 @@ enum class Level : uint32_t
 
 // TODO: Add Static Assert when .cpp is created.
 
-FASTLOG_END
+LGF_END

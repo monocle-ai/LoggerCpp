@@ -1,9 +1,9 @@
 #pragma once
-#include "logCore.h"
+#include "lgfcore.h"
 
-FASTLOG_BEGIN
+LGF_BEGIN
 
-class StaticBase 
+class StaticBase
 {
 private:
 	StaticBase(void);
@@ -11,4 +11,4 @@ private:
 	StaticBase& operator=(const StaticBase&);
 };
 
-FASTLOG_END
+LGF_END
