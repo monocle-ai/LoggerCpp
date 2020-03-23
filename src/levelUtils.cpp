@@ -1,35 +1,33 @@
 #include "levelUtils.h"
 
-
 std::string FastLog::levelUtils::toFormattedShortString(Level level)
 {
-	std::string str;
-	str = toShortString(level);
-	 
-	return "[" + str + "]" ;
+	return "[" + toShortString(level) + "]" ;
 }
 
 std::string FastLog::levelUtils::toFormattedColorShortString(Level level)
 {
-	std::string str;
-	str = toColorShortString(level);
-	return "[" + str + "]";
+	return "[" + toColorShortString(level) + "]";
 }
 
 std::string FastLog::levelUtils::toColorShortString(Level level)
 {
-	for (auto& item : colorLevelStringMap) {
-		if (level == item.level) {
+	for (auto& item : colorLevelStringMap)
+	{
+		if (level == item.level)
+		{
 			return (item.colorString + item.levelShortString + Color::RESET_COLOR);
 		}
 	}
 	return "";
 }
 
-std::string FastLog::levelUtils::toShortString(Level level){
-	
-	for (auto& item : colorLevelStringMap) {
-		if (level == item.level) {
+std::string FastLog::levelUtils::toShortString(Level level)
+{
+	for (auto& item : colorLevelStringMap)
+	{
+		if (level == item.level)
+		{
 			return item.levelShortString;
 		}
 	}
@@ -42,26 +40,28 @@ std::string FastLog::levelUtils::toFormattedString(Level level)
 }
 
 std::string FastLog::levelUtils::toFormattedColorString(Level level)
-{	
+{
 	return "[" + toColorString(level) + "]";
 }
 
 std::string FastLog::levelUtils::toColorString(Level level)
 {
-	
-	for (auto& item : colorLevelStringMap) {
-		if (level == item.level) {
+	for (auto& item : colorLevelStringMap)
+	{
+		if (level == item.level)
+		{
 			return (item.colorString + item.levelString + Color::RESET_COLOR);
-		}		
+		}
 	}
-	return "";	
+	return "";
 }
 
 std::string FastLog::levelUtils::toString(Level level)
 {
-	
-	for (auto& item : colorLevelStringMap) {
-		if (level == item.level) {
+	for (auto& item : colorLevelStringMap)
+	{
+		if (level == item.level)
+		{
 			return item.levelString;
 		}
 	}
@@ -89,7 +89,7 @@ FastLog::Level FastLog::levelUtils::toLevel(int levelInt)
 }
 
 FastLog::Level FastLog::levelUtils::toLevel(STRING_VIEW levelStr)
-{	
+{
 	for (auto& item : colorLevelStringMap)
 	{
 		if (item.levelString.c_str() == levelStr)
