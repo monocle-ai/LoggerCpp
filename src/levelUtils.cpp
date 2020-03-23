@@ -1,7 +1,7 @@
 #include "levelUtils.h"
 
 
-std::string FastLog::levelUtils::toFormattedShortString(Level level)
+std::string Lgfypp::levelUtils::toFormattedShortString(Level level)
 
 {
 	return "[" + toShortString(level) + "]" ;
@@ -25,7 +25,7 @@ std::string Lgfypp::levelUtils::toColorShortString(Level level)
 }
 
 
-std::string FastLog::levelUtils::toShortString(Level level)
+std::string Lgfypp::levelUtils::toShortString(Level level)
 {
 	for (auto& item : colorLevelStringMap)
 	{
@@ -44,7 +44,7 @@ std::string Lgfypp::levelUtils::toFormattedString(Level level)
 }
 
 
-std::string FastLog::levelUtils::toFormattedColorString(Level level)
+std::string Lgfypp::levelUtils::toFormattedColorString(Level level)
 {
 	return "[" + toColorString(level) + "]";
 }
@@ -94,7 +94,7 @@ Lgfypp::Level Lgfypp::levelUtils::toLevel(int levelInt)
 }
 
 
-FastLog::Level FastLog::levelUtils::toLevel(STRING_VIEW levelStr)
+Lgfypp::Level Lgfypp::levelUtils::toLevel(STRING_VIEW levelStr)
 {
 
 	for (auto& item : colorLevelStringMap)
