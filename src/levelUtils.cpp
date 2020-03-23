@@ -30,7 +30,7 @@ std::string FastLog::levelUtils::toShortString(Level level){
 	
 	for (auto& item : colorLevelStringMap) {
 		if (level == item.level) {
-			return (item.colorString + item.levelShortString + Color::RESET_COLOR);
+			return item.levelShortString;
 		}
 	}
 	return "";
