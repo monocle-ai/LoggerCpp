@@ -1,10 +1,12 @@
 #pragma once
+#ifndef LGF_TIME_H
+#define LGF_TIME_H
 
 #include <chrono>
 #include <sstream>      // std::stringstream
 #include <iomanip>
 
-#include "staticBase.h"
+#include "lgfStaticBase.h"
 #include "lgfcore.h"
 
 LGF_CONSTEXPR TIME_FORMAT = "%F %T";
@@ -16,9 +18,9 @@ LGF_CONSTEXPR DEF_TIMEFORMAT = TIME_FORMAT;
 LGF_BEGIN
 
 enum class TIMEFORMAT { STANDARD, SHORT, ALTERNATIVE };
-class lgftime : StaticBase
+class lgfTime : LgfStaticBase
 {
-	static TIMEFORMAT format ;
+	static TIMEFORMAT format;
 	static std::string getTimestamp(Lgfypp::TIMEFORMAT format);
 public:
 	static void setTimeFormat(TIMEFORMAT value);
@@ -27,3 +29,5 @@ public:
 };
 
 LGF_END
+
+#endif

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef LGF_LEVEL_UTILS_H
+#define LGF_LEVEL_UTILS_H
 
 #if defined(__GNUC__) && __GNUC__ < 7
 # include <experimental/string_view>
@@ -8,18 +10,29 @@
 #define STRING_VIEW std::string_view
 #endif
 
-#include "level.h"
-#include "levelColor.h"
-#include "staticBase.h"
-#include <string>
+
+#include "lgfColor.h"
+#include "lgfStaticBase.h"
 #include "lgfcore.h"
+#include <string>
 
 LGF_BEGIN
+
+enum class Level : uint32_t {
+	none = 0,
+	all = 1,
+	trace = 2,
+	debug = 3,
+	info = 4,
+	warn = 5,
+	fatal = 6,
+	error = 7,
+	lastLevel = error,
+};
 
 LGF_CONSTEXPR MIN_LEVEL = Level::all;
 LGF_CONSTEXPR MAX_LEVEL = Level::info;
 LGF_CONSTEXPR DEF_LEVEL = Level::all;
-
 struct ColorLevelStringItem {
 	std::string levelShortString;
 	std::string levelString;
@@ -37,8 +50,8 @@ static struct ColorLevelStringItem colorLevelStringMap[] = {
    { "T","TRACE", Color::LIGHT_CYAN, Level::trace }
 };
 
-class levelUtils : StaticBase {
-public:	
+class lgfLevelUtils : LgfStaticBase {
+public:
 	static std::string toFormattedShortString(Level level);
 	static std::string toFormattedColorShortString(Level level);
 	static std::string toColorShortString(Level level);
@@ -54,3 +67,5 @@ public:
 };
 
 LGF_END
+
+#endif

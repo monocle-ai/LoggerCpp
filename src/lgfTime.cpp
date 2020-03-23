@@ -1,13 +1,13 @@
-#include "lgftime.h"
+#include "lgfTime.h"
 
-Lgfypp::TIMEFORMAT Lgfypp::lgftime::format;
+Lgfypp::TIMEFORMAT Lgfypp::lgfTime::format;
 
-void Lgfypp::lgftime::setTimeFormat(TIMEFORMAT value)
+void Lgfypp::lgfTime::setTimeFormat(TIMEFORMAT value)
 {
 	format = value;
 }
 
-std::string Lgfypp::lgftime::getTimestamp()
+std::string Lgfypp::lgfTime::getTimestamp()
 {
 	return getTimestamp(format);
 }
@@ -29,7 +29,7 @@ void write_date_time(char* buff, size_t buff_size)
 		time_info.tm_hour, time_info.tm_min, time_info.tm_sec, ms_since_epoch % 1000);
 }
 
-std::string Lgfypp::lgftime::getTimestamp(TIMEFORMAT format)
+std::string Lgfypp::lgfTime::getTimestamp(TIMEFORMAT format)
 {
 	const auto now = std::chrono::system_clock::now();
 	const auto nowAsTimeT = std::chrono::system_clock::to_time_t(now);

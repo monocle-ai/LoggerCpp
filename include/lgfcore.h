@@ -1,4 +1,6 @@
 #pragma once
+#ifndef LGF_CORE_H
+#define LGF_CORE_H
 
 #include <stdint.h> // for including different datatype typedefs (e.g. uint32_t)
 #include <sstream>
@@ -33,3 +35,5 @@ inline std::string getProjectVersion()
 	stream << PROJECT << ":" << VER_MAJOR * 1000 << "." << VER_MINOR * 100 << "." << VER_PATCH;
 	return  stream.str();
 };
+
+#endif

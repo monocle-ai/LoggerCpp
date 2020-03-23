@@ -1,4 +1,7 @@
 #pragma once
+#ifndef LGF_CONFIGURATION_H
+#define LGF_CONFIGURATION_H
+
 #include "lgfcore.h"
 
 LGF_BEGIN
@@ -20,3 +23,5 @@ enum class Mode : uint32_t
 // TODO: Add Static Assert when .cpp is created.
 
 LGF_END
+
+#endif
