@@ -2,8 +2,8 @@
 // TODO: remove this comment, later.
 #include "levelUtils.h"
 #include <iostream>
-#include "clock.h"
-#include "logCore.h"
+#include "lgfcore.h"
+#include "lgftime.h"
 #include "version.h"
 // Executables must have the following defined if the library contains
 // doctest definitions. For builds with this disabled, e.g. code shipped to
@@ -17,7 +17,7 @@
 
 int main()
 {
-	std::cout << FastLog::clock::getTimestamp() << std::endl;
+	std::cout << Lgfypp::lgftime::getTimestamp() << std::endl;
 
 	/*std::cout << FastLog::levelUtils::toColorString(FastLog::Level::fatal) << "sssssss" << std::endl;
 	std::cout << FastLog::levelUtils::toColorString(FastLog::Level::warn) << "sssssss" << std::endl;
@@ -25,10 +25,10 @@ int main()
 	std::cout << FastLog::levelUtils::toFormattedColorShortString(FastLog::Level::info) << "sssssss" << std::endl;
 	std::cout << FastLog::levelUtils::toShortString(FastLog::Level::trace) << FastLog::getProjectVersion() << std::endl;
 	std::cout << FastLog::levelUtils::toColorString(FastLog::Level::error) << FastLog::VERSION << std::endl;*/
-	std::cout << FastLog::clock::getTimestamp() << std::endl;
-	FastLog::clock::setTimeFormat(FastLog::TIMEFORMAT::SHORT);
-	std::cout << FastLog::clock::getTimestamp() << std::endl;
-	FastLog::clock::setTimeFormat(FastLog::TIMEFORMAT::ALTERNATIVE);
-	std::cout << FastLog::clock::getTimestamp() << std::endl;
+	std::cout << Lgfypp::lgftime::getTimestamp() << std::endl;
+	Lgfypp::lgftime::setTimeFormat(Lgfypp::TIMEFORMAT::SHORT);
+	std::cout << Lgfypp::lgftime::getTimestamp() << std::endl;
+	Lgfypp::lgftime::setTimeFormat(Lgfypp::TIMEFORMAT::ALTERNATIVE);
+	std::cout << Lgfypp::lgftime::getTimestamp() << std::endl;
 	return 0;
 }

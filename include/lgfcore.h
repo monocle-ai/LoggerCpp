@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stdint.h> // for including different datatype typedefs (e.g. uint32_t)
-
+#include <sstream>
 
 
 #define LGF_LITERAL(txt) (txt);
