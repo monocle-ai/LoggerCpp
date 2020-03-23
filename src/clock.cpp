@@ -19,7 +19,7 @@ void write_date_time(char* buff, size_t buff_size)
 	time_t sec_since_epoch = time_t(ms_since_epoch / 1000);
 	tm time_info;
 #if defined(__GNUC__)
-	time_info = *localtime(&sec_since_epoch);
+	localtime_r(&sec_since_epoch, &time_inf);
 #else
 	localtime_s(&time_info, &sec_since_epoch);
 #endif
@@ -37,7 +37,7 @@ std::string FastLog::clock::getTimestamp(TIMEFORMAT format)
 	tm timeinfo;
 	
 #if defined(__GNUC__)
-	timeinfo = *localtime(&nowAsTimeT);	
+	localtime_r(&nowAsTimeT, &timeinfo);
 #else
 	localtime_s(&timeinfo, &nowAsTimeT);	
 #endif
