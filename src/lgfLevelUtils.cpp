@@ -68,8 +68,8 @@ std::string Lgfypp::LgfLevelUtils::toString(const Level level)
 {
 	for (auto& item : colorLevelStringMap)
 	{
-		if (level == item.level)
-		{
+		if (level == item.level)	{
+			
 			return item.levelString;
 		}
 	}

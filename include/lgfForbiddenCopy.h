@@ -2,7 +2,7 @@
 #ifndef LGF_FORBIDDEN_COPY_H
 #define LGF_FORBIDDEN_COPY_H
 
-#include "lgfcore.h"
+#include "core_lgf.h"
 
 LGF_BEGIN
 

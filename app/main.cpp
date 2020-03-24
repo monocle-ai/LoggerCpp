@@ -4,10 +4,11 @@
 #include "LgfFormatter.h"
 #include <iostream>
 #include "lgfTime.h"
-#include "lgfcore.h"
+#include "core_lgf.h"
 #include <fmt/format.h>	
 
 #include <LgfStringView.h>
+#include "LgfFormatter.h"
 
 int main()
 {
@@ -18,8 +19,13 @@ int main()
 	std::cout << Lgfypp::LgfLevelUtils::toColorString(Lgfypp::LgfLevelUtils::toLevel(5)) << "sssssdddss" << std::endl;
 	std::cout << Lgfypp::LgfLevelUtils::toFormattedColorShortString(Lgfypp::Level::info) << "sssssss" << std::endl;
 	std::cout << Lgfypp::LgfLevelUtils::toShortString(Lgfypp::Level::trace) << getProjectVersion() << std::endl;*/
-	
-
+	Lgfypp::LgfFormatter ss;
+	STRING_VIEW ssdds("dsdada");
+	fmt::memory_buffer out;
+	std::cout << "___________________________" << std::endl;
+	ss.toColorFormattedString(ssdds, Lgfypp::Color::RED, out);
+	std::cout << Lgfypp::toStringView(out)<< std::endl ;
+	std::cout << "___________________________" << Lgfypp::toStringView(out) << std::endl;
 	std::cout << Lgfypp::lgfTime::getTimestamp() << std::endl;
 	Lgfypp::lgfTime::setTimeFormat(Lgfypp::TIMEFORMAT::SHORT);
 	std::cout << Lgfypp::lgfTime::getTimestamp() << std::endl;

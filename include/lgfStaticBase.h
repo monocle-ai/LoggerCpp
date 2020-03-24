@@ -2,7 +2,7 @@
 #ifndef LGF_STATIC_BASE_H
 #define LGF_STATIC_BASE_H
 
-#include "lgfcore.h"
+#include "core_lgf.h"
 
 LGF_BEGIN
 

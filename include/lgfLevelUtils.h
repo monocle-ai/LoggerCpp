@@ -13,7 +13,7 @@
 
 #include "lgfColor.h"
 #include "lgfStaticBase.h"
-#include "lgfcore.h"
+#include "core_lgf.h"
 #include <string>
 
 LGF_BEGIN
@@ -45,7 +45,9 @@ public:
 		std::string colorString;
 		Level level;
 	};
+
 	LgfLevelUtils();
+
 	struct ColorLevelStringItem colorLevelStringMap[7] = {
 	  { "A", "ALL",  Color::LIGHT_BLUE, Level::all },
 	  { "D","DEBUG", Color::GREEN, Level::debug },

@@ -7,7 +7,7 @@
 #include <iomanip>
 
 #include "lgfStaticBase.h"
-#include "lgfcore.h"
+#include "core_lgf.h"
 
 LGF_CONSTEXPR TIME_FORMAT = "%F %T";
 LGF_CONSTEXPR TIME_FORMAT_ALT = "%D %T";

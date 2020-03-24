@@ -19,9 +19,9 @@ include(Doctest)
 #                         Locate files (change as needed).
 # --------------------------------------------------------------------------------
 
-file(GLOB autopilot_sources ./**.cpp ./**.c)
+file(GLOB autopilot_sources ./src/**.cpp ./src/**.c)
 
-set( SOURCES${autopilot_sources}) 
+set( SOURCES ${autopilot_sources}) 
 
 set(TESTFILES        # All .cpp files in tests/
     tests/main.cpp

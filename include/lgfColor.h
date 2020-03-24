@@ -2,7 +2,7 @@
 #ifndef LGF_COLOR_H
 #define LGF_COLOR_H
 
-#include "lgfcore.h"
+#include "core_lgf.h"
 
 #ifdef _WIN32
 #define COLOR(ID) ("\x1b[1;" #ID "m")
