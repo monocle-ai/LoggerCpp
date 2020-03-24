@@ -1,6 +1,3 @@
-#pragma once
-#ifndef LGF_LEVEL_UTILS_H
-#define LGF_LEVEL_UTILS_H
 /*
 MIT License
 
@@ -25,6 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
+#pragma once
+#ifndef LGF_LEVEL_UTILS_H
+#define LGF_LEVEL_UTILS_H
 
 #if defined(__GNUC__) && __GNUC__ < 7
 # include <experimental/string_view>
