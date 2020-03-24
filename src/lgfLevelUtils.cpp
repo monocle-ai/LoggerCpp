@@ -1,6 +1,10 @@
 #include "lgfLevelUtils.h"
 
 
+Lgfypp::LgfLevelUtils::LgfLevelUtils()
+{
+}
+
 std::string Lgfypp::LgfLevelUtils::toFormattedShortString(Level level)
 
 {
@@ -60,7 +64,7 @@ std::string Lgfypp::LgfLevelUtils::toColorString(Level level)
 	return "";
 }
 
-std::string Lgfypp::LgfLevelUtils::toString(Level level)
+std::string Lgfypp::LgfLevelUtils::toString(const Level level)
 {
 	for (auto& item : colorLevelStringMap)
 	{

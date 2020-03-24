@@ -45,7 +45,7 @@ public:
 		std::string colorString;
 		Level level;
 	};
-
+	LgfLevelUtils();
 	struct ColorLevelStringItem colorLevelStringMap[7] = {
 	  { "A", "ALL",  Color::LIGHT_BLUE, Level::all },
 	  { "D","DEBUG", Color::GREEN, Level::debug },
@@ -63,7 +63,7 @@ public:
 	std::string toFormattedString(Level level);
 	std::string toFormattedColorString(Level level);
 	std::string toColorString(Level level);
-	std::string toString(Level level);
+	std::string toString(const Level level);
 	std::string toString(int level);
 	Level       toLevel(int level);
 	Level       toLevel(STRING_VIEW level);

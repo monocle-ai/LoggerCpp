@@ -7,11 +7,12 @@
 
 LGF_BEGIN
 
-class LgfFormatter : public LgfStaticBase
+class LgfFormatter : LgfStaticBase
 {
-
+private:
+    const Lgfypp::LgfLevelUtils* pLevelUtils = new Lgfypp::LgfLevelUtils();
 public:
-		static LgfLevelUtils pLevelUtils;
+
 
 };
 

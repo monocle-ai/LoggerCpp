@@ -5,11 +5,14 @@
 #include <iostream>
 #include "lgfTime.h"
 #include "lgfcore.h"
+#include <fmt/format.h>	
+
+#include <LgfStringView.h>
 
 int main()
 {
 	std::cout << Lgfypp::lgfTime::getTimestamp() << std::endl;
-
+	fmt::print("Hello, {}!", "world");  // Python-like format string syntax
 	/*std::cout << Lgfypp::LgfLevelUtils::toColorString(Lgfypp::Level::fatal) << "sssssss" << std::endl;
 	std::cout << Lgfypp::LgfLevelUtils::toColorString(Lgfypp::Level::warn) << "sssssss" << std::endl;
 	std::cout << Lgfypp::LgfLevelUtils::toColorString(Lgfypp::LgfLevelUtils::toLevel(5)) << "sssssdddss" << std::endl;
