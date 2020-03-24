@@ -1,3 +1,6 @@
+#pragma once
+#ifndef LGF_FORMATTER_H
+#define LGF_FORMATTER_H
 /*
 MIT License
 
@@ -23,40 +26,31 @@ SOFTWARE.
 
 */
 
-#pragma once
-#ifndef LGF_CORE_H
-#define LGF_CORE_H
+#if defined(__GNUC__) && __GNUC__ < 7
+# include <experimental/string_view>
+# define STRING_VIEW std::experimental::string_view
+#else
+# include <string_view>
+#define STRING_VIEW std::string_view
+#endif
 
-#include <stdint.h> // for including different datatype typedefs (e.g. uint32_t)
-#include <sstream>
+#include "staticBase_lgf.h"
+#include "levelUtils_lgf.h"
+#include "stringView_lgf.h"
 
-#define LGF_LITERAL(txt) (txt);
-#define LGF_CONSTEXPR constexpr auto
-#define LGF_STATIC_CONSTEXPR static LGF_CONSTEXPR
+LGF_BEGIN
 
-// NAMESPACE
-
-#define LGF_BEGIN namespace Lgfypp {
-#define LGF_END }
-#define LGF_SCOPE_ Lgfypp::
-
-#define COLOR_BEGIN namespace Color {
-#define COLOR_END }
-
-//PROJECT DETAILS
-
-LGF_CONSTEXPR VER_MAJOR = 0;
-LGF_CONSTEXPR VER_MINOR = 0;
-LGF_CONSTEXPR VER_PATCH = 0;
-LGF_CONSTEXPR PROJECT = "Logify++";
-
-LGF_CONSTEXPR VERSION(VER_MAJOR * 1000 + VER_MINOR * 100 + VER_PATCH);
-
-inline std::string getProjectVersion()
+class Formatter 
 {
-	std::stringstream stream;
-	stream << PROJECT << ":" << VER_MAJOR * 1000 << "." << VER_MINOR * 100 << "." << VER_PATCH;
-	return  stream.str();
+private:
+    Lgfypp::LgfLevelUtils* pLevelUtils = new Lgfypp::LgfLevelUtils();
+public:
+    void toFormattedString(STRING_VIEW & string, fmt::memory_buffer& buf);
+    void toColorFormattedString(STRING_VIEW & string, const char* color, fmt::memory_buffer& buf);
+    void toColorString(STRING_VIEW& string, const char* color, fmt::memory_buffer& buf);
+
 };
+
+LGF_END
 
 #endif

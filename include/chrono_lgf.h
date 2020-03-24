@@ -24,39 +24,36 @@ SOFTWARE.
 */
 
 #pragma once
-#ifndef LGF_CORE_H
-#define LGF_CORE_H
+#ifndef LGF_TIME_H
+#define LGF_TIME_H
 
-#include <stdint.h> // for including different datatype typedefs (e.g. uint32_t)
-#include <sstream>
+#include <chrono>
+#include <sstream>      // std::stringstream
+#include <iomanip>
 
-#define LGF_LITERAL(txt) (txt);
-#define LGF_CONSTEXPR constexpr auto
-#define LGF_STATIC_CONSTEXPR static LGF_CONSTEXPR
+#include "staticBase_lgf.h"
+#include "core_lgf.h"
 
-// NAMESPACE
+LGF_CONSTEXPR TIME_FORMAT = "%F %T";
+LGF_CONSTEXPR TIME_FORMAT_ALT = "%D %T";
+LGF_CONSTEXPR TIME_FORMAT_SHORT = "%T";
 
-#define LGF_BEGIN namespace Lgfypp {
-#define LGF_END }
-#define LGF_SCOPE_ Lgfypp::
+LGF_CONSTEXPR DEF_TIMEFORMAT = TIME_FORMAT;
 
-#define COLOR_BEGIN namespace Color {
-#define COLOR_END }
+LGF_BEGIN
 
-//PROJECT DETAILS
-
-LGF_CONSTEXPR VER_MAJOR = 0;
-LGF_CONSTEXPR VER_MINOR = 0;
-LGF_CONSTEXPR VER_PATCH = 0;
-LGF_CONSTEXPR PROJECT = "Logify++";
-
-LGF_CONSTEXPR VERSION(VER_MAJOR * 1000 + VER_MINOR * 100 + VER_PATCH);
-
-inline std::string getProjectVersion()
+enum class TIMEFORMAT { STANDARD, SHORT, ALTERNATIVE };
+class Chrono : StaticBase
 {
-	std::stringstream stream;
-	stream << PROJECT << ":" << VER_MAJOR * 1000 << "." << VER_MINOR * 100 << "." << VER_PATCH;
-	return  stream.str();
+	static TIMEFORMAT format;
+	static int precision;
+	static std::string getTimestamp(Lgfypp::TIMEFORMAT format);
+public:
+	static void setTimeFormat(TIMEFORMAT value);
+	static std::string getTimestamp();
+	static void write_date_time(char* buff, size_t buff_size);
 };
+
+LGF_END
 
 #endif

@@ -22,41 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
-
 #pragma once
-#ifndef LGF_CORE_H
-#define LGF_CORE_H
+#ifndef LGF_FORBIDDEN_COPY_H
+#define LGF_FORBIDDEN_COPY_H
 
-#include <stdint.h> // for including different datatype typedefs (e.g. uint32_t)
-#include <sstream>
+#include "core_lgf.h"
 
-#define LGF_LITERAL(txt) (txt);
-#define LGF_CONSTEXPR constexpr auto
-#define LGF_STATIC_CONSTEXPR static LGF_CONSTEXPR
+LGF_BEGIN
 
-// NAMESPACE
-
-#define LGF_BEGIN namespace Lgfypp {
-#define LGF_END }
-#define LGF_SCOPE_ Lgfypp::
-
-#define COLOR_BEGIN namespace Color {
-#define COLOR_END }
-
-//PROJECT DETAILS
-
-LGF_CONSTEXPR VER_MAJOR = 0;
-LGF_CONSTEXPR VER_MINOR = 0;
-LGF_CONSTEXPR VER_PATCH = 0;
-LGF_CONSTEXPR PROJECT = "Logify++";
-
-LGF_CONSTEXPR VERSION(VER_MAJOR * 1000 + VER_MINOR * 100 + VER_PATCH);
-
-inline std::string getProjectVersion()
+class ForbiddenCopy
 {
-	std::stringstream stream;
-	stream << PROJECT << ":" << VER_MAJOR * 1000 << "." << VER_MINOR * 100 << "." << VER_PATCH;
-	return  stream.str();
+	protected:
+		ForbiddenCopy(void) {}
+
+	private:
+		ForbiddenCopy(const ForbiddenCopy&);
+		ForbiddenCopy& operator=(const ForbiddenCopy&) = delete;
 };
+
+LGF_END
 
 #endif
