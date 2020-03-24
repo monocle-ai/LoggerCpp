@@ -19,7 +19,7 @@ include(Doctest)
 #                         Locate files (change as needed).
 # --------------------------------------------------------------------------------
 
-file(GLOB autopilot_sources ./**.cpp ./**.c)
+file(GLOB autopilot_sources ./src/**.cpp ./src/**.c)
 
 set( SOURCES${autopilot_sources}) 
 
