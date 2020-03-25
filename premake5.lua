@@ -7,6 +7,7 @@ workspace "Logifypp"
    "Debug",
    "Release"
    }
+  
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -23,16 +24,30 @@ project "Logifypp"
     "src/**.cpp",
     "app/**.cpp"
    }
-
+   	
    defines
    {
-		"_CRT_SECURE_NO_WARNINGS"
+    "_CRT_SECURE_NO_WARNINGS"
    }
-
+  	
    includedirs {
    "include",
+   "external/fmt/include",
+   "external/doctest/doctest",
    }
 
+   buildcommands {
+    "scripts/Fmt/buildFmt.bat"
+   }
+
+   libdirs {
+    "external/fmt/build/Debug",
+   }
+
+   links {
+    "fmtd.lib"
+   }
+ 
    filter "system.windows"
 
       staticruntime "On"
