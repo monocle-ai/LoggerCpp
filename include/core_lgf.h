@@ -59,4 +59,14 @@ inline std::string getProjectVersion()
 	return  stream.str();
 };
 
+// Chrono Consts
+
+LGF_CONSTEXPR TIME_FORMAT = "%F %T";
+LGF_CONSTEXPR TIME_FORMAT_ALT = "%D %T";
+LGF_CONSTEXPR TIME_FORMAT_SHORT = "%T";
+
+LGF_CONSTEXPR MOD_MILLI = 1000;
+LGF_CONSTEXPR MOD_MICRO = 1000000;
+LGF_CONSTEXPR MOD_NANO = 1000000000;
+
 #endif

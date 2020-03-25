@@ -1,17 +1,5 @@
 #include "chrono_lgf.h"
 
-Lgfypp::TIMEFORMAT Lgfypp::Chrono::format;
-
-void Lgfypp::Chrono::setTimeFormat(TIMEFORMAT value)
-{
-	format = value;
-}
-
-std::string Lgfypp::Chrono::getTimestamp()
-{
-	return getTimestamp(format);
-}
-
 void write_date_time(char* buff, size_t buff_size)
 {
 	auto now = std::chrono::system_clock::now();
@@ -29,13 +17,12 @@ void write_date_time(char* buff, size_t buff_size)
 		time_info.tm_hour, time_info.tm_min, time_info.tm_sec, ms_since_epoch % 1000);
 }
 
-std::string Lgfypp::Chrono::getTimestamp(TIMEFORMAT format)
+std::string Lgfypp::Chrono::getTimestamp()
 {
 	const auto now = std::chrono::system_clock::now();
 	const auto nowAsTimeT = std::chrono::system_clock::to_time_t(now);
-	const auto nowMs = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000; // change precision
-	const auto nowUs = std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch()) % 1000000; // change precision
-	const auto nowNs = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()) % 1000000000; // change precision
+	const auto nowMs = getSecondsWithPrecision<std::chrono::milliseconds>(now);
+
 	tm timeinfo;
 
 #if defined(__GNUC__)
@@ -44,23 +31,47 @@ std::string Lgfypp::Chrono::getTimestamp(TIMEFORMAT format)
 	localtime_s(&timeinfo, &nowAsTimeT);
 #endif
 	std::stringstream nowSs;
-	switch (format) {
-	case TIMEFORMAT::STANDARD:
+	switch (mFormat) {
+	case TIMEFORMAT::standard:
 		nowSs << std::put_time(&timeinfo, TIME_FORMAT)
-			<< '.' << std::setfill('0') << std::setw(6) << nowUs.count();
+			<< '.' << std::setfill('0') << std::setw(precisionPad) << nowMs;
 		break;
-	case TIMEFORMAT::SHORT:
+	case TIMEFORMAT::concise:
 		nowSs << std::put_time(&timeinfo, TIME_FORMAT_SHORT)
-			<< '.' << std::setfill('0') << std::setw(9) << nowNs.count();
+			<< '.' << std::setfill('0') << std::setw(precisionPad) << nowMs;
 		break;
-	case TIMEFORMAT::ALTERNATIVE:
+	case TIMEFORMAT::alternative:
 		nowSs << std::put_time(&timeinfo, TIME_FORMAT_ALT)
-			<< '.' << std::setfill('0') << std::setw(6) << nowUs.count();
+			<< '.' << std::setfill('0') << std::setw(precisionPad) << nowMs;
 		break;
 	default:
 		nowSs << std::put_time(&timeinfo, DEF_TIMEFORMAT)
-			<< '.' << std::setfill('0') << std::setw(3) << nowMs.count();
+			<< '.' << std::setfill('0') << std::setw(precisionPad) << nowMs;
 	}
 
 	return nowSs.str();
+}
+
+Lgfypp::Chrono::Chrono()
+{
+	mPrecision = Lgfypp::PRECISION::milli;
+	mFormat = Lgfypp::TIMEFORMAT::standard;
+}
+Lgfypp::Chrono::~Chrono()
+{
+}
+Lgfypp::Chrono::Chrono(PRECISION precision, TIMEFORMAT format)
+{
+	mPrecision = precision;
+	mFormat = format;
+}
+
+template<typename T>
+inline long long  Lgfypp::Chrono::getSecondsWithPrecision(std::chrono::system_clock::time_point now)
+{
+	switch (mPrecision) {
+	case PRECISION::milli: precisionPad = 3;  return (std::chrono::duration_cast<T>(now.time_since_epoch()) % MOD_MILLI).count();
+	case PRECISION::micro: precisionPad = 6;  return (std::chrono::duration_cast<T>(now.time_since_epoch()) % MOD_MICRO).count();
+	case PRECISION::nano : precisionPad = 9;  return (std::chrono::duration_cast<T>(now.time_since_epoch()) % MOD_NANO).count();
+	}
 }

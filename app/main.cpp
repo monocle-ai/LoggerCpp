@@ -11,7 +11,9 @@
 
 int main()
 {
-	std::cout << Lgfypp::Chrono::getTimestamp() << std::endl;
+	Lgfypp::Chrono sds (Lgfypp::PRECISION::milli, Lgfypp::TIMEFORMAT::standard);
+
+	std::cout << sds.getTimestamp() << std::endl;
 	fmt::print("Hello, {}!", "world");  // Python-like format string syntax
 	/*std::cout << Lgfypp::LgfLevelUtils::toColorString(Lgfypp::Level::fatal) << "sssssss" << std::endl;
 	std::cout << Lgfypp::LgfLevelUtils::toColorString(Lgfypp::Level::warn) << "sssssss" << std::endl;
@@ -25,10 +27,6 @@ int main()
 	ss.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, out);
 	std::cout << Lgfypp::toStringView(out)<< std::endl ;
 	std::cout << "___________________________" << Lgfypp::toStringView(out) << std::endl;
-	std::cout << Lgfypp::Chrono::getTimestamp() << std::endl;
-	Lgfypp::Chrono::setTimeFormat(Lgfypp::TIMEFORMAT::SHORT);
-	std::cout << Lgfypp::Chrono::getTimestamp() << std::endl;
-	Lgfypp::Chrono::setTimeFormat(Lgfypp::TIMEFORMAT::ALTERNATIVE);
-	std::cout << Lgfypp::Chrono::getTimestamp() << std::endl;
+
 	return 0;
 }
