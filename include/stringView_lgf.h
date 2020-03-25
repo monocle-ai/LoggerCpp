@@ -49,7 +49,7 @@ inline void append(STRING_VIEW s, fmt::memory_buffer& buf) {
 template<typename T>
 inline void appendDigits(T digit, fmt::memory_buffer& buf) {
 	fmt::format_int digits(digit);
-	buf.append(digit.data(), digit.data() + digit.size());
+	buf.append(digits.data(), digits.data() + digits.size());
 }
 
 LGF_END

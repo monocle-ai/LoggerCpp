@@ -34,6 +34,8 @@ std::string Lgfypp::Chrono::getTimestamp(TIMEFORMAT format)
 	const auto now = std::chrono::system_clock::now();
 	const auto nowAsTimeT = std::chrono::system_clock::to_time_t(now);
 	const auto nowMs = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000; // change precision
+	const auto nowUs = std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch()) % 1000000; // change precision
+	const auto nowNs = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()) % 1000000000; // change precision
 	tm timeinfo;
 
 #if defined(__GNUC__)
@@ -45,15 +47,15 @@ std::string Lgfypp::Chrono::getTimestamp(TIMEFORMAT format)
 	switch (format) {
 	case TIMEFORMAT::STANDARD:
 		nowSs << std::put_time(&timeinfo, TIME_FORMAT)
-			<< '.' << std::setfill('0') << std::setw(3) << nowMs.count();
+			<< '.' << std::setfill('0') << std::setw(6) << nowUs.count();
 		break;
 	case TIMEFORMAT::SHORT:
 		nowSs << std::put_time(&timeinfo, TIME_FORMAT_SHORT)
-			<< '.' << std::setfill('0') << std::setw(3) << nowMs.count();
+			<< '.' << std::setfill('0') << std::setw(9) << nowNs.count();
 		break;
 	case TIMEFORMAT::ALTERNATIVE:
 		nowSs << std::put_time(&timeinfo, TIME_FORMAT_ALT)
-			<< '.' << std::setfill('0') << std::setw(3) << nowMs.count();
+			<< '.' << std::setfill('0') << std::setw(6) << nowUs.count();
 		break;
 	default:
 		nowSs << std::put_time(&timeinfo, DEF_TIMEFORMAT)

@@ -45,9 +45,11 @@ class Formatter
 private:
     Lgfypp::LgfLevelUtils* pLevelUtils = new Lgfypp::LgfLevelUtils();
 public:
-    void toFormattedString(STRING_VIEW & string, fmt::memory_buffer& buf);
-    void toColorFormattedString(STRING_VIEW & string, const char* color, fmt::memory_buffer& buf);
-    void toColorString(STRING_VIEW& string, const char* color, fmt::memory_buffer& buf);
+    void appendFormattedSVToBuf(STRING_VIEW & string, fmt::memory_buffer& buf);
+    void appendColorFormattedSVToBuf(STRING_VIEW & string, const char* color, fmt::memory_buffer& buf);
+    void appendColorSVToBuf(STRING_VIEW& string, const char* color, fmt::memory_buffer& buf);
+    template<typename T>
+    void appendDigitsToBuf(T digit, fmt::memory_buffer& buf);
 
 };
 

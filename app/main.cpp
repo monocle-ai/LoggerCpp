@@ -22,7 +22,7 @@ int main()
 	STRING_VIEW ssdds("dsdada");
 	fmt::memory_buffer out;
 	std::cout << "___________________________" << std::endl;
-	ss.toColorFormattedString(ssdds, Lgfypp::Color::RED, out);
+	ss.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, out);
 	std::cout << Lgfypp::toStringView(out)<< std::endl ;
 	std::cout << "___________________________" << Lgfypp::toStringView(out) << std::endl;
 	std::cout << Lgfypp::Chrono::getTimestamp() << std::endl;
