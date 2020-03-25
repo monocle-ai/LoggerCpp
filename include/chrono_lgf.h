@@ -38,15 +38,15 @@ LGF_CONSTEXPR DEF_TIMEFORMAT = TIME_FORMAT;
 
 LGF_BEGIN
 
-enum class TIMEFORMAT :uint32_t { standard, concise, alternative, none };
-enum class PRECISION :uint32_t { milli, micro, nano };
+enum class TIMEFORMAT : uint32_t { standard, concise, alternative, none };
+enum class PRECISION  : uint32_t { milli, micro, nano };
 
 class Chrono
 {
 private:
 	TIMEFORMAT mFormat;
 	PRECISION mPrecision;
-	int precisionPad = 0;
+	int mPrecisionPad = 0;
 	template<typename T>
 	long long getSecondsWithPrecision(std::chrono::system_clock::time_point now);
 	
