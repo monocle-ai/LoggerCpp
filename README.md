@@ -6,6 +6,8 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/sayantanroy47/loggercpp/badge)](https://www.codefactor.io/repository/github/sayantanroy47/loggercpp)
 [![CodeInspector](https://www.code-inspector.com/project/5296/score/svg)](https://frontend.code-inspector.com/public/project/5296/LoggerCpp/dashboard)
 [![CodeInspector](https://www.code-inspector.com/project/5296/status/svg)](https://frontend.code-inspector.com/project/5296/dashboard)
+ <a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fsayantanroy47%2FLoggerCpp?ref=badge_small" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsayantanroy47%2FLoggerCpp.svg?type=small"/></a>
+ 
 ---
 
 ---
