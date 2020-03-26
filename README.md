@@ -24,7 +24,7 @@ Build Status
              <a href="https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/master"><img src="https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/master?svg=true"></a>
         </td>
         <td>
-            <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Amaster%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/build/badge.svg?branch=master"></a>
+            <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Amaster%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/build(M)/badge.svg?branch=master"></a>
         </td>
          <td>
             <a href="https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp?branch=master"><img src="https://img.shields.io/circleci/build/gh/sayantanroy47/LoggerCpp?logo=circleci&style=plastic"></a>
@@ -45,7 +45,7 @@ Build Status
              <a href="https://ci.appveyor.com/project/sayantanroy47/loggercpp/branch/development"><img src="https://ci.appveyor.com/api/projects/status/s0yie9ahhsj2m2hj/branch/development?svg=true"></a>
         </td>
         <td>
-            <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Adevelopment%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/build/badge.svg?branch=development"></a>
+            <a href="https://github.com/sayantanroy47/LoggerCpp/actions?query=workflow%3Adevelopment%3ACI"><img src="https://github.com/sayantanroy47/LoggerCpp/workflows/build(D)/badge.svg?branch=development"></a>
         </td>
         <td>
             <a href="https://app.circleci.com/pipelines/github/sayantanroy47/LoggerCpp?branch=development"><img src="https://img.shields.io/circleci/build/gh/sayantanroy47/LoggerCpp?logo=circleci&style=plastic"></a>
