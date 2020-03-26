@@ -1,4 +1,4 @@
-name: build(M)
+name: build(D)
 
 on:
   push:
