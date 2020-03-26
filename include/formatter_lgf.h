@@ -1,6 +1,3 @@
-#pragma once
-#ifndef LGF_FORMATTER_H
-#define LGF_FORMATTER_H
 /*
 MIT License
 
@@ -24,34 +21,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+If you contribute to this file please add your name to the contributors list below.
+
+Author		 : Sayantan Roy
+Contributors :
 */
-
-#if defined(__GNUC__) && __GNUC__ < 7
-# include <experimental/string_view>
-# define STRING_VIEW std::experimental::string_view
-#else
-# include <string_view>
-#define STRING_VIEW std::string_view
-#endif
-
-#include "staticBase_lgf.h"
-#include "levelUtils_lgf.h"
-#include "stringView_lgf.h"
+#pragma once
+#ifndef LGF_FORMATTER_H
+#define LGF_FORMATTER_H
 #include "fmt/format.h"
-
+#include "core_lgf.h"
+#include "levelUtils_lgf.h"
 LGF_BEGIN
 
 class Formatter 
 {
 private:
-    Lgfypp::LgfLevelUtils* pLevelUtils = new Lgfypp::LgfLevelUtils();
+    
+    void append(STRING_VIEW & s, fmt::memory_buffer& buf);
 public:
     void appendFormattedSVToBuf(STRING_VIEW & string, fmt::memory_buffer& buf);
     void appendColorFormattedSVToBuf(STRING_VIEW & string, const char* color, fmt::memory_buffer& buf);
-    void appendColorSVToBuf(STRING_VIEW& string, const char* color, fmt::memory_buffer& buf);
+    void appendColorSVToBuf(STRING_VIEW & string, const char* color, fmt::memory_buffer& buf);
     template<typename T>
-    void appendDigitsToBuf(T digit, fmt::memory_buffer& buf);
-
+    void appendDigitsToBuf(T digit, fmt::memory_buffer& buf);  
 };
 
 LGF_END

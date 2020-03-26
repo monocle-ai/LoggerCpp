@@ -21,35 +21,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+If you contribute to this file please add your name to the contributors list below.
+
+Author		 : Sayantan Roy
+Contributors :
 */
 
 #pragma once
-#if defined(__GNUC__) && __GNUC__ < 7
-# include <experimental/string_view>
-# define STRING_VIEW std::experimental::string_view
-#else
-# include <string_view>
-#define STRING_VIEW std::string_view
+#ifndef LGF_LOGIFY_H
+#define LGF_LOGIFY_H
+
+#include "levelUtils_lgf.h"
+#include "logifyBuilder_lgf.h"
+
+//Log Macros
+
+#define LOGFY_V(verbosity, ...) Lgfypp::log(verbosity, __FILENAME__, __LINE__, __VA_ARGS__)
+
+#define LOGFY(verbosity_name, ...) LOGFY_V(Lgfypp::Level::##verbosity_name, __VA_ARGS__)
+
 #endif
-
-#include <fmt/format.h>
-#include "core_lgf.h"
-
-LGF_BEGIN
-
-inline STRING_VIEW toStringView(const fmt::memory_buffer& buf)
-{
-	return STRING_VIEW{ buf.data(), buf.size() };
-}
-
-inline void append(STRING_VIEW s, fmt::memory_buffer& buf) {
-	fmt::format_to(buf, s);
-}
-
-template<typename T>
-inline void appendDigits(T digit, fmt::memory_buffer& buf) {
-	fmt::format_int digits(digit);
-	buf.append(digits.data(), digits.data() + digits.size());
-}
-
-LGF_END

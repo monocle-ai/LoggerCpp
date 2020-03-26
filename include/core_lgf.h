@@ -21,6 +21,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+If you contribute to this file please add your name to the contributors list below.
+
+Author		 : Sayantan Roy
+Contributors :
 */
 
 #pragma once
@@ -61,13 +65,13 @@ inline std::string getProjectVersion()
 
 // Chrono Consts
 
-LGF_CONSTEXPR TIME_FORMAT = "%F %T";
-LGF_CONSTEXPR TIME_FORMAT_ALT = "%D %T";
+LGF_CONSTEXPR TIME_FORMAT		= "%F %T";
+LGF_CONSTEXPR TIME_FORMAT_ALT   = "%D %T";
 LGF_CONSTEXPR TIME_FORMAT_SHORT = "%T";
 
 LGF_CONSTEXPR MOD_MILLI = 1000;
 LGF_CONSTEXPR MOD_MICRO = 1000000;
-LGF_CONSTEXPR MOD_NANO = 1000000000;
+LGF_CONSTEXPR MOD_NANO  = 1000000000;
 
 //File name stripper
 #if defined(__linux__)
@@ -75,5 +79,18 @@ LGF_CONSTEXPR MOD_NANO = 1000000000;
 #else
 #define __FILENAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
 #endif
+
+#if defined(__GNUC__) && __GNUC__ < 7
+# include <experimental/string_view>
+# define STRING_VIEW std::experimental::string_view
+#else
+# include <string_view>
+#define STRING_VIEW std::string_view
+#endif
+#include "fmt/format.h"
+inline STRING_VIEW toStringView(const fmt::memory_buffer& buf)
+{
+	return STRING_VIEW{ buf.data(), buf.size() };
+}
 
 #endif

@@ -1,5 +1,10 @@
 #include "formatter_lgf.h"
 
+inline void Lgfypp::Formatter::append(STRING_VIEW& s, fmt::memory_buffer& buf)
+{
+	fmt::format_to(buf, s);
+}
+
 void Lgfypp::Formatter::appendFormattedSVToBuf(STRING_VIEW& somstring, fmt::memory_buffer& buf)
 {
 	fmt::format_to(buf, "[{}]s", somstring);
@@ -17,5 +22,6 @@ void Lgfypp::Formatter::appendColorSVToBuf(STRING_VIEW& string, const char* colo
 template<typename T>
 void Lgfypp::Formatter::appendDigitsToBuf(T digit, fmt::memory_buffer& buf)
 {
-	appendDigitsToBuf(digit, buf);
+	fmt::format_int digits(digit);
+	buf.append(digits.data(), digits.data() + digits.size());
 }

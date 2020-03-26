@@ -27,63 +27,32 @@ Author		 : Sayantan Roy
 Contributors :
 */
 #pragma once
-#ifndef LGF_LEVEL_UTILS_H
-#define LGF_LEVEL_UTILS_H
-#include "color_lgf.h"
 
 #include "core_lgf.h"
-#include <string>
+
+#include "formatter_lgf.h"
+
+#include <iostream>
+#include "chrono_lgf.h"
+#include "sourceInfo_lgf.h"
+#include "levelUtils_lgf.h"
 
 LGF_BEGIN
 
-enum class Level : uint32_t {
-	none = 0,
-	all = 1,
-	trace = 2,
-	debug = 3,
-	info = 4,
-	warn = 5,
-	fatal = 6,
-	error = 7,
-	lastLevel = error,
-};
+inline void log(Lgfypp::Level level, const char* file, int line, const char* function, ...) {
+    fmt::memory_buffer buf;
+    Lgfypp::Chrono sds(Lgfypp::PRECISION::milli, Lgfypp::TIMEFORMAT::standard);
+    SourceInfo s1s(file, line, function);
+    s1s.getFormattedSourceInfo(buf);
+    sds.getTimestamp(buf);
+    Lgfypp::Formatter ff;
+    std::cout << toStringView(buf) << std::endl;
+    STRING_VIEW ssdds("ADSAD");
+    std::cout << "___________________________" << std::endl;
+    ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
 
-LGF_CONSTEXPR MIN_LEVEL = Level::all;
-LGF_CONSTEXPR MAX_LEVEL = Level::info;
-LGF_CONSTEXPR DEF_LEVEL = Level::all;
-
-
-
-class LgfLevelUtils  {
-
-public:
-	struct ColorLevelStringItem {
-		std::string levelShortString;
-		std::string levelString;
-		std::string colorString;
-		Level level;
-	};
-
-	LgfLevelUtils();
-
-	struct ColorLevelStringItem colorLevelStringMap[7] = {
-	  { "A", "ALL",  Color::LIGHT_BLUE, Level::all },
-	  { "D","DEBUG", Color::GREEN, Level::debug },
-	  { "I","INFO",  Color::CYAN, Level::info },
-	  { "W","WARN",  Color::YELLOW, Level::warn },
-	  { "E","ERROR", Color::RED, Level::error },
-	  { "F","FATAL", Color::RED , Level::fatal },
-	  { "T","TRACE", Color::LIGHT_CYAN, Level::trace }
-	};
-
-	std::string toShortString(Level level);
-	std::string toString(const Level level);
-	std::string toString(int level);
-	Level       toLevel(int level);
-	Level       toLevel(STRING_VIEW level);
-	int         toInt(Level level);
-};
+    std::cout << toStringView(buf) << std::endl;
+    std::cout << "___________________________" << toStringView(buf) << std::endl;
+}
 
 LGF_END
-
-#endif

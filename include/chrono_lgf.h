@@ -21,6 +21,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+If you contribute to this file please add your name to the contributors list below.
+
+Author		 : Sayantan Roy
+Contributors :
 */
 
 #pragma once
@@ -49,14 +53,14 @@ private:
 	int mPrecisionPad = 0;
 	template<typename T>
 	long long getSecondsWithPrecision(std::chrono::system_clock::time_point now);
-	
+
 public:
 	Chrono(PRECISION precision, TIMEFORMAT format);
 	Chrono();
 	~Chrono();
 
 	void getTimestamp(fmt::memory_buffer& buf);
-	void write_date_time(char* buff, size_t buff_size);
+
 };
 
 LGF_END
