@@ -8,15 +8,16 @@
 
 #include <stringView_lgf.h>
 #include "formatter_lgf.h"
-#include "../sourceInfo_lgf.h"
+#include "sourceInfo_lgf.h"
 
 int main()
 {
 	fmt::memory_buffer buf;
 	Lgfypp::Chrono sds (Lgfypp::PRECISION::milli, Lgfypp::TIMEFORMAT::standard);
-	SourceInfo s1s(__FILENAMEW__, __LINE__, __FUNCTION__);
+	SourceInfo s1s(__FILENAME__, __LINE__, __FUNCTION__);
 	s1s.getFormattedSourceInfo(buf);
-	std::cout << sds.getTimestamp() << std::endl;
+	sds.getTimestamp(buf);
+	
 	std::cout <<Lgfypp::toStringView(buf)<< std::endl;
 	fmt::print("Hello, {}!", "world");  // Python-like format string syntax
 	/*std::cout << Lgfypp::LgfLevelUtils::toColorString(Lgfypp::Level::fatal) << "sssssss" << std::endl;

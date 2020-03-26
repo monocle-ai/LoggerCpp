@@ -33,7 +33,7 @@ SOFTWARE.
 
 #include "staticBase_lgf.h"
 #include "core_lgf.h"
-
+#include <fmt/format.h>
 LGF_CONSTEXPR DEF_TIMEFORMAT = TIME_FORMAT;
 
 LGF_BEGIN
@@ -55,7 +55,7 @@ public:
 	Chrono();
 	~Chrono();
 
-	std::string getTimestamp();
+	void getTimestamp(fmt::memory_buffer& buf);
 	void write_date_time(char* buff, size_t buff_size);
 };
 
