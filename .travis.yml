@@ -6,6 +6,7 @@ before_install:
     #ubuntu
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
+  - git submodule update --init --remote --recursive
 
 install:
   #g++
@@ -15,7 +16,7 @@ install:
   - sudo apt-get install -qq cppcheck
 
 script:
-  - g++ SwiFTLog/main.cpp src/clock.cpp src/levelUtils.cpp src/example.cpp -std=c++17 -Iinclude -o loggerCpp
+  - g++ app/main.cpp src/*.cpp -std=c++17 -Iinclude -o loggerCpp
   - ./loggerCpp
   # cppcheck
   - cppcheck --quiet --error-exitcode=1 .
