@@ -37,6 +37,7 @@ SOFTWARE.
 #include "staticBase_lgf.h"
 #include "levelUtils_lgf.h"
 #include "stringView_lgf.h"
+#include "fmt/format.h"
 
 LGF_BEGIN
 

@@ -69,4 +69,8 @@ LGF_CONSTEXPR MOD_MILLI = 1000;
 LGF_CONSTEXPR MOD_MICRO = 1000000;
 LGF_CONSTEXPR MOD_NANO = 1000000000;
 
+//File name stripper
+#define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+#define __FILENAMEW__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
+
 #endif
