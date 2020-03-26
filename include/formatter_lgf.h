@@ -26,30 +26,26 @@ If you contribute to this file please add your name to the contributors list bel
 Author		 : Sayantan Roy
 Contributors :
 */
-
 #pragma once
-#ifndef LGF_CONFIGURATION_H
-#define LGF_CONFIGURATION_H
-
+#ifndef LGF_FORMATTER_H
+#define LGF_FORMATTER_H
+#include "fmt/format.h"
 #include "core_lgf.h"
-
+#include "levelUtils_lgf.h"
 LGF_BEGIN
 
-constexpr auto DEF_MODE		= Mode::defaultMode;
-constexpr auto ARG_MODE		= Mode::arg;
-constexpr auto FILE_MODE	= Mode::file;
-constexpr auto MANUAL_MODE	= Mode::manual;
-
-enum class Mode : uint32_t
+class Formatter 
 {
-	defaultMode = 0, // pre made
-	arg = 1, // command line
-	file = 2, // from file
-	manual = 3, // set in code
-	lastMode = manual,
+private:
+    
+    void append(STRING_VIEW & s, fmt::memory_buffer& buf);
+public:
+    void appendFormattedSVToBuf(STRING_VIEW & string, fmt::memory_buffer& buf);
+    void appendColorFormattedSVToBuf(STRING_VIEW & string, const char* color, fmt::memory_buffer& buf);
+    void appendColorSVToBuf(STRING_VIEW & string, const char* color, fmt::memory_buffer& buf);
+    template<typename T>
+    void appendDigitsToBuf(T digit, fmt::memory_buffer& buf);  
 };
-
-// TODO: Add Static Assert when .cpp is created.
 
 LGF_END
 

@@ -28,29 +28,16 @@ Contributors :
 */
 
 #pragma once
-#ifndef LGF_CONFIGURATION_H
-#define LGF_CONFIGURATION_H
+#ifndef LGF_LOGIFY_H
+#define LGF_LOGIFY_H
 
-#include "core_lgf.h"
+#include "levelUtils_lgf.h"
+#include "logifyBuilder_lgf.h"
 
-LGF_BEGIN
+//Log Macros
 
-constexpr auto DEF_MODE		= Mode::defaultMode;
-constexpr auto ARG_MODE		= Mode::arg;
-constexpr auto FILE_MODE	= Mode::file;
-constexpr auto MANUAL_MODE	= Mode::manual;
+#define LOGFY_V(verbosity, ...) Lgfypp::log(verbosity, __FILENAME__, __LINE__, __VA_ARGS__)
 
-enum class Mode : uint32_t
-{
-	defaultMode = 0, // pre made
-	arg = 1, // command line
-	file = 2, // from file
-	manual = 3, // set in code
-	lastMode = manual,
-};
-
-// TODO: Add Static Assert when .cpp is created.
-
-LGF_END
+#define LOGFY(verbosity_name, ...) LOGFY_V(Lgfypp::Level::##verbosity_name, __VA_ARGS__)
 
 #endif

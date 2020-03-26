@@ -28,29 +28,42 @@ Contributors :
 */
 
 #pragma once
-#ifndef LGF_CONFIGURATION_H
-#define LGF_CONFIGURATION_H
+#ifndef LGF_TIME_H
+#define LGF_TIME_H
 
+#include <chrono>
+#include <sstream>      // std::stringstream
+#include <iomanip>
+
+#include "staticBase_lgf.h"
 #include "core_lgf.h"
+#include <fmt/format.h>
+LGF_CONSTEXPR DEF_TIMEFORMAT = TIME_FORMAT;
 
 LGF_BEGIN
 
-constexpr auto DEF_MODE		= Mode::defaultMode;
-constexpr auto ARG_MODE		= Mode::arg;
-constexpr auto FILE_MODE	= Mode::file;
-constexpr auto MANUAL_MODE	= Mode::manual;
+enum class TIMEFORMAT : uint32_t { standard, concise, alternative, none };
+enum class PRECISION  : uint32_t { milli, micro, nano };
 
-enum class Mode : uint32_t
+class Chrono
 {
-	defaultMode = 0, // pre made
-	arg = 1, // command line
-	file = 2, // from file
-	manual = 3, // set in code
-	lastMode = manual,
-};
+private:
+	TIMEFORMAT mFormat;
+	PRECISION mPrecision;
+	int mPrecisionPad = 0;
+	template<typename T>
+	long long getSecondsWithPrecision(std::chrono::system_clock::time_point now);
 
-// TODO: Add Static Assert when .cpp is created.
+public:
+	Chrono(PRECISION precision, TIMEFORMAT format);
+	Chrono();
+	~Chrono();
+
+	void getTimestamp(fmt::memory_buffer& buf);
+
+};
 
 LGF_END
 
 #endif
+

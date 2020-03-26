@@ -26,31 +26,33 @@ If you contribute to this file please add your name to the contributors list bel
 Author		 : Sayantan Roy
 Contributors :
 */
-
 #pragma once
-#ifndef LGF_CONFIGURATION_H
-#define LGF_CONFIGURATION_H
 
 #include "core_lgf.h"
 
+#include "formatter_lgf.h"
+
+#include <iostream>
+#include "chrono_lgf.h"
+#include "sourceInfo_lgf.h"
+#include "levelUtils_lgf.h"
+
 LGF_BEGIN
 
-constexpr auto DEF_MODE		= Mode::defaultMode;
-constexpr auto ARG_MODE		= Mode::arg;
-constexpr auto FILE_MODE	= Mode::file;
-constexpr auto MANUAL_MODE	= Mode::manual;
+inline void log(Lgfypp::Level level, const char* file, int line, const char* function, ...) {
+    fmt::memory_buffer buf;
+    Lgfypp::Chrono sds(Lgfypp::PRECISION::milli, Lgfypp::TIMEFORMAT::standard);
+    SourceInfo s1s(file, line, function);
+    s1s.getFormattedSourceInfo(buf);
+    sds.getTimestamp(buf);
+    Lgfypp::Formatter ff;
+    std::cout << toStringView(buf) << std::endl;
+    STRING_VIEW ssdds("ADSAD");
+    std::cout << "___________________________" << std::endl;
+    ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
 
-enum class Mode : uint32_t
-{
-	defaultMode = 0, // pre made
-	arg = 1, // command line
-	file = 2, // from file
-	manual = 3, // set in code
-	lastMode = manual,
-};
-
-// TODO: Add Static Assert when .cpp is created.
+    std::cout << toStringView(buf) << std::endl;
+    std::cout << "___________________________" << toStringView(buf) << std::endl;
+}
 
 LGF_END
-
-#endif

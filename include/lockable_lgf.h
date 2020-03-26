@@ -26,31 +26,25 @@ If you contribute to this file please add your name to the contributors list bel
 Author		 : Sayantan Roy
 Contributors :
 */
-
 #pragma once
-#ifndef LGF_CONFIGURATION_H
-#define LGF_CONFIGURATION_H
+#ifndef  LGF_LOCKABLE_H
+#define  LGF_LOCKABLE_H
 
-#include "core_lgf.h"
+#include <mutex>
+#include "forbiddenCopy_lgf.h"
 
 LGF_BEGIN
 
-constexpr auto DEF_MODE		= Mode::defaultMode;
-constexpr auto ARG_MODE		= Mode::arg;
-constexpr auto FILE_MODE	= Mode::file;
-constexpr auto MANUAL_MODE	= Mode::manual;
-
-enum class Mode : uint32_t
+class Lockable : ForbiddenCopy
 {
-	defaultMode = 0, // pre made
-	arg = 1, // command line
-	file = 2, // from file
-	manual = 3, // set in code
-	lastMode = manual,
+private:
+	std::mutex m_mutex ;
+
+public:
+	virtual void lock();
+	virtual void unlock();
+	virtual bool try_lock();
 };
 
-// TODO: Add Static Assert when .cpp is created.
-
 LGF_END
-
 #endif

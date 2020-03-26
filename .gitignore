@@ -352,3 +352,4 @@ MigrationBackup/
 /*.vcxproj.filters
 /*.vcxproj
 /*.sln
+/build
