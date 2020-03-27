@@ -37,12 +37,13 @@ private:
 	const char* mFunction;
 	int mLineNumber = 0;
 	const char* mFileName;
+	bool mThreadInfoReq = false;
 	void addThreadInfo(fmt::memory_buffer& buf);
 public:
 	SourceInfo();
 	~SourceInfo();
-	SourceInfo(const char* function, int line, const char* file);	
+	SourceInfo(const char* function, int line, const char* file);
+	SourceInfo(const char* function, int line, const char* file, bool threadInfoReq);
 	void getFormattedSourceInfo(fmt::memory_buffer& buf);
-	void getFormattedSourceInfoWThread(fmt::memory_buffer& buf);
 };
 #endif

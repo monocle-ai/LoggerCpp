@@ -34,7 +34,7 @@ void Lgfypp::Chrono::getTimestamp(fmt::memory_buffer& buf)
 			<< '.' << std::setfill('0') << std::setw(mPrecisionPad) << nowMs;
 	}
 
-	fmt::format_to(buf, " {}", nowSs.str());
+	fmt::format_to(buf, " {:<}", nowSs.str());
 
 }
 
