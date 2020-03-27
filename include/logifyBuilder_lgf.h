@@ -74,12 +74,13 @@ public:
 
 	}
 	template<typename... T>
-	static void log1(Level level, const char* format, T&... args)
+	static void log(Level level, const char* format, T&... args)
 	{
 		try {
 			fmt::memory_buffer buf;
 			fmt::format_to(buf,"warn");
 			fmt::format_to(buf, format, args...);
+			fmt::print( format, args...);
 			std::cout << toStringView(buf) << std::endl;
 
 		}
