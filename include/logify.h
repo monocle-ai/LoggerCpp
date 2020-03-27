@@ -36,8 +36,7 @@ Contributors :
 
 //Log Macros
 
-#define LOGFY_V(verbosity, ...) Lgfypp::log(verbosity, __FILENAME__, __LINE__, __VA_ARGS__)
+#define LOGFY_V(verbosity, ...) Lgfypp::log(verbosity, __FUNCTION__, __LINE__, __FILENAME__,  __VA_ARGS__)
 
 #define LOGFY(verbosity_name, ...) LOGFY_V(Lgfypp::Level::##verbosity_name, __VA_ARGS__)
-
 #endif

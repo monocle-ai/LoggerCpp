@@ -3,9 +3,12 @@
 
 #include "logify.h"
 
-
+void someFunction() {
+	LOGFY(debug, "Foo: %d", 32);
+}
 int main()
 {	
-	LOGFY(debug , "Foo: %d", 32);
+	LOGFY(debug, "Foo: %d", 32);
+	someFunction();
 	return 0;
 }

@@ -52,11 +52,10 @@ LGF_CONSTEXPR MIN_LEVEL = Level::all;
 LGF_CONSTEXPR MAX_LEVEL = Level::info;
 LGF_CONSTEXPR DEF_LEVEL = Level::all;
 
-
-
-class LgfLevelUtils  {
-
+class LevelUtils {
 public:
+	LevelUtils();
+	~LevelUtils();
 	struct ColorLevelStringItem {
 		std::string levelShortString;
 		std::string levelString;
@@ -64,9 +63,7 @@ public:
 		Level level;
 	};
 
-	LgfLevelUtils();
-
-	struct ColorLevelStringItem colorLevelStringMap[7] = {
+	const struct ColorLevelStringItem colorLevelStringMap[7] = {
 	  { "A", "ALL",  Color::LIGHT_BLUE, Level::all },
 	  { "D","DEBUG", Color::GREEN, Level::debug },
 	  { "I","INFO",  Color::CYAN, Level::info },
@@ -76,11 +73,11 @@ public:
 	  { "T","TRACE", Color::LIGHT_CYAN, Level::trace }
 	};
 
-	std::string toShortString(Level level);
+	std::string toShortString(const Level level);
 	std::string toString(const Level level);
 	std::string toString(int level);
 	Level       toLevel(int level);
-	Level       toLevel(STRING_VIEW level);
+	Level       toLevel(const STRING_VIEW level);
 	int         toInt(Level level);
 };
 

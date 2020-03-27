@@ -1,10 +1,10 @@
 #include "levelUtils_lgf.h"
 
-Lgfypp::LgfLevelUtils::LgfLevelUtils()
-{
-}
+Lgfypp::LevelUtils::LevelUtils(){}
 
-std::string Lgfypp::LgfLevelUtils::toShortString(Level level)
+Lgfypp::LevelUtils::~LevelUtils(){}
+
+std::string Lgfypp::LevelUtils::toShortString(const Level level)
 {
 	for (auto& item : colorLevelStringMap)
 	{
@@ -16,7 +16,7 @@ std::string Lgfypp::LgfLevelUtils::toShortString(Level level)
 	return "";
 }
 
-std::string Lgfypp::LgfLevelUtils::toString(const Level level)
+std::string Lgfypp::LevelUtils::toString(const Level level)
 {
 	for (auto& item : colorLevelStringMap)
 	{
@@ -28,12 +28,12 @@ std::string Lgfypp::LgfLevelUtils::toString(const Level level)
 	return "";
 }
 
-std::string Lgfypp::LgfLevelUtils::toString(int levelInt)
+std::string Lgfypp::LevelUtils::toString(int levelInt)
 {
 	return toString(toLevel(levelInt));
 }
 
-Lgfypp::Level Lgfypp::LgfLevelUtils::toLevel(int levelInt)
+Lgfypp::Level Lgfypp::LevelUtils::toLevel(int levelInt)
 {
 	switch (levelInt) {
 	case 0: return Level::none;
@@ -48,7 +48,7 @@ Lgfypp::Level Lgfypp::LgfLevelUtils::toLevel(int levelInt)
 	}
 }
 
-Lgfypp::Level Lgfypp::LgfLevelUtils::toLevel(STRING_VIEW levelStr)
+Lgfypp::Level Lgfypp::LevelUtils::toLevel(const STRING_VIEW levelStr)
 {
 	for (auto& item : colorLevelStringMap)
 	{
@@ -60,7 +60,7 @@ Lgfypp::Level Lgfypp::LgfLevelUtils::toLevel(STRING_VIEW levelStr)
 	return Level::lastLevel;
 }
 
-int Lgfypp::LgfLevelUtils::toInt(Level level)
+int Lgfypp::LevelUtils::toInt(const Level level)
 {
 	return static_cast<int>(level);
 }

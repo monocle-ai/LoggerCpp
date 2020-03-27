@@ -38,19 +38,19 @@ Contributors :
 #include "levelUtils_lgf.h"
 
 LGF_BEGIN
-
-inline void log(Lgfypp::Level level, const char* file, int line, const char* function, ...) {
+template<typename... arguments>
+inline void log(Lgfypp::Level level, const char* file, int line, const char* function, const arguments&... args) {
     fmt::memory_buffer buf;
-    Lgfypp::Chrono sds(Lgfypp::PRECISION::milli, Lgfypp::TIMEFORMAT::standard);
+    Lgfypp::Chrono sds(Lgfypp::PRECISION::nano, Lgfypp::TIMEFORMAT::standard);
     SourceInfo s1s(file, line, function);
-    s1s.getFormattedSourceInfo(buf);
     sds.getTimestamp(buf);
+    s1s.getFormattedSourceInfo(buf);
+   
     Lgfypp::Formatter ff;
     std::cout << toStringView(buf) << std::endl;
     STRING_VIEW ssdds("ADSAD");
     std::cout << "___________________________" << std::endl;
     ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
-
     std::cout << toStringView(buf) << std::endl;
     std::cout << "___________________________" << toStringView(buf) << std::endl;
 }

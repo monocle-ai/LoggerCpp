@@ -34,18 +34,14 @@ void Lgfypp::Chrono::getTimestamp(fmt::memory_buffer& buf)
 			<< '.' << std::setfill('0') << std::setw(mPrecisionPad) << nowMs;
 	}
 
-	fmt::format_to(buf, " {} ", nowSs.str());
+	fmt::format_to(buf, " {}", nowSs.str());
 
 }
 
-Lgfypp::Chrono::Chrono()
-{
-	mPrecision = Lgfypp::PRECISION::milli;
-	mFormat = Lgfypp::TIMEFORMAT::standard;
-}
-Lgfypp::Chrono::~Chrono()
-{
-}
+Lgfypp::Chrono::Chrono() : mPrecision(Lgfypp::PRECISION::milli), mFormat(Lgfypp::TIMEFORMAT::standard){}
+
+Lgfypp::Chrono::~Chrono(){}
+
 Lgfypp::Chrono::Chrono(PRECISION precision, TIMEFORMAT format)
 {
 	mPrecision = precision;
