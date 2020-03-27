@@ -43,7 +43,7 @@ LGF_CONSTEXPR DEF_TIMEFORMAT = TIME_FORMAT;
 LGF_BEGIN
 
 enum class TIMEFORMAT : uint32_t { standard, concise, alternative, none };
-enum class PRECISION  : uint32_t { milli, micro, nano };
+enum class PRECISION : uint32_t { milli, micro, nano };
 
 class Chrono
 {
@@ -58,12 +58,9 @@ public:
 	Chrono(PRECISION precision, TIMEFORMAT format);
 	Chrono();
 	~Chrono();
-
 	void getTimestamp(fmt::memory_buffer& buf);
-
 };
 
 LGF_END
 
 #endif
-

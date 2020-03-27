@@ -39,20 +39,65 @@ Contributors :
 
 LGF_BEGIN
 
-inline void log(Lgfypp::Level level, const char* file, int line, const char* function, ...) {
-    fmt::memory_buffer buf;
-    Lgfypp::Chrono sds(Lgfypp::PRECISION::milli, Lgfypp::TIMEFORMAT::standard);
-    SourceInfo s1s(file, line, function);
-    s1s.getFormattedSourceInfo(buf);
-    sds.getTimestamp(buf);
-    Lgfypp::Formatter ff;
-    std::cout << toStringView(buf) << std::endl;
-    STRING_VIEW ssdds("ADSAD");
-    std::cout << "___________________________" << std::endl;
-    ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
+class LogBuilder : public StaticBase
+{
+public:
+	template<typename... arguments>
+	static void log(Lgfypp::Level level, const char* file, int line, const char* function, const arguments&... args) {
+		fmt::memory_buffer buf;
+		Lgfypp::Chrono sds(Lgfypp::PRECISION::nano, Lgfypp::TIMEFORMAT::standard);
+		SourceInfo s1s(file, line, function);
+		sds.getTimestamp(buf);
+		s1s.getFormattedSourceInfo(buf);
 
-    std::cout << toStringView(buf) << std::endl;
-    std::cout << "___________________________" << toStringView(buf) << std::endl;
-}
+		Lgfypp::Formatter ff;
+		std::cout << toStringView(buf) << std::endl;
+		STRING_VIEW ssdds("ADSAD");
+		std::cout << "___________________________" << std::endl;
+		ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
+		std::cout << toStringView(buf) << std::endl;
+		std::cout << "___________________________" << toStringView(buf) << std::endl;
+	}
+
+	template<typename... arguments>
+	static void log(const char* format, arguments&... args)
+	{
+		try {
+			fmt::memory_buffer buf;
+			fmt::format_to(buf, format, args...);
+			std::cout << toStringView(buf) << std::endl;
+
+		}
+		catch(std::exception ex) {
+
+		}
+
+	}
+	template<typename... T>
+	static void log(Level level, const char* format, T&... args)
+	{
+		try {
+			fmt::memory_buffer buf;
+			fmt::format_to(buf,"warn");
+			fmt::format_to(buf, format, args...);
+			fmt::print( format, args...);
+			std::cout << toStringView(buf) << std::endl;
+
+		}
+		catch (std::exception ex) {
+
+		}
+
+	}
+
+	template<typename... arguments>
+	static void warn(const char* file, int line, const char* function, const arguments&... args) {
+		log(Lgfypp::Level::warn, file, line, function, args);
+	}
+	template<typename... arguments>
+	static void debug(const char* file, int line, const char* function, const arguments&... args) {
+		log(Lgfypp::Level::debug, file, line, function, args);
+	}
+};
 
 LGF_END

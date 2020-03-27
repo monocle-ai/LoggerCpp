@@ -27,60 +27,19 @@ Author		 : Sayantan Roy
 Contributors :
 */
 #pragma once
-#ifndef LGF_LEVEL_UTILS_H
-#define LGF_LEVEL_UTILS_H
-#include "color_lgf.h"
+#ifndef LGF_GLOBAL_CONFIG_H
+#define LGF_GLOBAL_CONFIG_H
 
-#include "core_lgf.h"
-#include <string>
+#include <chrono_lgf.h>
+#include "staticBase_lgf.h"
+#include "levelUtils_lgf.h"
 
-LGF_BEGIN
-
-enum class Level : uint32_t {
-	none = 0,
-	all = 1,
-	trace = 2,
-	debug = 3,
-	info = 4,
-	warn = 5,
-	fatal = 6,
-	error = 7,
-	lastLevel = error,
-};
-
-LGF_CONSTEXPR MIN_LEVEL = Level::all;
-LGF_CONSTEXPR MAX_LEVEL = Level::info;
-LGF_CONSTEXPR DEF_LEVEL = Level::all;
-
-class LevelUtils {
+class GlobalConfigs :public StaticBase {
 public:
-	LevelUtils();
-	~LevelUtils();
-	struct ColorLevelStringItem {
-		std::string levelShortString;
-		std::string levelString;
-		std::string colorString;
-		Level level;
-	};
+	static Lgfypp::PRECISION  gPrecision;
+	static Lgfypp::TIMEFORMAT gTimeFormat;
+	static Lgfypp::Level gLevel;
 
-	const struct ColorLevelStringItem colorLevelStringMap[7] = {
-	  { "A", "ALL",  Color::LIGHT_BLUE, Level::all },
-	  { "D","DEBUG", Color::GREEN, Level::debug },
-	  { "I","INFO",  Color::CYAN, Level::info },
-	  { "W","WARN",  Color::YELLOW, Level::warn },
-	  { "E","ERROR", Color::RED, Level::error },
-	  { "F","FATAL", Color::RED , Level::fatal },
-	  { "T","TRACE", Color::LIGHT_CYAN, Level::trace }
-	};
-
-	std::string toShortString(const Level level);
-	std::string toString(const Level level);
-	std::string toString(int level);
-	Level       toLevel(int level);
-	Level       toLevel(const STRING_VIEW level);
-	int         toInt(Level level);
 };
-
-LGF_END
 
 #endif

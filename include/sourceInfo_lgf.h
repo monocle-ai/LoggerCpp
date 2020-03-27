@@ -30,15 +30,20 @@ Contributors :
 #ifndef LGF_SOURCE_INFO
 #define LGF_SOURCE_INFO
 #include "fmt/format.h"
+
 class SourceInfo
 {
 private:
 	const char* mFunction;
 	int mLineNumber = 0;
 	const char* mFileName;
-
+	bool mThreadInfoReq = false;
+	void addThreadInfo(fmt::memory_buffer& buf);
 public:
-	SourceInfo(const char* function,int line , const char* file);
+	SourceInfo();
+	~SourceInfo();
+	SourceInfo(const char* function, int line, const char* file);
+	SourceInfo(const char* function, int line, const char* file, bool threadInfoReq);
 	void getFormattedSourceInfo(fmt::memory_buffer& buf);
 };
 #endif

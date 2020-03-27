@@ -36,8 +36,18 @@ Contributors :
 
 //Log Macros
 
-#define LOGFY_V(verbosity, ...) Lgfypp::log(verbosity, __FILENAME__, __LINE__, __VA_ARGS__)
+#define LOGFY_V(verbosity, ...) Lgfypp::LogBuilder::log(verbosity, __FUNCTION__, __LINE__, __FILENAME__,  __VA_ARGS__)
 
-#define LOGFY(verbosity_name, ...) LOGFY_V(Lgfypp::Level::##verbosity_name, __VA_ARGS__)
 
+#define LOGFY(level, ...) LOGFY_V(Lgfypp::Level::##level, __VA_ARGS__)
+#define LOGFY_S(format , ...) Lgfypp::LogBuilder::log( format, __VA_ARGS__)
+
+template<typename... arguments>
+inline void Logify_s(const char* format, arguments... args) {
+	Lgfypp::LogBuilder::log(format, args...);
+};
+template<typename... arguments>
+inline void Logify_s(Lgfypp::Level level, const char* format, arguments... args) {
+	Lgfypp::LogBuilder::log(level,format, args...);
+};
 #endif
