@@ -77,6 +77,7 @@ public:
 	static void log(Level level, const char* format, T&... args)
 	{
 		try {
+			fmt::memory_buffer buf;
 			fmt::format_to(buf,"warn");
 			fmt::format_to(buf, format, args...);
 			fmt::print( format, args...);
