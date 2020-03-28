@@ -92,11 +92,11 @@ public:
 
 	template<typename... arguments>
 	static void warn(const char* file, int line, const char* function, const arguments&... args) {
-		log(Lgfypp::Level::warn, file, line, function, args);
+		log(Lgfypp::Level::warn, file, line, function, args...);
 	}
 	template<typename... arguments>
 	static void debug(const char* file, int line, const char* function, const arguments&... args) {
-		log(Lgfypp::Level::debug, file, line, function, args);
+		log(Lgfypp::Level::debug, file, line, function, args...);
 	}
 };
 
