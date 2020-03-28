@@ -17,6 +17,6 @@ install:
 
 script:
   - g++ app/main.cpp src/*.cpp -std=c++17 -Iinclude -Iexternal/fmt/include -o Logifypp
-  - ./Logifypp
+  - ./LoggerCpp
   # cppcheck
   - cppcheck --quiet -iexternal --error-exitcode=1 .
