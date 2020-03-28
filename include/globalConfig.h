@@ -34,12 +34,12 @@ Contributors :
 #include "staticBase_lgf.h"
 #include "levelUtils_lgf.h"
 
+LGF_BEGIN
 class GlobalConfigs :public StaticBase {
 public:
-	static Lgfypp::PRECISION  gPrecision;
-	static Lgfypp::TIMEFORMAT gTimeFormat;
+
 	static Lgfypp::Level gLevel;
 
 };
-
+LGF_END
 #endif

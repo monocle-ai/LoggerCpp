@@ -21,37 +21,36 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-If you contribute to this file please add your name to the contributors list below.
-
-Author		 : Sayantan Roy
-Contributors :
 */
 
 #pragma once
-#ifndef LGF_LOGIFY_H
-#define LGF_LOGIFY_H
-
+#include <string_view>
+#include "color_lgf.h"
 #include "levelUtils_lgf.h"
-#include "logifyBuilder_lgf.h"
-
-//Log Macros
-
-//#define LOGFY_V(verbosity, ...) Lgfypp::LogBuilder::log(verbosity, __FUNCTION__, __LINE__, __FILENAME__,  __VA_ARGS__)
-
-
-//#define LOGFY(level, ...) LOGFY_V(Lgfypp::Level::##level, __VA_ARGS__)
-//#define LOGFY_S(format , ...) Lgfypp::LogBuilder::log( format, __VA_ARGS__)
-
-template<typename... arguments>
-inline void Logify_s(const char* format, arguments... args) {
-	Lgfypp::LogBuilder::log(format, args...);
+#define STRING_VIEW std::string_view
+/**
+ * This is a dummy class to demonstrate features of the boiler plate.
+ */
+class LogBuilderTest
+{
+public:
+  /**
+   * Default constructor for Dummy (does nothing).
+   */
+  LogBuilderTest();
+  /**
+   * Returns a bool.
+   * @return Always True.
+   */
+  template<typename... arguments>
+  STRING_VIEW logTest(Lgfypp::Level level, const char* file, int line, const char* function, const arguments&... args);
 };
-template<typename... arguments>
-inline void Logify_s(Lgfypp::Level level, const char* format, arguments... args) {
-	Lgfypp::LogBuilder::log(level,format, args...);
-};
-template<typename... arguments>
-inline const STRING_VIEW Logify_s_StringView(Lgfypp::Level level, const char* format, arguments... args) {
-	return Lgfypp::LogBuilder::log(level, format, args...);
+
+#ifdef ENABLE_DOCTEST_IN_LIBRARY
+#include "doctest.h"
+TEST_CASE("we can have tests in headers if we want")
+{
+    LogBuilderTest logTest;
+    CHECK((logTest.logTest(Lgfypp::Level::warn, "Support {} {} {} Architecture ", 32, "bit", "DS")).compare("Support 32 bit DS Architecture "));
 }
 #endif
