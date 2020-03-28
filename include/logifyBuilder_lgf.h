@@ -45,7 +45,7 @@ public:
 	template<typename... arguments>
 	static void log(Lgfypp::Level level, const char* file, int line, const char* function, const arguments&... args) {
 		fmt::memory_buffer buf;
-		Lgfypp::Chrono sds(Lgfypp::PRECISION::nano, Lgfypp::TIMEFORMAT::standard);
+		Lgfypp::Chrono sds;
 		SourceInfo s1s(file, line, function);
 		sds.getTimestamp(buf);
 		s1s.getFormattedSourceInfo(buf);
