@@ -16,7 +16,7 @@ install:
   - sudo apt-get install -qq cppcheck
 
 script:
-  - g++ app/main.cpp src/*.cpp -std=c++17 -Iinclude -o loggerCpp
-  - ./loggerCpp
+  - g++ app/main.cpp src/*.cpp -std=c++17 -Iinclude -Iexternal/fmt/include -o Logifypp
+  - ./Logifypp
   # cppcheck
   - cppcheck --quiet --error-exitcode=1 .
