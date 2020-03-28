@@ -3,7 +3,7 @@
 
 void SourceInfo::addThreadInfo(fmt::memory_buffer& buf)
 {
-	fmt::format_to(buf, " {}", reinterpret_cast<void*>(std::this_thread::get_id));
+	fmt::format_to(buf, " {}", static_cast<void*>(std::this_thread::get_id));
 }
 
 SourceInfo::~SourceInfo() {}
