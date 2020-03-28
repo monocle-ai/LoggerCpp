@@ -5,7 +5,7 @@
 #include "levelUtils_lgf.h"
 
 void someFunction() {
-	LOGFY(debug, "Support {} {} hjkvhjk", 32 ,32, "int");
+	
 }
 int main()
 {
