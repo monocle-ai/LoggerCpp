@@ -1,4 +1,4 @@
-# SwiFTLog
+# Logify++
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Lang](https://badgen.net/lgtm/langs/g/sayantanroy47/LoggerCpp/cpp?color=green)](https://abc.com) [![Documentation](https://codedocs.xyz/sayantanroy47/LoggerCpp.svg)](https://codedocs.xyz/sayantanroy47/LoggerCpp/) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![Hits-of-Code](https://hitsofcode.com/github/sayantanroy47/LoggerCpp)](https://hitsofcode.com/view/github/sayantanroy47/LoggerCpp)
 
