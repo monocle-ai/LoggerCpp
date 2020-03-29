@@ -43,8 +43,8 @@ LGF_BEGIN
 enum class Timeformat : uint32_t { standard, concise, alternative, none };
 enum class Precision  : uint32_t { milli, micro, nano };
 
-static Lgfypp::Precision  gPrecision  = Precision::milli;
-static Lgfypp::Timeformat gTimeFormat = Timeformat::standard;
+static LGF::Precision  gPrecision  = Precision::milli;
+static LGF::Timeformat gTimeFormat = Timeformat::standard;
 
 class Chrono
 {

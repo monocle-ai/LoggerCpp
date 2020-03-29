@@ -3,7 +3,9 @@
 template<typename T>
 Lgfypp::Registry<T>::~Registry()
 {
-	//delete default and system loggers and then remove all.
+	if (!checkIfEmpty()) {
+		cleanRegistry();
+	}
 }
 
 template<typename T>

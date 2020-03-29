@@ -30,7 +30,10 @@ Contributors :
 #ifndef LGF_SOURCE_INFO
 #define LGF_SOURCE_INFO
 #include "fmt/format.h"
+#include "core_lgf.h"
+#include <thread>
 
+LGF_BEGIN
 class SourceInfo
 {
 private:
@@ -46,4 +49,6 @@ public:
 	SourceInfo(const char* function, int line, const char* file, bool threadInfoReq);
 	void getFormattedSourceInfo(fmt::memory_buffer& buf);
 };
+
+LGF_END
 #endif

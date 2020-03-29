@@ -34,10 +34,11 @@ Contributors :
 #include <mutex>
 
 #include "core_lgf.h"
+#include "staticBase_lgf.h"
 
 LGF_BEGIN
 template<typename T>
-class Registry
+class Registry : public StaticBase
 {
 private:
 	Registry();

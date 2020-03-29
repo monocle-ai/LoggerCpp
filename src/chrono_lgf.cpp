@@ -1,7 +1,7 @@
 #include "chrono_lgf.h"
 #include <logify.h>
 
-void Lgfypp::Chrono::getTimestamp(fmt::memory_buffer& buf)
+void LGF::Chrono::getTimestamp(fmt::memory_buffer& buf)
 {
 	const auto now = std::chrono::system_clock::now();
 	const auto nowAsTimeT = std::chrono::system_clock::to_time_t(now);
@@ -38,13 +38,13 @@ void Lgfypp::Chrono::getTimestamp(fmt::memory_buffer& buf)
 
 }
 
-Lgfypp::Chrono::Chrono() {}
+LGF::Chrono::Chrono() {}
 
-Lgfypp::Chrono::~Chrono(){}
+LGF::Chrono::~Chrono(){}
 
 
 template<typename T>
-inline long long  Lgfypp::Chrono::getSecondsWithPrecision(std::chrono::system_clock::time_point now)
+inline long long  LGF::Chrono::getSecondsWithPrecision(std::chrono::system_clock::time_point now)
 {
 	switch (gPrecision) {
 	case Precision::milli: mPrecisionPad = 3;  return (std::chrono::duration_cast<T>(now.time_since_epoch()) % PRECISION_MOD_MILLI).count();

@@ -5,13 +5,15 @@
 #include "levelUtils_lgf.h"
 
 void someFunction() {
-	Logify_s("das", 21);
+	Logify("das", 21);
+	Logify("sayantan");
+	Log::warn("{}", "ss");
 
 }
 int main()
 {
-	Logify_s(Lgfypp::Level::warn,"Support {} {} {} hjkvhjk", 32 ,21, "DS");
-	Logify_s( "Support {} {} {} hjkvhjk", 32, 21, "DS");
-	
+	Logify(Lgfypp::Level::warn,"Support {} {} {} hjkvhjk", 32 ,21, "DS");
+	Logify( "Support {} {} {} hjkvhjk", 32, 21, "DS");
+	someFunction();
 	return 0;
 }

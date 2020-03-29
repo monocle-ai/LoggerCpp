@@ -4,7 +4,7 @@ MIT License
 Copyright(c) 2020 Sayantan Roy and Dipanjan Das
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this softwareand associated documentation files(the "Software"), to deal
+of this software and associated documentation files(the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and /or sell
 copies of the Software, and to permit persons to whom the Software is
@@ -34,17 +34,17 @@ Contributors :
 #include "levelUtils_lgf.h"
 LGF_BEGIN
 
-class Formatter 
+class Formatter
 {
 private:
-    
-    void append(STRING_VIEW & s, fmt::memory_buffer& buf);
+
+	void append(STRING_VIEW& s, fmt::memory_buffer& buf);
 public:
-    void appendFormattedSVToBuf(STRING_VIEW & string, fmt::memory_buffer& buf);
-    void appendColorFormattedSVToBuf(STRING_VIEW & string, const char* color, fmt::memory_buffer& buf);
-    void appendColorSVToBuf(STRING_VIEW & string, const char* color, fmt::memory_buffer& buf);
-    template<typename T>
-    void appendDigitsToBuf(T digit, fmt::memory_buffer& buf);  
+	void appendFormattedSVToBuf(STRING_VIEW& string, fmt::memory_buffer& buf);
+	void appendColorFormattedSVToBuf(STRING_VIEW& string, const char* color, fmt::memory_buffer& buf);
+	void appendColorSVToBuf(STRING_VIEW& string, const char* color, fmt::memory_buffer& buf);
+	template<typename T>
+	void appendDigitsToBuf(T digit, fmt::memory_buffer& buf);
 };
 
 LGF_END
