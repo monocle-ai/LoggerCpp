@@ -31,31 +31,29 @@ Contributors :
 #ifndef LGF_TIME_H
 #define LGF_TIME_H
 
-#include <chrono>
-#include <sstream>      // std::stringstream
-#include <iomanip>
-
-#include "staticBase_lgf.h"
 #include "core_lgf.h"
+#include "staticBase_lgf.h"
+#include <chrono>
 #include <fmt/format.h>
-LGF_CONSTEXPR DEF_TIMEFORMAT = TIME_FORMAT;
+#include <iomanip>
+#include <sstream>      // std::stringstream
 
 LGF_BEGIN
 
-enum class TIMEFORMAT : uint32_t { standard, concise, alternative, none };
-enum class PRECISION : uint32_t { milli, micro, nano };
+enum class Timeformat : uint32_t { standard, concise, alternative, none };
+enum class Precision  : uint32_t { milli, micro, nano };
+
+static Lgfypp::Precision  gPrecision  = Precision::milli;
+static Lgfypp::Timeformat gTimeFormat = Timeformat::standard;
 
 class Chrono
 {
 private:
-	TIMEFORMAT mFormat;
-	PRECISION mPrecision;
 	int mPrecisionPad = 0;
 	template<typename T>
 	long long getSecondsWithPrecision(std::chrono::system_clock::time_point now);
 
 public:
-	Chrono(PRECISION precision, TIMEFORMAT format);
 	Chrono();
 	~Chrono();
 	void getTimestamp(fmt::memory_buffer& buf);

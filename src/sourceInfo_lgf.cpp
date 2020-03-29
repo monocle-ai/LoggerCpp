@@ -3,7 +3,11 @@
 
 void SourceInfo::addThreadInfo(fmt::memory_buffer& buf)
 {
+#if defined(__GNUC__)
+	fmt::format_to(buf, " {}", reinterpret_cast<void*>(std::this_thread::get_id));
+#else 
 	fmt::format_to(buf, " {}", static_cast<void*>(std::this_thread::get_id));
+#endif
 }
 
 SourceInfo::~SourceInfo() {}

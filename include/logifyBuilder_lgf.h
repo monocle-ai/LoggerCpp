@@ -45,7 +45,7 @@ public:
 	template<typename... arguments>
 	static void log(Lgfypp::Level level, const char* file, int line, const char* function, const arguments&... args) {
 		fmt::memory_buffer buf;
-		Lgfypp::Chrono sds(Lgfypp::PRECISION::nano, Lgfypp::TIMEFORMAT::standard);
+		Lgfypp::Chrono sds;
 		SourceInfo s1s(file, line, function);
 		sds.getTimestamp(buf);
 		s1s.getFormattedSourceInfo(buf);
@@ -57,6 +57,22 @@ public:
 		ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
 		std::cout << toStringView(buf) << std::endl;
 		std::cout << "___________________________" << toStringView(buf) << std::endl;
+	}
+
+	template<typename... arguments>
+	static const STRING_VIEW logStringView(Lgfypp::Level level, const char* file, int line, const char* function, const arguments&... args)
+	{
+		fmt::memory_buffer buf;
+		Lgfypp::Chrono sds;
+		SourceInfo s1s(file, line, function);
+		sds.getTimestamp(buf);
+		s1s.getFormattedSourceInfo(buf);
+
+		Lgfypp::Formatter ff;
+		std::cout << toStringView(buf) << std::endl;
+		STRING_VIEW ssdds("ADSAD");
+		ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
+		return toStringView(buf);
 	}
 
 	template<typename... arguments>
@@ -92,11 +108,11 @@ public:
 
 	template<typename... arguments>
 	static void warn(const char* file, int line, const char* function, const arguments&... args) {
-		log(Lgfypp::Level::warn, file, line, function, args);
+		log(Lgfypp::Level::warn, file, line, function, args...);
 	}
 	template<typename... arguments>
 	static void debug(const char* file, int line, const char* function, const arguments&... args) {
-		log(Lgfypp::Level::debug, file, line, function, args);
+		log(Lgfypp::Level::debug, file, line, function, args...);
 	}
 };
 
