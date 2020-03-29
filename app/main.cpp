@@ -5,7 +5,8 @@
 #include "levelUtils_lgf.h"
 
 void someFunction() {
-	
+	Logify_s("das", 21);
+
 }
 int main()
 {
