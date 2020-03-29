@@ -60,6 +60,22 @@ public:
 	}
 
 	template<typename... arguments>
+	static const STRING_VIEW logStringView(Lgfypp::Level level, const char* file, int line, const char* function, const arguments&... args)
+	{
+		fmt::memory_buffer buf;
+		Lgfypp::Chrono sds;
+		SourceInfo s1s(file, line, function);
+		sds.getTimestamp(buf);
+		s1s.getFormattedSourceInfo(buf);
+
+		Lgfypp::Formatter ff;
+		std::cout << toStringView(buf) << std::endl;
+		STRING_VIEW ssdds("ADSAD");
+		ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
+		return toStringView(buf);
+	}
+
+	template<typename... arguments>
 	static void log(const char* format, arguments&... args)
 	{
 		try {

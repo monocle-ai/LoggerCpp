@@ -21,54 +21,36 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-If you contribute to this file please add your name to the contributors list below.
-
-Author		 : Sayantan Roy
-Contributors :
 */
 
 #pragma once
-#ifndef LGF_LOGIFY_H
-#define LGF_LOGIFY_H
-
+#include <string_view>
+#include "color_lgf.h"
 #include "levelUtils_lgf.h"
-#include "logifyBuilder_lgf.h"
-#include "staticBase_lgf.h"
-
-
-class Log : public LGF::StaticBase
+#define STRING_VIEW std::string_view
+/**
+ * This is a dummy class to demonstrate features of the boiler plate.
+ */
+class LogBuilderTest
 {
 public:
-	// Functions for Warnings level
-	static void w(const char* msg);	
-	static void warn(const char* msg);
-	template<typename... arguments>
-	static void w(const char* format, arguments&... args);
-	template<typename... arguments>
-	static void warn(const char* format, arguments&... args);
+  /**
+   * Default constructor for Dummy (does nothing).
+   */
+  LogBuilderTest();
+  /**
+   * Returns a bool.
+   * @return Always True.
+   */
+  template<typename... arguments>
+  STRING_VIEW logTest(Lgfypp::Level level, const char* file, int line, const char* function, const arguments&... args);
 };
 
-
-
-template<typename... arguments>
-inline void Logify(LGF::Level level, const char* format, arguments... args) {
-	LGF::LogBuilder::log(level, format, __FUNCTION__, __LINE__, __FILENAME__, args...);
-};
-template<typename... arguments>
-inline void Logify(const char* msg) {
-	LGF::LogBuilder::log(msg);
-};
-template<typename... arguments>
-
-inline void Logify(const char* format, arguments... args) {
-	LGF::LogBuilder::log(format, args...);
-};
-
-#endif
-
-template<typename ...arguments>
-void Log::warn(const char* format, arguments& ...args)
+#ifdef ENABLE_DOCTEST_IN_LIBRARY
+#include "doctest.h"
+TEST_CASE("we can have tests in headers if we want")
 {
-	Lgfypp::LogBuilder::log(LGF::Level::warn, format, args...);
+    LogBuilderTest logTest;
+    CHECK((logTest.logTest(Lgfypp::Level::warn, "Support {} {} {} Architecture ", 32, "bit", "DS")).compare("Support 32 bit DS Architecture "));
 }
-
+#endif

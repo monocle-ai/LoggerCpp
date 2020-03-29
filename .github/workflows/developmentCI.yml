@@ -1,4 +1,4 @@
-name: build
+name: build(D)
 
 on:
   push:
@@ -34,15 +34,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+          submodules: true
     - name: configure
-      run: cmake -DCMAKE_CXX_FLAGS="/permissive- /std:c++latest /utf-8 /EHsc" -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
-    - name: Checkout submodules
-      shell: bash
       run: |
-        auth_header="$(git config --local --get http.https://github.com/.extraheader)"
-        git submodule sync --recursive
-        git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
-    - name: configure
-      run: cmake -DCMAKE_CXX_FLAGS="/permissive- /std:c++latest /utf-8 /EHsc" -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
+        mkdir build
+        cd build
+        cmake ..
     - name: build
-      run: cmake --build . --config "Debug"
+      run: cmake --build build

@@ -38,7 +38,9 @@ void LGF::Chrono::getTimestamp(fmt::memory_buffer& buf)
 
 }
 
+
 LGF::Chrono::Chrono() {}
+
 
 LGF::Chrono::~Chrono(){}
 
