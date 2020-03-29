@@ -42,7 +42,7 @@ Contributors :
 
 #define LGF_BEGIN namespace Lgfypp {
 #define LGF_END }
-#define LGF_SCOPE_ Lgfypp::
+#define LGF Lgfypp
 
 #define COLOR_BEGIN namespace Color {
 #define COLOR_END }

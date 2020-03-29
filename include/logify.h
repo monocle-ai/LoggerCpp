@@ -33,25 +33,42 @@ Contributors :
 
 #include "levelUtils_lgf.h"
 #include "logifyBuilder_lgf.h"
-
-//Log Macros
-
-//#define LOGFY_V(verbosity, ...) Lgfypp::LogBuilder::log(verbosity, __FUNCTION__, __LINE__, __FILENAME__,  __VA_ARGS__)
+#include "staticBase_lgf.h"
 
 
-//#define LOGFY(level, ...) LOGFY_V(Lgfypp::Level::##level, __VA_ARGS__)
-//#define LOGFY_S(format , ...) Lgfypp::LogBuilder::log( format, __VA_ARGS__)
+class Log : public LGF::StaticBase
+{
+public:
+	// Functions for Warnings level
+	static void w(const char* msg);	
+	static void warn(const char* msg);
+	template<typename... arguments>
+	static void w(const char* format, arguments&... args);
+	template<typename... arguments>
+	static void warn(const char* format, arguments&... args);
+};
+
+
 
 template<typename... arguments>
-inline void Logify_s(const char* format, arguments... args) {
-	Lgfypp::LogBuilder::log(format, args...);
+inline void Logify(LGF::Level level, const char* format, arguments... args) {
+	LGF::LogBuilder::log(level, format, __FUNCTION__, __LINE__, __FILENAME__, args...);
 };
 template<typename... arguments>
-inline void Logify_s(Lgfypp::Level level, const char* format, arguments... args) {
-	Lgfypp::LogBuilder::log(level,format, args...);
+inline void Logify(const char* msg) {
+	LGF::LogBuilder::log(msg);
 };
 template<typename... arguments>
-inline const STRING_VIEW Logify_s_StringView(Lgfypp::Level level, const char* format, arguments... args) {
-	return Lgfypp::LogBuilder::log(level, format, args...);
-}
+
+inline void Logify(const char* format, arguments... args) {
+	LGF::LogBuilder::log(format, args...);
+};
+
 #endif
+
+template<typename ...arguments>
+void Log::warn(const char* format, arguments& ...args)
+{
+	Lgfypp::LogBuilder::log(LGF::Level::warn, format, args...);
+}
+

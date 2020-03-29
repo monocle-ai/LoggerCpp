@@ -43,7 +43,7 @@ class LogBuilder : public StaticBase
 {
 public:
 	template<typename... arguments>
-	static void log(Lgfypp::Level level, const char* file, int line, const char* function, const arguments&... args) {
+	static void log(Lgfypp::Level level, const char* format, const char* file, int line, const char* function, const arguments&... args) {
 		fmt::memory_buffer buf;
 		Lgfypp::Chrono sds;
 		SourceInfo s1s(file, line, function);
@@ -80,30 +80,38 @@ public:
 	{
 		try {
 			fmt::memory_buffer buf;
+			SourceInfo s1s(__FILENAME__, 1, __FUNCTION__, true);
+
+			s1s.getFormattedSourceInfo(buf);
 			fmt::format_to(buf, format, args...);
 			std::cout << toStringView(buf) << std::endl;
-
 		}
-		catch(std::exception ex) {
-
+		catch (std::exception ex) {
 		}
-
 	}
 	template<typename... T>
 	static void log(Level level, const char* format, T&... args)
 	{
 		try {
 			fmt::memory_buffer buf;
-			fmt::format_to(buf,"warn");
+			fmt::format_to(buf, "warn");
 			fmt::format_to(buf, format, args...);
-			fmt::print( format, args...);
+			
 			std::cout << toStringView(buf) << std::endl;
-
 		}
 		catch (std::exception ex) {
-
 		}
-
+	}
+	template<typename... T>
+	static void log(const char* msg)
+	{
+		try {
+			fmt::memory_buffer buf;
+			fmt::format_to(buf, msg);
+			std::cout << toStringView(buf) << std::endl;
+		}
+		catch (std::exception ex) {
+		}
 	}
 
 	template<typename... arguments>

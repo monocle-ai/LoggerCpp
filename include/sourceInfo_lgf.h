@@ -4,7 +4,7 @@ MIT License
 Copyright(c) 2020 Sayantan Roy and Dipanjan Das
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this softwareand associated documentation files(the "Software"), to deal
+of this software and associated documentation files(the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and /or sell
 copies of the Software, and to permit persons to whom the Software is
@@ -30,7 +30,10 @@ Contributors :
 #ifndef LGF_SOURCE_INFO
 #define LGF_SOURCE_INFO
 #include "fmt/format.h"
+#include "core_lgf.h"
+#include <thread>
 
+LGF_BEGIN
 class SourceInfo
 {
 private:
@@ -46,4 +49,6 @@ public:
 	SourceInfo(const char* function, int line, const char* file, bool threadInfoReq);
 	void getFormattedSourceInfo(fmt::memory_buffer& buf);
 };
+
+LGF_END
 #endif
