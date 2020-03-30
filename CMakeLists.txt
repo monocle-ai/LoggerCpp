@@ -19,6 +19,7 @@ set(SOURCES
     src/formatter_lgf.cpp    
     src/lockable_lgf.cpp
     src/sourceInfo_lgf.cpp
+    src/configReader_lgf.cpp
 )
 
 set(LIBRARY_NAME LogifyppEngine)
