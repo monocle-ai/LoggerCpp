@@ -32,6 +32,11 @@ Contributors :
 #include <string>
 #include <iostream>
 
+inline uint64_t
+CurrentTimeInMs() {
+    return std::chrono::duration_cast<std::chrono::milliseconds>
+        (std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+}
 class ScopedTimer {
 public:
     ScopedTimer(const std::string scope) : scopeName(scope) {
@@ -41,10 +46,7 @@ public:
     ~ScopedTimer() {
         std::cout << scopeName << ": " << CurrentTimeInMs() - now << " ms\n";
     }
-    CurrentTimeInMs() {
-        return std::chrono::duration_cast<std::chrono::milliseconds>
-            (std::chrono::high_resolution_clock::now().time_since_epoch()).count();
-    }
+
 private:
     std::string scopeName;
     uint64_t now;
