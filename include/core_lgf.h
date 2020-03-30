@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright(c) 2020 Sayantan Roy and Dipanjan Das
+Copyright(c) 2020 Sayantan Roy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this softwareand associated documentation files(the "Software"), to deal
