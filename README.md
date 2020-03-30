@@ -31,7 +31,7 @@ Build Status
         </td>
         <td>
             <a href="https://g.codefresh.io/pipelines/CodeFresh%20Pipe/builds?repoOwner=sayantanroy47&repoName=LoggerCpp&serviceName=sayantanroy47%252FLoggerCpp&filter=trigger:build~Build;branch:master;pipeline%3A5e774d070c0a28272084c618~CodeFresh%20Pipe">
-	<img alt="Codefresh build status" src="https://g.codefresh.io/api/badges/pipeline/sayantan/SwiFTLog%2FCodeFresh%20Pipe?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWU3NzQwYWM4YWI3NWQzNGVlYjkxZjkw.QMynCSIXB7J72wsAjzC8Gm_iG9He725UIUAdgfTSWqw&type=cf-1">
+	<img alt="Codefresh build status" src="https://g.codefresh.io/api/badges/pipeline/sayantan/Logify++%2FCodeFresh%20Pipe?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWU3NzQwYWM4YWI3NWQzNGVlYjkxZjkw.QMynCSIXB7J72wsAjzC8Gm_iG9He725UIUAdgfTSWqw&type=cf-1">
 </a>
         </td>
     </tr>
