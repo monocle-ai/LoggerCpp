@@ -42,5 +42,5 @@ LGF_CONSTEXPR VERSION(VER_MAJOR * 1000 + VER_MINOR * 100 + VER_PATCH);
 inline void getProjectVersion()
 {
 	fmt::memory_buffer buf;
-	fmt::print("{} : version {}.{}.{}", PROJECT, VER_MAJOR * 1000, VER_MINOR * 100, VER_PATCH);
+	fmt::print("{} : version {}.{}.{}", PROJECT, VER_MAJOR, VER_MINOR , VER_PATCH);
 };
