@@ -37,7 +37,6 @@ LGF_BEGIN
 class Formatter
 {
 private:
-
 	void append(STRING_VIEW& s, fmt::memory_buffer& buf);
 public:
 	void appendFormattedSVToBuf(STRING_VIEW& string, fmt::memory_buffer& buf);

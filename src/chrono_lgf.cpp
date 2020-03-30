@@ -35,15 +35,10 @@ void LGF::Chrono::getTimestamp(fmt::memory_buffer& buf)
 	}
 
 	fmt::format_to(buf, " {:<}", nowSs.str());
-
 }
 
-
 LGF::Chrono::Chrono() {}
-
-
 LGF::Chrono::~Chrono(){}
-
 
 template<typename T>
 inline long long  LGF::Chrono::getSecondsWithPrecision(std::chrono::system_clock::time_point now)
