@@ -1,6 +1,6 @@
 # Logify++
 
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Lang](https://badgen.net/lgtm/langs/g/sayantanroy47/LoggerCpp/cpp?color=green)](https://abc.com) ![GitHub](https://img.shields.io/github/license/sayantanroy47/LoggerCpp) [![Documentation](https://codedocs.xyz/sayantanroy47/LoggerCpp.svg)](https://codedocs.xyz/sayantanroy47/LoggerCpp/) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![Hits-of-Code](https://hitsofcode.com/github/sayantanroy47/LoggerCpp)](https://hitsofcode.com/view/github/sayantanroy47/LoggerCpp)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Lang](https://badgen.net/lgtm/langs/g/sayantanroy47/LoggerCpp/cpp?color=green)](https://abc.com) ![GitHub](https://img.shields.io/github/license/sayantanroy47/LoggerCpp) [![Documentation](https://codedocs.xyz/sayantanroy47/LoggerCpp.svg)](https://codedocs.xyz/sayantanroy47/LoggerCpp/) [![Hits-of-Code](https://hitsofcode.com/github/sayantanroy47/LoggerCpp)](https://hitsofcode.com/view/github/sayantanroy47/LoggerCpp)
 
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a753190bbca44dcb8d3d2a903fb34eb)](https://app.codacy.com/manual/sayantanroy47/LoggerCpp?utm_source=github.com&utm_medium=referral&utm_content=sayantanroy47/LoggerCpp&utm_campaign=Badge_Grade_Dashboard)
@@ -31,7 +31,7 @@ Build Status
         </td>
         <td>
             <a href="https://g.codefresh.io/pipelines/CodeFresh%20Pipe/builds?repoOwner=sayantanroy47&repoName=LoggerCpp&serviceName=sayantanroy47%252FLoggerCpp&filter=trigger:build~Build;branch:master;pipeline%3A5e774d070c0a28272084c618~CodeFresh%20Pipe">
-	<img alt="Codefresh build status" src="https://g.codefresh.io/api/badges/pipeline/sayantan/SwiFTLog%2FCodeFresh%20Pipe?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWU3NzQwYWM4YWI3NWQzNGVlYjkxZjkw.QMynCSIXB7J72wsAjzC8Gm_iG9He725UIUAdgfTSWqw&type=cf-1">
+	<img alt="Codefresh build status" src="https://g.codefresh.io/api/badges/pipeline/sayantan/Logify++%2FCodeFresh%20Pipe?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWU3NzQwYWM4YWI3NWQzNGVlYjkxZjkw.QMynCSIXB7J72wsAjzC8Gm_iG9He725UIUAdgfTSWqw&type=cf-1">
 </a>
         </td>
     </tr>

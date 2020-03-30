@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright(c) 2020 Sayantan Roy and Dipanjan Das
+Copyright(c) 2020 Sayantan Roy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this softwareand associated documentation files(the "Software"), to deal
@@ -46,32 +46,6 @@ Contributors :
 
 #define COLOR_BEGIN namespace Color {
 #define COLOR_END }
-
-//PROJECT DETAILS
-
-LGF_CONSTEXPR VER_MAJOR = 0;
-LGF_CONSTEXPR VER_MINOR = 0;
-LGF_CONSTEXPR VER_PATCH = 0;
-LGF_CONSTEXPR PROJECT = "Logify++";
-
-LGF_CONSTEXPR VERSION(VER_MAJOR * 1000 + VER_MINOR * 100 + VER_PATCH);
-
-inline std::string getProjectVersion()
-{
-	std::stringstream stream;
-	stream << PROJECT << ":" << VER_MAJOR * 1000 << "." << VER_MINOR * 100 << "." << VER_PATCH;
-	return  stream.str();
-};
-
-// Chrono Consts
-
-LGF_CONSTEXPR TIME_FORMAT		= "%F %T";
-LGF_CONSTEXPR TIME_FORMAT_ALT   = "%D %T";
-LGF_CONSTEXPR TIME_FORMAT_SHORT = "%T";
-
-LGF_CONSTEXPR PRECISION_MOD_MILLI = static_cast<int>(1e3);
-LGF_CONSTEXPR PRECISION_MOD_MICRO = static_cast<int>(1e6);
-LGF_CONSTEXPR PRECISION_MOD_NANO  = static_cast<int>(1e9);
 
 //File name stripper
 #if defined(__linux__)

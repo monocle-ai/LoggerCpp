@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright(c) 2020 Sayantan Roy and Dipanjan Das
+Copyright(c) 2020 Sayantan Roy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files(the "Software"), to deal
@@ -37,7 +37,6 @@ LGF_BEGIN
 class Formatter
 {
 private:
-
 	void append(STRING_VIEW& s, fmt::memory_buffer& buf);
 public:
 	void appendFormattedSVToBuf(STRING_VIEW& string, fmt::memory_buffer& buf);

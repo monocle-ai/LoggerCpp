@@ -3,12 +3,14 @@
 
 #include "logify.h"
 #include "levelUtils_lgf.h"
+#include "version.h"
 
 void someFunction() {
 
 	Logify("das", 21);
 	Logify("sayantan");
 	Log::warn("{}", "ss");
+	getProjectVersion();
 
 }
 int main()

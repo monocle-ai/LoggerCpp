@@ -1,10 +1,10 @@
 /*
 MIT License
 
-Copyright(c) 2020 Sayantan Roy and Dipanjan Das
+Copyright(c) 2020 Sayantan Roy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this softwareand associated documentation files(the "Software"), to deal
+of this software and associated documentation files(the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and /or sell
 copies of the Software, and to permit persons to whom the Software is
@@ -27,19 +27,27 @@ Author		 : Sayantan Roy
 Contributors :
 */
 #pragma once
-#ifndef LGF_GLOBAL_CONFIG_H
-#define LGF_GLOBAL_CONFIG_H
+#include <cstdint>
+#include <chrono>
+#include <string>
+#include <iostream>
 
-#include <chrono_lgf.h>
-#include "staticBase_lgf.h"
-#include "levelUtils_lgf.h"
-
-LGF_BEGIN
-class GlobalConfigs :public StaticBase {
+inline uint64_t
+CurrentTimeInMs() {
+    return std::chrono::duration_cast<std::chrono::milliseconds>
+        (std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+}
+class ScopedTimer {
 public:
+    ScopedTimer(const std::string scope) : scopeName(scope) {
+        now = CurrentTimeInMs();
+    }
 
-	static Lgfypp::Level gLevel;
+    ~ScopedTimer() {
+        std::cout << scopeName << ": " << CurrentTimeInMs() - now << " ms\n";
+    }
 
+private:
+    std::string scopeName;
+    uint64_t now;
 };
-LGF_END
-#endif

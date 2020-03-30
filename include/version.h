@@ -28,45 +28,19 @@ Contributors :
 */
 
 #pragma once
-#ifndef LGF_TIME_H
-#define LGF_TIME_H
-
 #include "core_lgf.h"
-#include <chrono>
-#include <fmt/format.h>
-#include <iomanip>
-#include <sstream>      // std::stringstream
+#include "fmt/format.h"
 
-LGF_BEGIN
+//PROJECT DETAILS
+LGF_CONSTEXPR VER_MAJOR = 0;
+LGF_CONSTEXPR VER_MINOR = 0;
+LGF_CONSTEXPR VER_PATCH = 0;
+LGF_CONSTEXPR PROJECT = "Logify++";
 
-// Chrono format Consts
-LGF_CONSTEXPR TIME_FORMAT       = "%F %T";
-LGF_CONSTEXPR TIME_FORMAT_ALT   = "%D %T";
-LGF_CONSTEXPR TIME_FORMAT_SHORT = "%T";
-// Chrono Precision Consts
-LGF_CONSTEXPR PRECISION_MOD_MILLI = static_cast<int>(1e3);
-LGF_CONSTEXPR PRECISION_MOD_MICRO = static_cast<int>(1e6);
-LGF_CONSTEXPR PRECISION_MOD_NANO  = static_cast<int>(1e9);
+LGF_CONSTEXPR VERSION(VER_MAJOR * 1000 + VER_MINOR * 100 + VER_PATCH);
 
-enum class Timeformat : uint32_t { standard, concise, alternative, none };
-enum class Precision  : uint32_t { milli, micro, nano };
-
-static LGF::Precision  gPrecision  = Precision::milli;
-static LGF::Timeformat gTimeFormat = Timeformat::standard;
-
-class Chrono
+inline void getProjectVersion()
 {
-private:
-	int mPrecisionPad = 0;
-	template<typename T>
-	long long getSecondsWithPrecision(std::chrono::system_clock::time_point now);
-
-public:
-	Chrono();
-	~Chrono();
-	void getTimestamp(fmt::memory_buffer& buf);
+	fmt::memory_buffer buf;
+	fmt::print("{} : version {}.{}.{}", PROJECT, VER_MAJOR, VER_MINOR , VER_PATCH);
 };
-
-LGF_END
-
-#endif
