@@ -63,16 +63,6 @@ inline std::string getProjectVersion()
 	return  stream.str();
 };
 
-// Chrono Consts
-
-LGF_CONSTEXPR TIME_FORMAT		= "%F %T";
-LGF_CONSTEXPR TIME_FORMAT_ALT   = "%D %T";
-LGF_CONSTEXPR TIME_FORMAT_SHORT = "%T";
-
-LGF_CONSTEXPR PRECISION_MOD_MILLI = static_cast<int>(1e3);
-LGF_CONSTEXPR PRECISION_MOD_MICRO = static_cast<int>(1e6);
-LGF_CONSTEXPR PRECISION_MOD_NANO  = static_cast<int>(1e9);
-
 //File name stripper
 #if defined(__linux__)
 #define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)

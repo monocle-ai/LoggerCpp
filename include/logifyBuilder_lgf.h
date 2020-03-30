@@ -31,7 +31,7 @@ Contributors :
 #include "core_lgf.h"
 
 #include "formatter_lgf.h"
-
+#include "staticBase_lgf.h"
 #include <iostream>
 #include "chrono_lgf.h"
 #include "sourceInfo_lgf.h"

@@ -1,5 +1,4 @@
 #include "chrono_lgf.h"
-#include <logify.h>
 
 void LGF::Chrono::getTimestamp(fmt::memory_buffer& buf)
 {
@@ -34,7 +33,7 @@ void LGF::Chrono::getTimestamp(fmt::memory_buffer& buf)
 			<< '.' << std::setfill('0') << std::setw(mPrecisionPad) << nowMs;
 	}
 
-	fmt::format_to(buf, " {:<}", nowSs.str());
+	fmt::format_to(buf, nowSs.str());
 }
 
 LGF::Chrono::Chrono() {}
@@ -46,7 +45,7 @@ inline long long  LGF::Chrono::getSecondsWithPrecision(std::chrono::system_clock
 	switch (gPrecision) {
 	case Precision::milli: mPrecisionPad = 3;  return (std::chrono::duration_cast<T>(now.time_since_epoch()) % PRECISION_MOD_MILLI).count();
 	case Precision::micro: mPrecisionPad = 6;  return (std::chrono::duration_cast<T>(now.time_since_epoch()) % PRECISION_MOD_MICRO).count();
-	case Precision::nano: mPrecisionPad = 9;  return (std::chrono::duration_cast<T>(now.time_since_epoch()) % PRECISION_MOD_NANO).count();
+	case Precision::nano : mPrecisionPad = 9;  return (std::chrono::duration_cast<T>(now.time_since_epoch()) % PRECISION_MOD_NANO ).count();
 	default: return 0;
 	}
 }
