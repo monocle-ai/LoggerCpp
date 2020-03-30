@@ -55,30 +55,20 @@ class LevelUtils {
 public:
 	LevelUtils();
 	~LevelUtils();
-	struct ColorLevelStringItem {
-		std::string levelShortString;
-		std::string levelString;
-		std::string colorString;
-		Level level;
+
+	const std::tuple<std::string_view, std::string_view, std::string_view> getLevelDetails(Level level) {
+		switch (level) {
+		case Level::all   : return { "A", "ALL", Color::LIGHT_BLUE };
+		case Level::debug : return { "D", "DEBUG", Color::GREEN };
+		case Level::info  : return { "I", "INFO", Color::CYAN };
+		case Level::warn  : return { "W", "WARN", Color::YELLOW };
+		case Level::error : return { "E", "ERROR", Color::RED };
+		case Level::fatal : return { "F", "FATAL", Color::RED };
+		case Level::trace : return { "T", "TRACE", Color::LIGHT_CYAN };
+		}
 	};
 
-	
-	const struct ColorLevelStringItem colorLevelStringMap[7] = {
-	  { "A", "ALL",  Color::LIGHT_BLUE, Level::all },
-	  { "D","DEBUG", Color::GREEN, Level::debug },
-	  { "I","INFO",  Color::CYAN, Level::info },
-	  { "W","WARN",  Color::YELLOW, Level::warn },
-	  { "E","ERROR", Color::RED, Level::error },
-	  { "F","FATAL", Color::RED , Level::fatal },
-	  { "T","TRACE", Color::LIGHT_CYAN, Level::trace }
-	};
-
-
-	std::string toShortString(const Level level);
-	std::string toString(const Level level);
-	std::string toString(int level);
 	Level       toLevel(int level);
-	Level       toLevel(const STRING_VIEW level);
 	int         toInt(Level level);
 };
 
