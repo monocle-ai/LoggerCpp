@@ -99,7 +99,7 @@ public:
 		{
 			fmt::memory_buffer buf;
 		auto [sName, name, color] = Lgfypp::getLevelDetails(level);
-		
+
 			fmt::format_to(buf, name);
 			fmt::format_to(buf, format, args...);
 

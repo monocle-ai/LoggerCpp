@@ -51,7 +51,7 @@ LGF_CONSTEXPR MIN_LEVEL = Level::all;
 LGF_CONSTEXPR MAX_LEVEL = Level::error;
 LGF_CONSTEXPR DEF_LEVEL = Level::all;
 
-inline const std::tuple<const char*, const char*, const char*> getLevelDetails(Level level) {
+LGF_INLINE const std::tuple<const char*, const char*, const char*> getLevelDetails(Level level) {
 	switch (level) {
 	case Level::all:   return { "A", "ALL",   Color::LIGHT_BLUE };
 	case Level::debug: return { "D", "DEBUG", Color::GREEN };
@@ -62,7 +62,7 @@ inline const std::tuple<const char*, const char*, const char*> getLevelDetails(L
 	case Level::trace: return { "T", "TRACE", Color::LIGHT_CYAN };
 	}
 };
-inline Level convertToLevel(int levelInt)
+LGF_INLINE Level convertToLevel(int levelInt)
 {
 	switch (levelInt) {
 	case 0: return Level::none;
@@ -77,7 +77,7 @@ inline Level convertToLevel(int levelInt)
 	}
 }
 
-inline int convertToInt(const Level level)
+LGF_INLINE int convertToInt(const Level level)
 {
 	return static_cast<int>(level);
 }

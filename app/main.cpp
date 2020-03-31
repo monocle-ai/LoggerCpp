@@ -4,6 +4,8 @@
 #include "logify.h"
 #include "levelUtils_lgf.h"
 #include "version.h"
+#include "fmt/color.h"
+
 
 void someFunction() {
 
@@ -12,6 +14,10 @@ void someFunction() {
 	Log::warn("{}", "ss");
 	getProjectVersion();
 
+	std::string message = fmt::format(fmt::emphasis::bold | fg(fmt::color::dark_golden_rod),
+		"The answer is {}", 44);
+	Logify("{}", message);
+	Logify(LGF::Level::error,"/n{}", "dsayasasssayabnatab!");
 }
 int main()
 {
