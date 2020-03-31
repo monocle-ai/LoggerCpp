@@ -16,8 +16,7 @@ include(Fmt)
 
 set(SOURCES
     src/chrono_lgf.cpp
-    src/formatter_lgf.cpp
-    src/levelUtils_lgf.cpp
+    src/formatter_lgf.cpp    
     src/lockable_lgf.cpp
     src/sourceInfo_lgf.cpp
 )
