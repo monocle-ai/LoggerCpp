@@ -36,41 +36,51 @@ Contributors :
 LGF_BEGIN
 
 enum class Level : uint32_t {
-	none = 0,
-	all = 1,
+	none  = 0,
+	all   = 1,
 	trace = 2,
 	debug = 3,
-	info = 4,
-	warn = 5,
+	info  = 4,
+	warn  = 5,
 	fatal = 6,
 	error = 7,
 	lastLevel = error,
 };
 
 LGF_CONSTEXPR MIN_LEVEL = Level::all;
-LGF_CONSTEXPR MAX_LEVEL = Level::info;
+LGF_CONSTEXPR MAX_LEVEL = Level::error;
 LGF_CONSTEXPR DEF_LEVEL = Level::all;
 
-class LevelUtils {
-public:
-	LevelUtils();
-	~LevelUtils();
-
-	const std::tuple<std::string_view, std::string_view, std::string_view> getLevelDetails(Level level) {
-		switch (level) {
-		case Level::all   : return { "A", "ALL", Color::LIGHT_BLUE };
-		case Level::debug : return { "D", "DEBUG", Color::GREEN };
-		case Level::info  : return { "I", "INFO", Color::CYAN };
-		case Level::warn  : return { "W", "WARN", Color::YELLOW };
-		case Level::error : return { "E", "ERROR", Color::RED };
-		case Level::fatal : return { "F", "FATAL", Color::RED };
-		case Level::trace : return { "T", "TRACE", Color::LIGHT_CYAN };
-		}
-	};
-
-	Level       toLevel(int level);
-	int         toInt(Level level);
+inline const std::tuple<const char*, const char*, const char*> getLevelDetails(Level level) {
+	switch (level) {
+	case Level::all:   return { "A", "ALL",   Color::LIGHT_BLUE };
+	case Level::debug: return { "D", "DEBUG", Color::GREEN };
+	case Level::info:  return { "I", "INFO",  Color::CYAN };
+	case Level::warn:  return { "W", "WARN",  Color::YELLOW };
+	case Level::error: return { "E", "ERROR", Color::RED };
+	case Level::fatal: return { "F", "FATAL", Color::RED };
+	case Level::trace: return { "T", "TRACE", Color::LIGHT_CYAN };
+	}
 };
+inline Level convertToLevel(int levelInt)
+{
+	switch (levelInt) {
+	case 0: return Level::none;
+	case 1: return Level::all;
+	case 2: return Level::trace;
+	case 3: return Level::debug;
+	case 4: return Level::info;
+	case 5: return Level::warn;
+	case 6: return Level::fatal;
+	case 7: return Level::error;
+	default:return Level::lastLevel;
+	}
+}
+
+inline int convertToInt(const Level level)
+{
+	return static_cast<int>(level);
+}
 
 LGF_END
 

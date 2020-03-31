@@ -56,6 +56,9 @@ public:
 		std::cout << "___________________________" << std::endl;
 		ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
 		std::cout << toStringView(buf) << std::endl;
+		auto [sName, name, color] = Lgfypp::getLevelDetails(level);
+
+		fmt::format_to(buf, name);
 		std::cout << "___________________________" << toStringView(buf) << std::endl;
 	}
 
@@ -78,7 +81,8 @@ public:
 	template<typename... arguments>
 	static void log(const char* format, arguments&... args)
 	{
-		try {
+		LGF_TRY
+		{
 			fmt::memory_buffer buf;
 			SourceInfo s1s(__FILENAME__, 1, __FUNCTION__, true);
 
@@ -86,32 +90,33 @@ public:
 			fmt::format_to(buf, format, args...);
 			std::cout << toStringView(buf) << std::endl;
 		}
-		catch (std::exception ex) {
-		}
+			LGF_CATCH()
 	}
 	template<typename... T>
 	static void log(Level level, const char* format, T&... args)
 	{
-		try {
+		LGF_TRY
+		{
 			fmt::memory_buffer buf;
-			fmt::format_to(buf, "warn");
+		auto [sName, name, color] = Lgfypp::getLevelDetails(level);
+		
+			fmt::format_to(buf, name);
 			fmt::format_to(buf, format, args...);
-			
+
 			std::cout << toStringView(buf) << std::endl;
 		}
-		catch (std::exception ex) {
-		}
+			LGF_CATCH()
 	}
 	template<typename... T>
 	static void log(const char* msg)
 	{
-		try {
+		LGF_TRY
+		{
 			fmt::memory_buffer buf;
 			fmt::format_to(buf, msg);
 			std::cout << toStringView(buf) << std::endl;
 		}
-		catch (std::exception ex) {
-		}
+			LGF_CATCH()
 	}
 
 	template<typename... arguments>

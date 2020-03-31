@@ -33,11 +33,13 @@ Contributors :
 
 #include <stdint.h> // for including different datatype typedefs (e.g. uint32_t)
 #include <sstream>
+#include "fmt/format.h"
 
 #define LGF_LITERAL(txt) (txt);
 #define LGF_CONSTEXPR constexpr auto
 #define LGF_STATIC_CONSTEXPR static LGF_CONSTEXPR
-
+#define LGF_INLINE inline
+#define LGF_FORCE_INLINE __forceinline
 // NAMESPACE
 
 #define LGF_BEGIN namespace Lgfypp {
@@ -47,12 +49,25 @@ Contributors :
 #define COLOR_BEGIN namespace Color {
 #define COLOR_END }
 
+#define LGF_TRY try
+#define LGF_CATCH()                            \
+    catch (const std::exception& ex)           \
+    {                                          \
+        fmt::print(ex.what());                 \
+    }                                          \
+    catch (...)                                \
+    {                                          \
+        fmt::print("Unknown Exception");       \
+    }
 //File name stripper
-#if defined(__linux__)
-#define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+#if defined(_WIN32)
+static constexpr char delimiter = '\\';
 #else
-#define __FILENAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
+static constexpr char delimiter = '/';
 #endif
+
+#define __FILENAME__ (strrchr(__FILE__, delimiter) ? strrchr(__FILE__, delimiter) + 1 : __FILE__)
+
 
 #if defined(__GNUC__) && __GNUC__ < 7
 # include <experimental/string_view>
@@ -61,7 +76,7 @@ Contributors :
 # include <string_view>
 #define STRING_VIEW std::string_view
 #endif
-#include "fmt/format.h"
+
 inline STRING_VIEW toStringView(const fmt::memory_buffer& buf)
 {
 	return STRING_VIEW{ buf.data(), buf.size() };

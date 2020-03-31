@@ -40,15 +40,17 @@ class Log : public LGF::StaticBase
 {
 public:
 	// Functions for Warnings level
-	static void w(const char* msg);	
+	static void w(const char* msg);
 	static void warn(const char* msg);
 	template<typename... arguments>
 	static void w(const char* format, arguments&... args);
 	template<typename... arguments>
 	static void warn(const char* format, arguments&... args);
 };
-
-
+template<typename... arguments>
+inline void printf(LGF::Level level, const char* format, arguments... args) {
+	LGF::LogBuilder::log(level, format, __FUNCTION__, __LINE__, __FILENAME__, args...);
+};
 
 template<typename... arguments>
 inline void Logify(LGF::Level level, const char* format, arguments... args) {

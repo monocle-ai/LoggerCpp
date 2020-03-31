@@ -46,15 +46,16 @@ private:
 	void initiateDefaultLogger();
 	void initiateSystemLogger();
 	static std::mutex reg_mutex;
-	std::unordered_map<const char* , T > loggerMap;
+	std::unordered_map<const char*, std::shared_ptr<T> > loggerRegistry;
 	bool checkIfExists(const char* key);
 	bool checkIfEmpty();
 	int size();
-public:
-	void registerLogger(const char* key, T& value);
-	T& getLogger(const char* key);
 	void removeLogger(const char* key);
 	void cleanRegistry();
+public:
+	static Registry& getInstance();
+	void registerLogger(const char* key, std::shared_ptr<T> value);
+	T& getLogger(const char* key);
 };
 
 LGF_END

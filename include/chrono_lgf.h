@@ -58,7 +58,7 @@ class Chrono
 {
 private:
 	int mPrecisionPad = 0;
-	template<typename T>
+	
 	long long getSecondsWithPrecision(std::chrono::system_clock::time_point now);
 
 public:

@@ -18,7 +18,7 @@ LGF::SourceInfo::SourceInfo(const char* function, int line, const char* file, bo
 void LGF::SourceInfo::getFormattedSourceInfo(fmt::memory_buffer& buf)
 {
 	if (mLineNumber != 0) {
-		fmt::format_to(buf, "  <{}>@{}:{} ", mFileName, mFunction, mLineNumber);
+		fmt::format_to(buf, "  {}-{}:{} ", mFileName, mFunction, mLineNumber);
 		if (mThreadInfoReq) {
 			addThreadInfo(buf);
 		}
