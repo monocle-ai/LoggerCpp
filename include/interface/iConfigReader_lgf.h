@@ -27,23 +27,18 @@ Author		 : Dipanjan Das
 Contributors :
 */
 #pragma once
-#ifndef LGF_CONFIGREADER_H
-#define LGF_CONFIGREADER_H
+#ifndef LGF_ICONFIGREADER_H
+#define LGF_ICONFIGREADER_H
 
 #include "core_lgf.h"
-#include "interface/iConfigReader_lgf.h"
 
 LGF_BEGIN
 
-class ConfigReader : public IConfigReader
+class IConfigReader
 {
 	public:
-		static const std::shared_ptr<LGF::IConfigReader>& configReaderFactory(const std::shared_ptr<STRING_VIEW>& configFilePath);
-		virtual ~ConfigReader() override;
-		virtual std::tuple<STRING_VIEW, STRING_VIEW> getLoggerConfiguration() const override;
-	private:
-		ConfigReader(const std::shared_ptr<STRING_VIEW>& configFilePath);
-		const std::shared_ptr<STRING_VIEW> m_configFilePath;
+		virtual ~IConfigReader();
+		virtual std::tuple<STRING_VIEW, STRING_VIEW> getLoggerConfiguration() const = 0;
 };
 
 LGF_END

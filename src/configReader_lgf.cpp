@@ -6,15 +6,18 @@
 
 namespace LGF
 {
-	ConfigReader::ConfigReader(const std::shared_ptr<STRING_VIEW>& configFilePath): m_configFilePath(configFilePath)
+	ConfigReader::ConfigReader(const std::shared_ptr<STRING_VIEW>& configFilePath) : m_configFilePath(configFilePath)
+	{}
+
+	ConfigReader::~ConfigReader(){}
+
+	const std::shared_ptr<LGF::IConfigReader>& ConfigReader::configReaderFactory(const std::shared_ptr<STRING_VIEW>& configFilePath)
 	{
+		std::shared_ptr<LGF::IConfigReader> configFactory = std::make_shared<LGF::ConfigReader>(configFilePath);
+		return configFactory;
 	}
 
-	ConfigReader::~ConfigReader()
-	{
-	}
-
-	std::tuple<STRING_VIEW, STRING_VIEW> ConfigReader::getLoggerConfiguration()
+	std::tuple<STRING_VIEW, STRING_VIEW> ConfigReader::getLoggerConfiguration() const
 	{
 		std::ifstream configFile(m_configFilePath->data());
 		std::string configVar;
