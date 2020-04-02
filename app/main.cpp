@@ -7,7 +7,8 @@
 #include "fmt/color.h"
 
 
-void someFunction() {
+void someFunction()
+{
 
 }
 int main()

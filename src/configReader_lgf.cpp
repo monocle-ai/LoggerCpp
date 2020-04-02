@@ -32,14 +32,17 @@ std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> Lgfypp::ConfigReader::getLogge
 		while(std::getline(configFile, configLine))
 		{
 			auto configDelimiter = configLine.find("=");
-			configVar = configLine.substr(0, configDelimiter);
-			configVal = configLine.substr(configDelimiter + 1);
-			fmt::memory_buffer bufVar;
-			fmt::format_to(bufVar, configVar);
-			fmt::memory_buffer bufVal;
-			fmt::format_to(bufVal, configVal);
-			//std::cout << "\nconfig name is: " << toStringView(bufVar) << " config val is: " << toStringView(bufVal) << std::endl;
-			globalConfigs.push_back({ toStringView(bufVar), toStringView(bufVal) });
+			if (configDelimiter != std::string::npos)
+			{
+				configVar = configLine.substr(0, configDelimiter);
+				configVal = configLine.substr(configDelimiter + 1);
+				fmt::memory_buffer bufVar;
+				fmt::format_to(bufVar, configVar);
+				fmt::memory_buffer bufVal;
+				fmt::format_to(bufVal, configVal);
+				std::cout << "\nconfig name is: " << toStringView(bufVar) << " config val is: " << toStringView(bufVal) << std::endl;
+				globalConfigs.push_back({ toStringView(bufVar), toStringView(bufVal) });
+			}
 		}
 	}
 	return globalConfigs;
