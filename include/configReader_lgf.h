@@ -46,7 +46,7 @@ class ConfigReader : public IConfigReader
 	public:
 		explicit ConfigReader(const STRING_VIEW configFilePath); //TODO: Move to private when Factroy is working.
 		//TODO: //DO NOT DELETE static Lgfypp::IConfigReaderSharedPtr& configReaderFactory(const STRING_VIEW configFilePath); 
-		virtual std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> getLoggerConfiguration() const override;
+		virtual std::unordered_map<STRING_VIEW, STRING_VIEW> getLoggerConfiguration() const override;
 	private:
 		const STRING_VIEW m_configFilePath;
 		STRING_VIEW covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const;
