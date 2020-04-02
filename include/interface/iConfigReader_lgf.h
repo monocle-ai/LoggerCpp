@@ -37,8 +37,8 @@ LGF_BEGIN
 class IConfigReader
 {
 	public:
-		virtual ~IConfigReader();
-		virtual std::tuple<STRING_VIEW, STRING_VIEW> getLoggerConfiguration() const = 0;
+		virtual ~IConfigReader() = default;
+		virtual std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> getLoggerConfiguration() const = 0;
 };
 
 LGF_END

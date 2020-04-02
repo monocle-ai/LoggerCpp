@@ -30,20 +30,23 @@ Contributors :
 #ifndef LGF_CONFIGREADER_H
 #define LGF_CONFIGREADER_H
 
+//#include<memory.h>
 #include "core_lgf.h"
 #include "interface/iConfigReader_lgf.h"
 
 LGF_BEGIN
 
+class Lgfypp::IConfigReader;
+using IConfigReaderSharedPtr = std::shared_ptr<Lgfypp::IConfigReader>;
+
 class ConfigReader : public IConfigReader
 {
 	public:
-		static const std::shared_ptr<LGF::IConfigReader>& configReaderFactory(const std::shared_ptr<STRING_VIEW>& configFilePath);
-		virtual ~ConfigReader() override;
-		virtual std::tuple<STRING_VIEW, STRING_VIEW> getLoggerConfiguration() const override;
+		explicit ConfigReader(const STRING_VIEW configFilePath); //TODO: Move to private when Factroy is working.
+		//TODO: //DO NOT DELETE static Lgfypp::IConfigReaderSharedPtr& configReaderFactory(const STRING_VIEW configFilePath); 
+		virtual std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> getLoggerConfiguration() const override;
 	private:
-		ConfigReader(const std::shared_ptr<STRING_VIEW>& configFilePath);
-		const std::shared_ptr<STRING_VIEW> m_configFilePath;
+		const STRING_VIEW m_configFilePath;
 };
 
 LGF_END

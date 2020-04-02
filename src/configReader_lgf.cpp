@@ -3,39 +3,44 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include "interface/iConfigReader_lgf.h"
+#include "fmt/printf.h"
 
-namespace LGF
+Lgfypp::ConfigReader::ConfigReader(
+	const STRING_VIEW configFilePath) 
+	: m_configFilePath(configFilePath){}
+
+/*Lgfypp::IConfigReaderSharedPtr& Lgfypp::ConfigReader::configReaderFactory(
+	const STRING_VIEW configFilePath)
 {
-	ConfigReader::ConfigReader(const std::shared_ptr<STRING_VIEW>& configFilePath) : m_configFilePath(configFilePath)
-	{}
-
-	ConfigReader::~ConfigReader(){}
-
-	const std::shared_ptr<LGF::IConfigReader>& ConfigReader::configReaderFactory(const std::shared_ptr<STRING_VIEW>& configFilePath)
+	if (!configFilePath.empty())
 	{
-		return std::shared_ptr<LGF::IConfigReader>(new ConfigReader(configFilePath));
+		return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(configFilePath));
 	}
+	return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(STRING_VIEW{""}));
+}*/
 
-	std::tuple<STRING_VIEW, STRING_VIEW> ConfigReader::getLoggerConfiguration() const
+std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> Lgfypp::ConfigReader::getLoggerConfiguration() const
+{
+	std::ifstream configFile(m_configFilePath.data());
+	std::string configVar;
+	std::string configVal;
+	std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> globalConfigs;
+	if (configFile.is_open())
 	{
-		std::ifstream configFile(m_configFilePath->data());
-		std::string configVar;
-		std::string configVal;
-		if (configFile.is_open())
+		std::string configLine;
+		while(std::getline(configFile, configLine))
 		{
-			std::string configLine;
-			while(std::getline(configFile, configLine))
-			{
-				auto configDelimiter = configLine.find("=");
-				configVar = configLine.substr(0, configDelimiter);
-				configVal = configLine.substr(configDelimiter + 1);
-			}
+			auto configDelimiter = configLine.find("=");
+			configVar = configLine.substr(0, configDelimiter);
+			configVal = configLine.substr(configDelimiter + 1);
+			fmt::memory_buffer bufVar;
+			fmt::format_to(bufVar, configVar);
+			fmt::memory_buffer bufVal;
+			fmt::format_to(bufVal, configVal);
+			//std::cout << "\nconfig name is: " << toStringView(bufVar) << " config val is: " << toStringView(bufVal) << std::endl;
+			globalConfigs.push_back({ toStringView(bufVar), toStringView(bufVal) });
 		}
-		fmt::memory_buffer bufVar;
-		fmt::format_to(bufVar, configVar);
-		fmt::memory_buffer bufVal;
-		fmt::format_to(bufVal, configVal);
-		std::cout << "config name is: " << toStringView(bufVar) << " config val is: " << toStringView(bufVal) << std::endl;
-		return { toStringView(bufVar), toStringView(bufVal) };
 	}
+	return globalConfigs;
 }
