@@ -4,11 +4,12 @@
 #include <fstream>
 #include <algorithm>
 #include "interface/iConfigReader_lgf.h"
-#include "fmt/printf.h"
 
-Lgfypp::ConfigReader::ConfigReader(
-	const STRING_VIEW configFilePath) 
-	: m_configFilePath(configFilePath){}
+namespace LGF
+{
+ConfigReader::ConfigReader(
+	const STRING_VIEW configFilePath)
+	: m_configFilePath(configFilePath) {}
 
 /*Lgfypp::IConfigReaderSharedPtr& Lgfypp::ConfigReader::configReaderFactory(
 	const STRING_VIEW configFilePath)
@@ -20,7 +21,7 @@ Lgfypp::ConfigReader::ConfigReader(
 	return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(STRING_VIEW{""}));
 }*/
 
-std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> Lgfypp::ConfigReader::getLoggerConfiguration() const
+std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> ConfigReader::getLoggerConfiguration() const
 {
 	std::ifstream configFile(m_configFilePath.data());
 	std::string configVar;
@@ -29,7 +30,7 @@ std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> Lgfypp::ConfigReader::getLogge
 	if (configFile.is_open())
 	{
 		std::string configLine;
-		while(std::getline(configFile, configLine))
+		while (std::getline(configFile, configLine))
 		{
 			auto configDelimiter = configLine.find("=");
 			if (configDelimiter != std::string::npos)
@@ -37,13 +38,19 @@ std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> Lgfypp::ConfigReader::getLogge
 				configVar = configLine.substr(0, configDelimiter);
 				configVal = configLine.substr(configDelimiter + 1);
 				fmt::memory_buffer bufVar;
-				fmt::format_to(bufVar, configVar);
 				fmt::memory_buffer bufVal;
-				fmt::format_to(bufVal, configVal);
-				std::cout << "\nconfig name is: " << toStringView(bufVar) << " config val is: " << toStringView(bufVal) << std::endl;
-				globalConfigs.push_back({ toStringView(bufVar), toStringView(bufVal) });
+				std::cout << "\nconfig name is: " << covertToStringView(bufVar, configVar) << " config val is: " << covertToStringView(bufVal, configVal) << std::endl;
+				globalConfigs.push_back({ covertToStringView(bufVar, configVar), covertToStringView(bufVal, configVal) });
 			}
 		}
 	}
 	return globalConfigs;
+}
+
+STRING_VIEW ConfigReader::covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const
+{
+	fmt::format_to(buffer, config);
+	return toStringView(buffer);
+}
+
 }

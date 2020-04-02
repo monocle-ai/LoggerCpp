@@ -32,6 +32,8 @@ Contributors :
 
 //#include<memory.h>
 #include "core_lgf.h"
+#include "fmt/printf.h"
+
 #include "interface/iConfigReader_lgf.h"
 
 LGF_BEGIN
@@ -47,6 +49,7 @@ class ConfigReader : public IConfigReader
 		virtual std::vector<std::tuple<STRING_VIEW, STRING_VIEW>> getLoggerConfiguration() const override;
 	private:
 		const STRING_VIEW m_configFilePath;
+		STRING_VIEW covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const;
 };
 
 LGF_END
