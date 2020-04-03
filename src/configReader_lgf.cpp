@@ -11,7 +11,7 @@ ConfigReader::ConfigReader(
 	const STRING_VIEW configFilePath)
 	: m_configFilePath(configFilePath) {}
 
-/*Lgfypp::IConfigReaderSharedPtr& Lgfypp::ConfigReader::configReaderFactory(
+Lgfypp::IConfigReaderSharedPtr& Lgfypp::ConfigReader::configReaderFactory(
 	const STRING_VIEW configFilePath)
 {
 	if (!configFilePath.empty())
@@ -19,12 +19,12 @@ ConfigReader::ConfigReader(
 		return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(configFilePath));
 	}
 	return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(STRING_VIEW{""}));
-}*/
+}
 
-std::unordered_map<STRING_VIEW, STRING_VIEW> ConfigReader::getLoggerConfiguration() const
+std::unordered_map<std::string, std::string> ConfigReader::getLoggerConfiguration() const
 {
 	std::ifstream configFile(m_configFilePath.data());
-	std::unordered_map<STRING_VIEW, STRING_VIEW> globalConfigs;
+	std::unordered_map<std::string, std::string> globalConfigs;
 	if (configFile.is_open())
 	{
 		std::string configLine;
@@ -35,8 +35,10 @@ std::unordered_map<STRING_VIEW, STRING_VIEW> ConfigReader::getLoggerConfiguratio
 			{
 				fmt::memory_buffer bufVar;
 				fmt::memory_buffer bufVal;
-				STRING_VIEW configKey = covertToStringView(bufVar, configLine.substr(0, configDelimiter));
-				STRING_VIEW configVal = covertToStringView(bufVal, configLine.substr(configDelimiter + 1));
+				std::string configKey = configLine.substr(0, configDelimiter);
+				std::string configVal = configLine.substr(configDelimiter + 1);
+				//STRING_VIEW configKey = covertToStringView(bufVar, configLine.substr(0, configDelimiter));
+				//STRING_VIEW configVal = covertToStringView(bufVal, configLine.substr(configDelimiter + 1));
 				std::cout << "\nconfig name is: " << configKey << " config val is: " << configVal << std::endl;
 				globalConfigs.emplace(configKey, configVal);
 			}

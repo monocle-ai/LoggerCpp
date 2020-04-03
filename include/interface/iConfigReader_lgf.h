@@ -38,7 +38,7 @@ class IConfigReader
 {
 	public:
 		virtual ~IConfigReader() = default;
-		virtual std::unordered_map<STRING_VIEW, STRING_VIEW> getLoggerConfiguration() const = 0;
+		virtual std::unordered_map<std::string, std::string> getLoggerConfiguration() const = 0;
 };
 
 LGF_END
