@@ -67,7 +67,7 @@ void Lgfypp::Registry<T>::removeLogger(const char* key)
 	{
 		loggerRegistry.erase(key);
 	}
-		LGF_CATCH()
+	LGF_CATCH()
 }
 
 template<typename T>

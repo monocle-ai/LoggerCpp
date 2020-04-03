@@ -47,9 +47,9 @@ enum class Level : uint32_t {
 	lastLevel = error,
 };
 
-LGF_CONSTEXPR MIN_LEVEL = Level::all;
-LGF_CONSTEXPR MAX_LEVEL = Level::error;
-LGF_CONSTEXPR DEF_LEVEL = Level::all;
+LGF_CONSTEXPR_AUTO MIN_LEVEL = Level::all;
+LGF_CONSTEXPR_AUTO MAX_LEVEL = Level::error;
+LGF_CONSTEXPR_AUTO DEF_LEVEL = Level::all;
 
 LGF_INLINE const std::tuple<const char*, const char*, const char*> getLevelDetails(Level level) {
 	switch (level) {
@@ -60,6 +60,8 @@ LGF_INLINE const std::tuple<const char*, const char*, const char*> getLevelDetai
 	case Level::error: return { "E", "ERROR", Color::RED };
 	case Level::fatal: return { "F", "FATAL", Color::RED };
 	case Level::trace: return { "T", "TRACE", Color::LIGHT_CYAN };
+	case Level::none : return { "N", "TRACE", "" };
+	default: return {};
 	}
 };
 LGF_INLINE Level convertToLevel(int levelInt)
@@ -75,6 +77,33 @@ LGF_INLINE Level convertToLevel(int levelInt)
 	case 7: return Level::error;
 	default:return Level::lastLevel;
 	}
+}
+
+LGF_INLINE Level convertToLevel(std::string levelString)
+{
+	static const std::unordered_map<std::string,Level> localLevelsMap = {
+		{"NONE", Level::none},
+		{"ALL", Level::all},
+		{"DEBUG", Level::debug},
+		{"INFO", Level::info},
+		{"WARN", Level::warn},
+		{"ERROR", Level::error},
+		{"FATAL", Level::fatal},
+		{"TRACE", Level::trace} };
+
+	std::transform(levelString.begin(), levelString.end(), levelString.begin(), ::toupper);
+	auto const found = localLevelsMap.find(levelString);
+
+	if (found == localLevelsMap.cend())
+	{
+		//TODO: Change error handling
+		std::ostringstream error_msg;
+		error_msg << "Logging level doesnot exist for string :  " << levelString ;
+		throw std::runtime_error(error_msg.str());
+	}
+
+	return found->second;
+
 }
 
 LGF_INLINE int convertToInt(const Level level)

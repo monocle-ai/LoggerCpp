@@ -36,17 +36,21 @@ Contributors :
 #include "fmt/format.h"
 
 #define LGF_LITERAL(txt) (txt);
-#define LGF_CONSTEXPR constexpr auto
-#define LGF_STATIC_CONSTEXPR static LGF_CONSTEXPR
+#define LGF_CONSTEXPR_AUTO constexpr auto
+#define LGF_STATIC_CONSTEXPR static LGF_CONSTEXPR_AUTO
 #define LGF_INLINE inline
 #define LGF_FORCE_INLINE __forceinline
+#define LGF_FALLTHROUGH = [[fallthrough]]
+#define LGF_NODISCARD = [[nodiscard]]
+#define LGF_MAYBE_UNUSED = [[maybe_unused]]
+
 // NAMESPACE
 
 #define LGF_BEGIN namespace Lgfypp {
 #define LGF_END }
 #define LGF Lgfypp
 
-#define COLOR_BEGIN namespace Color {
+#define COLOR_BEGIN namespace Lgfypp::Color {
 #define COLOR_END }
 
 #define LGF_TRY try

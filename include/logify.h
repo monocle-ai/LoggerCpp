@@ -34,43 +34,19 @@ Contributors :
 #include "levelUtils_lgf.h"
 #include "logifyBuilder_lgf.h"
 #include "staticBase_lgf.h"
+#include "sourceInfo_lgf.h"
 
+#define LVL(x) Lgfypp::Level::##x
 
-class Log : public LGF::StaticBase
-{
-public:
-	// Functions for Warnings level
-	static void w(const char* msg);
-	static void warn(const char* msg);
-	template<typename... arguments>
-	static void w(const char* format, arguments&... args);
-	template<typename... arguments>
-	static void warn(const char* format, arguments&... args);
-};
-template<typename... arguments>
-inline void printf(LGF::Level level, const char* format, arguments... args) {
-	LGF::LogBuilder::log(level, format, __FUNCTION__, __LINE__, __FILENAME__, args...);
-};
+#define Log(...) GET_MACRO(__VA_ARGS__, LOGIFY1, LOGIFY2,...) (__VA_ARGS__)
+#define GET_MACRO(_1, _2, NAME, ...) NAME
 
-template<typename... arguments>
-inline void Logify(LGF::Level level, const char* format, arguments... args) {
-	LGF::LogBuilder::log(level, format, __FUNCTION__, __LINE__, __FILENAME__, args...);
-};
-template<typename... arguments>
-inline void Logify(const char* msg) {
-	LGF::LogBuilder::log(msg);
-};
-template<typename... arguments>
+#define LOGIFY1(message)            LGF::LogBuilder::logOnlyMsg(LGF::SourceInfo::current(__FILENAME__,__FUNCTION__,__LINE__,true),message)
+#define LOGIFY2(format,...)         LGF::LogBuilder::logWithFormat(LGF::SourceInfo::current(__FILENAME__,__FUNCTION__,__LINE__,true),format, __VA_ARGS__)
 
-inline void Logify(const char* format, arguments... args) {
-	LGF::LogBuilder::log(format, args...);
-};
+#define Logify(level,...)			Log( LVL(level),__VA_ARGS__)
+#define Logd(...)				    Log( LVL(debug),__VA_ARGS__)
+#define printf(...)					Log(__VA_ARGS__)
 
 #endif
-
-template<typename ...arguments>
-void Log::warn(const char* format, arguments& ...args)
-{
-	Lgfypp::LogBuilder::log(LGF::Level::warn, format, args...);
-}
 

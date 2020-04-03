@@ -5,6 +5,13 @@ inline void Lgfypp::Formatter::append(STRING_VIEW& s, fmt::memory_buffer& buf)
 	fmt::format_to(buf, s);
 }
 
+Lgfypp::Formatter::Formatter()
+{
+	chrono = std::make_unique<LGF::Chrono>(LGF::Chrono());
+	
+	buffer.reserve(200);
+}
+
 void Lgfypp::Formatter::appendFormattedSVToBuf(STRING_VIEW& somstring, fmt::memory_buffer& buf)
 {
 	fmt::format_to(buf, "[{}]s", somstring);

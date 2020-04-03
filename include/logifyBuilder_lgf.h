@@ -36,6 +36,7 @@ Contributors :
 #include "chrono_lgf.h"
 #include "sourceInfo_lgf.h"
 #include "levelUtils_lgf.h"
+#include "sourceInfo_lgf.h"
 
 LGF_BEGIN
 
@@ -43,82 +44,98 @@ class LogBuilder : public StaticBase
 {
 public:
 	template<typename... arguments>
-	static void log(Lgfypp::Level level, const char* format, const char* file, int line, const char* function, const arguments&... args) {
+	static void logWithLevel(std::tuple<const char*, const char*, int, uint32_t, int>& loc, Lgfypp::Level level, const char* format,arguments... args) {
 		fmt::memory_buffer buf;
 		Lgfypp::Chrono sds;
-		SourceInfo s1s(file, line, function);
+		auto [file, func, line, threadId, ProcessId] = loc;
+		fmt::format_to(buf, "{} {} {} {} {} ", file, func, line, threadId, ProcessId);
 		sds.getTimestamp(buf);
-		s1s.getFormattedSourceInfo(buf);
+		
 
 		Lgfypp::Formatter ff;
 		std::cout << toStringView(buf) << std::endl;
 		STRING_VIEW ssdds("ADSAD");
-		std::cout << "___________________________" << std::endl;
+
 		ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
-		std::cout << toStringView(buf) << std::endl;
+
 		auto [sName, name, color] = Lgfypp::getLevelDetails(level);
 
 		fmt::format_to(buf, name);
 		std::cout << "___________________________" << toStringView(buf) << std::endl;
 	}
 
-	template<typename... arguments>
-	static const STRING_VIEW logStringView(Lgfypp::Level level, const char* file, int line, const char* function, const arguments&... args)
-	{
-		fmt::memory_buffer buf;
-		Lgfypp::Chrono sds;
-		SourceInfo s1s(file, line, function);
-		sds.getTimestamp(buf);
-		s1s.getFormattedSourceInfo(buf);
-
-		Lgfypp::Formatter ff;
-		std::cout << toStringView(buf) << std::endl;
-		STRING_VIEW ssdds("ADSAD");
-		ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
-		return toStringView(buf);
-	}
-
-	template<typename... arguments>
-	static void log(const char* format, arguments&... args)
+	template<typename... arguments, typename S>
+	static void log(std::tuple<const char*, const char*, int, uint32_t, int>& loc,Lgfypp::Level level, const char* format, S msg)
 	{
 		LGF_TRY
 		{
 			fmt::memory_buffer buf;
-			SourceInfo s1s(__FILENAME__, 1, __FUNCTION__, true);
-
-			s1s.getFormattedSourceInfo(buf);
-			fmt::format_to(buf, format, args...);
+		auto [file, func, line, threadId, ProcessId] = loc;
+		fmt::format_to(buf, "{} {} {} {} {} ", file, func, line, threadId, ProcessId);
+			fmt::format_to(buf, format, msg);
 			std::cout << toStringView(buf) << std::endl;
 		}
 			LGF_CATCH()
 	}
-	template<typename... T>
-	static void log(Level level, const char* format, T&... args)
+	template<typename... arguments>
+	static void logWithFormat(std::tuple<const char*, const char*, int, uint32_t, int>& loc,const char* format, arguments... message)
 	{
 		LGF_TRY
 		{
 			fmt::memory_buffer buf;
-		auto [sName, name, color] = Lgfypp::getLevelDetails(level);
-
-			fmt::format_to(buf, name);
-			fmt::format_to(buf, format, args...);
-
+		auto [file, func, line, threadId, ProcessId] = loc;
+		fmt::format_to(buf, "{} {} {} {} {} ", file, func, line, threadId, ProcessId);
+						fmt::format_to(buf, format, message...);
 			std::cout << toStringView(buf) << std::endl;
 		}
 			LGF_CATCH()
 	}
-	template<typename... T>
-	static void log(const char* msg)
+	template<typename... arguments>
+	static void logWithFormat(std::tuple<const char*, const char*, int, uint32_t, int>& loc,LGF::Level level, const char* format, arguments... message)
 	{
 		LGF_TRY
 		{
 			fmt::memory_buffer buf;
+		    auto [file, func, line, threadId, ProcessId] = loc;
+			fmt::format_to(buf,"{} {} {} {} {} ", file, func, line, threadId, ProcessId);
+			fmt::format_to(buf, format, message...);
+			std::cout << toStringView(buf) << std::endl;
+		}
+			LGF_CATCH()
+	}
+
+
+	/*
+		template<typename... T>
+		static void log(Level level, const char* format, T&... args)
+		{
+			LGF_TRY
+			{
+				fmt::memory_buffer buf;
+			auto [sName, name, color] = Lgfypp::getLevelDetails(level);
+
+				fmt::format_to(buf, name);
+				fmt::format_to(buf, format, args...);
+
+				std::cout << toStringView(buf) << std::endl;
+			}
+				LGF_CATCH()
+		}
+	*/	
+	template<typename T>
+	static void logOnlyMsg(std::tuple<const char*, const char*, int, uint32_t, int>& loc, T msg)
+	{
+		LGF_TRY
+		{
+			fmt::memory_buffer buf;
+		auto [file, func, line, threadId, ProcessId] = loc;
+		fmt::format_to(buf, "{} {} {} {} {} ", file, func, line, threadId, ProcessId);
 			fmt::format_to(buf, msg);
 			std::cout << toStringView(buf) << std::endl;
 		}
 			LGF_CATCH()
 	}
-
+	
 	template<typename... arguments>
 	static void warn(const char* file, int line, const char* function, const arguments&... args) {
 		log(Lgfypp::Level::warn, file, line, function, args...);
