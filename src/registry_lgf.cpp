@@ -22,51 +22,59 @@ void Lgfypp::Registry<T>::initiateSystemLogger()
 template<typename T>
 bool Lgfypp::Registry<T>::checkIfExists(const char* key)
 {
-	return loggerMap.contains(key);
+	return loggerRegistry.contains(key);
 }
 
 template<typename T>
 bool Lgfypp::Registry<T>::checkIfEmpty()
 {
-	return loggerMap.empty();
+	return loggerRegistry.empty();
 }
 
 template<typename T>
 int Lgfypp::Registry<T>::size()
 {
-	return loggerMap.size();
+	return loggerRegistry.size();
 }
 
 template<typename T>
-void Lgfypp::Registry<T>::registerLogger(const char* key, T& value)
+LGF::Registry<T>& Lgfypp::Registry<T>::getInstance()
+{
+	static Registry sRegistry;
+	return sRegistry;
+}
+
+template<typename T>
+void Lgfypp::Registry<T>::registerLogger(const char* key, std::shared_ptr<T> value)
 {
 	if (!checkIfExists(key)) {
-		loggerMap.insert(std::make_pair(key, value));
+		loggerRegistry.insert(std::make_pair(key, std::move(value)));
 	}
 }
 
 template<typename T>
 T& Lgfypp::Registry<T>::getLogger(const char* key)
 {
-	return (checkIfExists(key)) ? loggerMap.at(key) : nullptr;
+	return (checkIfExists(key)) ? loggerRegistry.at(key) : nullptr;
 }
 
 template<typename T>
 void Lgfypp::Registry<T>::removeLogger(const char* key)
 {
 	std::lock_guard<std::mutex> gaurd(std::reg_mutex);
-	try {
-		loggerMap.erase(key);
+
+	LGF_TRY
+	{
+		loggerRegistry.erase(key);
 	}
-	catch (std::exception ex) {
-	}
+	LGF_CATCH()
 }
 
 template<typename T>
 void Lgfypp::Registry<T>::cleanRegistry()
 {
 	std::lock_guard<std::mutex> gaurd(std::reg_mutex);
-	for (auto it = loggerMap.begin(); it != loggerMap.end(); ++it) {
-		it = loggerMap.erase(it);
+	for (auto it = loggerRegistry.begin(); it != loggerRegistry.end(); ++it) {
+		it = loggerRegistry.erase(it);
 	}
 }

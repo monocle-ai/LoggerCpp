@@ -32,13 +32,19 @@ Contributors :
 #include "fmt/format.h"
 #include "core_lgf.h"
 #include "levelUtils_lgf.h"
+#include "sourceInfo_lgf.h"
+#include "chrono_lgf.h"
 LGF_BEGIN
 
 class Formatter
 {
 private:
+	
+	std::unique_ptr<LGF::Chrono> chrono;
+	fmt::memory_buffer buffer;
 	void append(STRING_VIEW& s, fmt::memory_buffer& buf);
 public:
+	Formatter();
 	void appendFormattedSVToBuf(STRING_VIEW& string, fmt::memory_buffer& buf);
 	void appendColorFormattedSVToBuf(STRING_VIEW& string, const char* color, fmt::memory_buffer& buf);
 	void appendColorSVToBuf(STRING_VIEW& string, const char* color, fmt::memory_buffer& buf);

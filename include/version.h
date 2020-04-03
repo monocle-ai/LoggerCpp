@@ -30,17 +30,18 @@ Contributors :
 #pragma once
 #include "core_lgf.h"
 #include "fmt/format.h"
+#include "fmt/color.h"
 
 //PROJECT DETAILS
-LGF_CONSTEXPR VER_MAJOR = 0;
-LGF_CONSTEXPR VER_MINOR = 0;
-LGF_CONSTEXPR VER_PATCH = 0;
-LGF_CONSTEXPR PROJECT = "Logify++";
+LGF_CONSTEXPR_AUTO VER_MAJOR = 0;
+LGF_CONSTEXPR_AUTO VER_MINOR = 0;
+LGF_CONSTEXPR_AUTO VER_PATCH = 0;
+LGF_CONSTEXPR_AUTO PROJECT = "Logify++";
 
-LGF_CONSTEXPR VERSION(VER_MAJOR * 1000 + VER_MINOR * 100 + VER_PATCH);
+LGF_CONSTEXPR_AUTO VERSION(VER_MAJOR * 1000 + VER_MINOR * 100 + VER_PATCH);
 
 inline void getProjectVersion()
 {
 	fmt::memory_buffer buf;
-	fmt::print("{} : version {}.{}.{}", PROJECT, VER_MAJOR, VER_MINOR , VER_PATCH);
+	fmt::print(fmt::emphasis::bold | fg(fmt::color::aquamarine),"{} : version {}.{}.{}", PROJECT, VER_MAJOR, VER_MINOR , VER_PATCH);
 };

@@ -29,25 +29,47 @@ Contributors :
 #pragma once
 #ifndef LGF_SOURCE_INFO
 #define LGF_SOURCE_INFO
+
+#if defined(__linux__)
+#include <sys/syscall.h>
+#include <unistd.h>
+#endif
 #include "fmt/format.h"
 #include "core_lgf.h"
 #include <thread>
-
+#include <tuple>
+#include <windows.h>
+#pragma comment(lib, "user32.lib")
 LGF_BEGIN
+
 class SourceInfo
 {
 private:
-	const char* mFunction;
-	int mLineNumber = 0;
-	const char* mFileName;
-	bool mThreadInfoReq = false;
-	void addThreadInfo(fmt::memory_buffer& buf);
+	SourceInfo() {}
+	LGF_INLINE static uint32_t getThreadId() noexcept {
+#if defined(_WIN32)
+		return static_cast<uint32_t>(::GetCurrentThreadId());
+#else defined(__linux__)
+		return static_cast<uint32_t>(::syscall(SYS_gettid));
+#endif
+	}
+	LGF_INLINE static int getProcessId() noexcept {
+#ifdef _WIN32
+		return static_cast<int>(::GetCurrentProcessId());
+#else
+		return static_cast<int>(::getpid());
+#endif
+	}
+
 public:
-	SourceInfo();
-	~SourceInfo();
-	SourceInfo(const char* function, int line, const char* file);
-	SourceInfo(const char* function, int line, const char* file, bool threadInfoReq);
-	void getFormattedSourceInfo(fmt::memory_buffer& buf);
+	LGF_INLINE static std::tuple<const char*, const char*, int, uint32_t, int> current(const char* file, const char* func, int line, bool threadInfoReq = false) noexcept {
+		if (line != 0 && threadInfoReq) {
+			return  { file, func, line , getThreadId(), getProcessId() };
+		}
+		return  { file, func, line, 0, 0 };
+	}
+
+	~SourceInfo() {}
 };
 
 LGF_END
