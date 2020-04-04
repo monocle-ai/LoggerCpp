@@ -3,23 +3,23 @@
 #include <string>
 #include <fstream>
 #include <unordered_map>
-#include <algorithm>
+#include "logifyHelper_lgf.h"
 #include "interface/iConfigReader_lgf.h"
 
 namespace LGF
 {
 ConfigReader::ConfigReader(
-	const STRING_VIEW configFilePath)
-	: m_configFilePath(configFilePath) {}
+	const std::string& configFilePath)
+	: m_configFilePath(configFilePath){}
 
-/*Lgfypp::IConfigReaderSharedPtr& Lgfypp::ConfigReader::configReaderFactory(
-	const STRING_VIEW configFilePath)
+/*Lgfypp::IConfigReaderSharedPtr& ConfigReader::configReaderFactory(
+	const std::string& configFilePath)
 {
-	if (!configFilePath.empty())
+	if (configFilePath.empty())
 	{
-		return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(configFilePath));
+		return Lgfypp::IConfigReaderSharedPtr(nullptr);
 	}
-	return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(STRING_VIEW{""}));
+	return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(configFilePath));
 }*/
 
 std::unordered_map<std::string, std::string> ConfigReader::getLoggerConfiguration() const
@@ -40,7 +40,8 @@ std::unordered_map<std::string, std::string> ConfigReader::getLoggerConfiguratio
 			}
 		}
 	}
-	return discardInvalidConfig(globalConfigs);
+	static auto lgfHelper = Lgfypp::LgfHelper::getHelperInstance();
+	return lgfHelper.discardInvalidConfig(globalConfigs);
 }
 
 STRING_VIEW ConfigReader::covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const
@@ -48,22 +49,4 @@ STRING_VIEW ConfigReader::covertToStringView(fmt::memory_buffer& buffer, const s
 	fmt::format_to(buffer, config);
 	return toStringView(buffer);
 }
-
-/*
-	Discard Illegal or invalid configs and respective values.
-	If the config names are valid but values are not, replace with a default. 
-	If the config names are invaild that <Key, value> will be deleted.
-*/
-
-std::unordered_map<std::string, std::string> ConfigReader::discardInvalidConfig(std::unordered_map<std::string, std::string>& gConfig) const
-{
-	auto it = gConfig.begin();
-	while(it != gConfig.end())
-	{
-		(it->first == "Level" || it->first == "Precision"
-			|| it->first == "TimeFormat" || it->first == "Color") ? (++it) : (it = gConfig.erase(it));
-	}
-	return gConfig;
-}
-
 }

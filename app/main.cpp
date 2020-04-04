@@ -9,8 +9,23 @@
 
 void someFunction()
 {
-
+	const std::string configFile = "F:/LoggerCpp/configFiles/configLogger.config";
+	static Lgfypp::IConfigReaderSharedPtr configReader(new Lgfypp::ConfigReader(configFile));
+	if (configReader)
+	{
+		int a = 15;
+		std::unordered_map<std::string, std::string> gConfig = configReader->getLoggerConfiguration();
+		for (auto& eachKV : gConfig)
+		{
+			std::cout << "\n ConfigKey = " << eachKV.first << " ConfigValue = " << eachKV.second << std::endl;
+		}
+	}
+	else
+	{
+		return;
+	}
 }
+
 int main()
 {
 	Log("One Msg");
@@ -27,13 +42,5 @@ int main()
 	Logd("format {} one msg", "sdse Msg");
 	someFunction();
 	std::cout << (Lgfypp::Level::all == Lgfypp::convertToLevel("All")) << std::endl;
-
-	std::string_view configFile = { "F:/LoggerCpp/configFiles/configLogger.config" };
-	Lgfypp::IConfigReaderSharedPtr configReader(new Lgfypp::ConfigReader(configFile));
-	std::unordered_map<std::string, std::string> gConfig = configReader->getLoggerConfiguration();
-	for (auto& eachKV : gConfig)
-	{
-		std::cout << "\n ConfigKey = " << eachKV.first << " ConfigValue = " << eachKV.second << std::endl;
-	}
 	return 0;
 }

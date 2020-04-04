@@ -51,8 +51,10 @@ LGF_CONSTEXPR_AUTO MIN_LEVEL = Level::all;
 LGF_CONSTEXPR_AUTO MAX_LEVEL = Level::error;
 LGF_CONSTEXPR_AUTO DEF_LEVEL = Level::all;
 
-LGF_INLINE const std::tuple<const char*, const char*, const char*> getLevelDetails(Level level) {
-	switch (level) {
+LGF_INLINE const std::tuple<const char*, const char*, const char*> getLevelDetails(Level level)
+{
+	switch (level)
+	{
 	case Level::all:   return { "A", "ALL",   Color::LIGHT_BLUE };
 	case Level::debug: return { "D", "DEBUG", Color::GREEN };
 	case Level::info:  return { "I", "INFO",  Color::CYAN };
@@ -98,12 +100,11 @@ LGF_INLINE Level convertToLevel(std::string levelString)
 	{
 		//TODO: Change error handling
 		std::ostringstream error_msg;
-		error_msg << "Logging level doesnot exist for string :  " << levelString ;
+		error_msg << "Logging level does not exist for string :  " << levelString ;
 		throw std::runtime_error(error_msg.str());
 	}
 
 	return found->second;
-
 }
 
 LGF_INLINE int convertToInt(const Level level)

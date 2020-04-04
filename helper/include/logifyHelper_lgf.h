@@ -27,31 +27,23 @@ Author		 : Dipanjan Das
 Contributors :
 */
 #pragma once
-#ifndef LGF_CONFIGREADER_H
-#define LGF_CONFIGREADER_H
+#ifndef LGF_LGFHELPER_H
+#define LGF_LGFHELPER_H
 
-#include<memory.h>
 #include "core_lgf.h"
-#include "levelUtils_lgf.h"
-#include "interface/iConfigReader_lgf.h"
 
 LGF_BEGIN
 
-class Lgfypp::IConfigReader;
-typedef std::shared_ptr<Lgfypp::IConfigReader> IConfigReaderSharedPtr;
-
-class ConfigReader sealed : public virtual IConfigReader
+class LgfHelper
 {
 	public:
-		explicit ConfigReader(const std::string& configFilePath); //TODO: Move to private when Factroy is working.
-		//static Lgfypp::IConfigReaderSharedPtr& configReaderFactory(const std::string& configFilePath); //TODO: //DO NOT DELETE 
-		virtual std::unordered_map<std::string, std::string> getLoggerConfiguration() const override;
+		static LgfHelper& getHelperInstance();
+		std::unordered_map<std::string, std::string> discardInvalidConfig(std::unordered_map<std::string, std::string>& gConfig) const;
+		~LgfHelper();
 	private:
-		const std::string m_configFilePath;
-		ConfigReader(const ConfigReader&) = delete;
-		ConfigReader& operator=(const ConfigReader&) = delete;
-		STRING_VIEW covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const;
+		LgfHelper();
 };
+
 LGF_END
 
 #endif
