@@ -50,6 +50,7 @@ class ConfigReader : public IConfigReader
 	private:
 		const STRING_VIEW m_configFilePath;
 		STRING_VIEW covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const;
+		std::unordered_map<std::string, std::string> discardInvalidConfig(const std::unordered_map<std::string, std::string>& gConfig) const;
 };
 
 LGF_END

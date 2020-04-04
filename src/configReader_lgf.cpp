@@ -37,8 +37,6 @@ std::unordered_map<std::string, std::string> ConfigReader::getLoggerConfiguratio
 				fmt::memory_buffer bufVal;
 				std::string configKey = configLine.substr(0, configDelimiter);
 				std::string configVal = configLine.substr(configDelimiter + 1);
-				//STRING_VIEW configKey = covertToStringView(bufVar, configLine.substr(0, configDelimiter));
-				//STRING_VIEW configVal = covertToStringView(bufVal, configLine.substr(configDelimiter + 1));
 				std::cout << "\nconfig name is: " << configKey << " config val is: " << configVal << std::endl;
 				globalConfigs.emplace(configKey, configVal);
 			}
@@ -51,6 +49,17 @@ STRING_VIEW ConfigReader::covertToStringView(fmt::memory_buffer& buffer, const s
 {
 	fmt::format_to(buffer, config);
 	return toStringView(buffer);
+}
+
+/*
+	Discard Illegal or invalid configs and respective values.
+	If the config names are valid but values are not, replace with a default. 
+	If the config names are invaild that <Key, value> will be deleted.
+*/
+
+std::unordered_map<std::string, std::string> ConfigReader::discardInvalidConfig(const std::unordered_map<std::string, std::string>& gConfig) const
+{
+	return std::unordered_map<std::string, std::string>();
 }
 
 }
