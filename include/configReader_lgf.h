@@ -49,8 +49,8 @@ class ConfigReader sealed : public IConfigReader
 		const std::string m_configFilePath;
 		ConfigReader(const ConfigReader&) = delete;
 		ConfigReader& operator=(const ConfigReader&) = delete;
-		STRING_VIEW covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const;
 };
+
 LGF_END
 
 #endif

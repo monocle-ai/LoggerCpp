@@ -43,10 +43,4 @@ std::unordered_map<std::string, std::string> Lgfypp::ConfigReader::getLoggerConf
 	static auto lgfHelper = Lgfypp::LgfHelper::getHelperInstance();
 	return lgfHelper.discardInvalidConfig(globalConfigs);
 }
-
-STRING_VIEW Lgfypp::ConfigReader::covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const
-{
-	fmt::format_to(buffer, config);
-	return toStringView(buffer);
-}
 }
