@@ -37,10 +37,9 @@ Contributors :
 
 LGF_BEGIN
 
-class Lgfypp::IConfigReader;
 typedef std::shared_ptr<Lgfypp::IConfigReader> IConfigReaderSharedPtr;
 
-class ConfigReader sealed : public virtual IConfigReader
+class ConfigReader sealed : public IConfigReader
 {
 	public:
 		explicit ConfigReader(const std::string& configFilePath); //TODO: Move to private when Factroy is working.

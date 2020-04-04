@@ -1,4 +1,6 @@
 #include "logifyHelper_lgf.h"
+#include "levelUtils_lgf.h"
+#include<iostream>
 #include<unordered_set>
 
 namespace Lgfypp
