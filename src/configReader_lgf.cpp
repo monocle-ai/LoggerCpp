@@ -6,11 +6,11 @@
 #include "logifyHelper_lgf.h"
 #include "interface/iConfigReader_lgf.h"
 
-namespace LGF
+namespace Lgfypp
 {
-ConfigReader::ConfigReader(
-	const std::string& configFilePath)
-	: m_configFilePath(configFilePath){}
+Lgfypp::ConfigReader::ConfigReader(
+const std::string& configFilePath)
+: m_configFilePath(configFilePath){}
 
 /*Lgfypp::IConfigReaderSharedPtr& ConfigReader::configReaderFactory(
 	const std::string& configFilePath)
@@ -22,7 +22,7 @@ ConfigReader::ConfigReader(
 	return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(configFilePath));
 }*/
 
-std::unordered_map<std::string, std::string> ConfigReader::getLoggerConfiguration() const
+std::unordered_map<std::string, std::string> Lgfypp::ConfigReader::getLoggerConfiguration() const
 {
 	std::ifstream configFile(m_configFilePath.data());
 	std::unordered_map<std::string, std::string> globalConfigs;
@@ -44,7 +44,7 @@ std::unordered_map<std::string, std::string> ConfigReader::getLoggerConfiguratio
 	return lgfHelper.discardInvalidConfig(globalConfigs);
 }
 
-STRING_VIEW ConfigReader::covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const
+STRING_VIEW Lgfypp::ConfigReader::covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const
 {
 	fmt::format_to(buffer, config);
 	return toStringView(buffer);
