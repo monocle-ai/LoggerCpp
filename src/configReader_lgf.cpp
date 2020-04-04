@@ -60,17 +60,8 @@ std::unordered_map<std::string, std::string> ConfigReader::discardInvalidConfig(
 	auto it = gConfig.begin();
 	while(it != gConfig.end())
 	{
-		if (it->first == "Level" 
-			|| it->first == "Precision"
-			|| it->first == "TimeFormat"
-			|| it->first == "Color")
-		{
-			++it;
-		}
-		else
-		{
-			it = gConfig.erase(it);
-		}
+		(it->first == "Level" || it->first == "Precision"
+			|| it->first == "TimeFormat" || it->first == "Color") ? (++it) : (it = gConfig.erase(it));
 	}
 	return gConfig;
 }
