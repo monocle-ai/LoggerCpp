@@ -33,12 +33,9 @@ std::unordered_map<std::string, std::string> ConfigReader::getLoggerConfiguratio
 			auto configDelimiter = configLine.find("=");
 			if (configDelimiter != std::string::npos)
 			{
-				fmt::memory_buffer bufVar;
-				fmt::memory_buffer bufVal;
-				std::string configKey = configLine.substr(0, configDelimiter);
-				std::string configVal = configLine.substr(configDelimiter + 1);
-				std::cout << "\nconfig name is: " << configKey << " config val is: " << configVal << std::endl;
-				globalConfigs.emplace(configKey, configVal);
+				globalConfigs.emplace(
+					configLine.substr(0, configDelimiter),
+					configLine.substr(configDelimiter + 1));
 			}
 		}
 	}
@@ -59,6 +56,7 @@ STRING_VIEW ConfigReader::covertToStringView(fmt::memory_buffer& buffer, const s
 
 std::unordered_map<std::string, std::string> ConfigReader::discardInvalidConfig(const std::unordered_map<std::string, std::string>& gConfig) const
 {
+
 	return std::unordered_map<std::string, std::string>();
 }
 
