@@ -1,4 +1,5 @@
 #include "logifyHelper_lgf.h"
+#include<unordered_set>
 
 namespace Lgfypp
 {
@@ -21,12 +22,12 @@ LgfHelper& LgfHelper::getHelperInstance()
 */
 std::unordered_map<std::string, std::string> LgfHelper::discardInvalidConfig(std::unordered_map<std::string, std::string>& gConfig) const
 {
+	std::unordered_set<std::string> configs = { "Level", "Precision" , "TimeFormat", "Color" };
 	auto it = gConfig.begin();
 	while (it != gConfig.end())
 	{
-		(it->first == "Level" || it->first == "Precision"
-			|| it->first == "TimeFormat" || it->first == "Color") ? (++it) : (it = gConfig.erase(it));
-
+		auto findConfig = configs.find(it->first);
+		(findConfig != configs.end()) ? (++it) : (it = gConfig.erase(it));
 	}
 	return gConfig;
 }
