@@ -113,7 +113,7 @@ public:
 		const auto nowAsTimeT = std::chrono::system_clock::to_time_t(now);
 		auto timeinfo = fmt::localtime(nowAsTimeT);
 		fmt::format_to(buf, "{:%F %T}.{:0^3}", timeinfo, subsec);
-	
+
 		auto [file, func, line, threadId, ProcessId] = loc;
 		fmt::format_to(buf, " {} {} {} {} {} ", file, func, line, threadId, ProcessId);
 			fmt::format_to(buf, format, message...);
@@ -122,6 +122,23 @@ public:
 			LGF_CATCH()
 	}
 
+
+	template<typename... T>
+	static std::string_view log(Level level, const char* format, T&... args)
+	{
+		LGF_TRY
+		{
+			fmt::memory_buffer buf;
+		auto [sName, name, color] = Lgfypp::getLevelDetails(level);
+
+			fmt::format_to(buf, name);
+			fmt::format_to(buf, format, args...);
+
+			std::cout << toStringView(buf) << std::endl;
+			return toStringView(buf);
+		}
+			LGF_CATCH()
+	}
 	template<typename T>
 	static void logOnlyMsg(std::tuple<const char*, const char*, int, uint32_t, int>& loc, T msg)
 	{
@@ -130,7 +147,7 @@ public:
 			fmt::memory_buffer buf;
 		auto [file, func, line, threadId, ProcessId] = loc;
 		fmt::format_to(buf, "{} {} {} {} {} ", file, func, line, threadId, ProcessId);
-		
+
 			fmt::format_to(buf, msg);
 			std::cout << toStringView(buf) << std::endl;
 		}

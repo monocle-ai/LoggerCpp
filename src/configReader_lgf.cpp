@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <unordered_map>
 #include <algorithm>
 #include "interface/iConfigReader_lgf.h"
 
@@ -11,7 +12,7 @@ ConfigReader::ConfigReader(
 	const STRING_VIEW configFilePath)
 	: m_configFilePath(configFilePath) {}
 
-Lgfypp::IConfigReaderSharedPtr& Lgfypp::ConfigReader::configReaderFactory(
+/*Lgfypp::IConfigReaderSharedPtr& Lgfypp::ConfigReader::configReaderFactory(
 	const STRING_VIEW configFilePath)
 {
 	if (!configFilePath.empty())
@@ -19,7 +20,7 @@ Lgfypp::IConfigReaderSharedPtr& Lgfypp::ConfigReader::configReaderFactory(
 		return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(configFilePath));
 	}
 	return Lgfypp::IConfigReaderSharedPtr(new ConfigReader(STRING_VIEW{""}));
-}
+}*/
 
 std::unordered_map<std::string, std::string> ConfigReader::getLoggerConfiguration() const
 {
@@ -39,7 +40,7 @@ std::unordered_map<std::string, std::string> ConfigReader::getLoggerConfiguratio
 			}
 		}
 	}
-	return globalConfigs;
+	return discardInvalidConfig(globalConfigs);
 }
 
 STRING_VIEW ConfigReader::covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const
@@ -54,10 +55,24 @@ STRING_VIEW ConfigReader::covertToStringView(fmt::memory_buffer& buffer, const s
 	If the config names are invaild that <Key, value> will be deleted.
 */
 
-std::unordered_map<std::string, std::string> ConfigReader::discardInvalidConfig(const std::unordered_map<std::string, std::string>& gConfig) const
+std::unordered_map<std::string, std::string> ConfigReader::discardInvalidConfig(std::unordered_map<std::string, std::string>& gConfig) const
 {
-
-	return std::unordered_map<std::string, std::string>();
+	auto it = gConfig.begin();
+	while(it != gConfig.end())
+	{
+		if (it->first == "Level" 
+			|| it->first == "Precision"
+			|| it->first == "TimeFormat"
+			|| it->first == "Color")
+		{
+			++it;
+		}
+		else
+		{
+			it = gConfig.erase(it);
+		}
+	}
+	return gConfig;
 }
 
 }

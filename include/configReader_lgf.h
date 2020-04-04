@@ -32,8 +32,6 @@ Contributors :
 
 //#include<memory.h>
 #include "core_lgf.h"
-#include "fmt/printf.h"
-
 #include "interface/iConfigReader_lgf.h"
 
 LGF_BEGIN
@@ -45,12 +43,12 @@ class ConfigReader : public IConfigReader
 {
 	public:
 		explicit ConfigReader(const STRING_VIEW configFilePath); //TODO: Move to private when Factroy is working.
-		static Lgfypp::IConfigReaderSharedPtr& configReaderFactory(const STRING_VIEW configFilePath); //TODO: //DO NOT DELETE 
+		//static Lgfypp::IConfigReaderSharedPtr& configReaderFactory(const STRING_VIEW configFilePath); //TODO: //DO NOT DELETE 
 		virtual std::unordered_map<std::string, std::string> getLoggerConfiguration() const override;
 	private:
 		const STRING_VIEW m_configFilePath;
 		STRING_VIEW covertToStringView(fmt::memory_buffer& buffer, const std::string& config) const;
-		std::unordered_map<std::string, std::string> discardInvalidConfig(const std::unordered_map<std::string, std::string>& gConfig) const;
+		std::unordered_map<std::string, std::string> discardInvalidConfig(std::unordered_map<std::string, std::string>& gConfig) const;
 };
 
 LGF_END
