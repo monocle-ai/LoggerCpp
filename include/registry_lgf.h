@@ -45,13 +45,14 @@ private:
 	~Registry();
 	void initiateDefaultLogger();
 	void initiateSystemLogger();
-	static std::mutex reg_mutex;
 	std::unordered_map<const char*, std::shared_ptr<T> > loggerRegistry;
 	bool checkIfExists(const char* key);
 	bool checkIfEmpty();
 	int size();
 	void removeLogger(const char* key);
 	void cleanRegistry();
+	static std::mutex reg_mutex;
+
 public:
 	static Registry& getInstance();
 	void registerLogger(const char* key, std::shared_ptr<T> value);

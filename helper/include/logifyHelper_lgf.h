@@ -29,7 +29,7 @@ Contributors :
 #pragma once
 #ifndef LGF_LGFHELPER_H
 #define LGF_LGFHELPER_H
-#define WHITESPACES " \t"
+constexpr auto WHITESPACES = " \t";
 #include "core_lgf.h"
 
 LGF_BEGIN

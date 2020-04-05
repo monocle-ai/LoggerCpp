@@ -4,7 +4,7 @@
 #include<algorithm>
 #include<string>
 #include<unordered_set>
-#include <sys/stat.h>
+#include<sys/stat.h>
 
 namespace Lgfypp
 {
