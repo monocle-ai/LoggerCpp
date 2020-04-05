@@ -29,7 +29,7 @@ Contributors :
 #pragma once
 #ifndef LGF_LGFHELPER_H
 #define LGF_LGFHELPER_H
-
+#define WHITESPACES " \t"
 #include "core_lgf.h"
 
 LGF_BEGIN
@@ -39,6 +39,9 @@ class LgfHelper
 	public:
 		static LgfHelper& getHelperInstance();
 		std::unordered_map<std::string, std::string> discardInvalidConfig(std::unordered_map<std::string, std::string>& gConfig) const;
+		std::string stringTrim(std::string str);
+		std::string toUpperCase(std::string& str) const;
+		std::string toLowerCase(std::string& str) const;
 		~LgfHelper();
 	private:
 		LgfHelper();

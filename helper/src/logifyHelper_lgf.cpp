@@ -1,6 +1,8 @@
 #include "logifyHelper_lgf.h"
 #include "levelUtils_lgf.h"
 #include<iostream>
+#include<algorithm>
+#include<string>
 #include<unordered_set>
 
 namespace Lgfypp
@@ -32,5 +34,22 @@ std::unordered_map<std::string, std::string> LgfHelper::discardInvalidConfig(std
 		(findConfig != configs.end()) ? (++it) : (it = gConfig.erase(it));
 	}
 	return gConfig;
+}
+std::string LgfHelper::stringTrim(std::string str)
+{
+	auto lSpace = str.find_first_not_of(WHITESPACES);
+	str = (lSpace == std::string::npos) ? "" : str.substr(lSpace);
+	auto rSpace = str.find_last_not_of(WHITESPACES);
+	return (rSpace == std::string::npos) ? "" : str.substr(0, rSpace + 1);
+}
+std::string LgfHelper::toUpperCase(std::string& str) const
+{
+	std::transform(str.begin(), str.end(), str.begin(), ::toupper);
+	return str;
+}
+std::string LgfHelper::toLowerCase(std::string& str) const
+{
+	std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+	return str;
 }
 }
