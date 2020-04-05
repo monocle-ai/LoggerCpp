@@ -42,6 +42,7 @@ class LgfHelper
 		std::string stringTrim(std::string str);
 		std::string toUpperCase(std::string& str) const;
 		std::string toLowerCase(std::string& str) const;
+		bool doesFileExist(const std::string& fileName) const;
 		~LgfHelper();
 	private:
 		LgfHelper();

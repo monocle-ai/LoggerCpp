@@ -35,7 +35,8 @@ Contributors :
 
 LGF_BEGIN
 
-enum class Level : uint32_t {
+enum class Level : uint32_t
+{
 	none  = 0,
 	all   = 1,
 	trace = 2,
@@ -68,7 +69,8 @@ LGF_INLINE const std::tuple<const char*, const char*, const char*> getLevelDetai
 };
 LGF_INLINE Level convertToLevel(int levelInt)
 {
-	switch (levelInt) {
+	switch (levelInt)
+	{
 	case 0: return Level::none;
 	case 1: return Level::all;
 	case 2: return Level::trace;
@@ -83,7 +85,8 @@ LGF_INLINE Level convertToLevel(int levelInt)
 
 LGF_INLINE Level convertToLevel(std::string levelString)
 {
-	static const std::unordered_map<std::string,Level> localLevelsMap = {
+	static const std::unordered_map<std::string,Level> localLevelsMap =
+	{
 		{"NONE", Level::none},
 		{"ALL", Level::all},
 		{"DEBUG", Level::debug},
@@ -91,7 +94,8 @@ LGF_INLINE Level convertToLevel(std::string levelString)
 		{"WARN", Level::warn},
 		{"ERROR", Level::error},
 		{"FATAL", Level::fatal},
-		{"TRACE", Level::trace} };
+		{"TRACE", Level::trace}
+	};
 
 	std::transform(levelString.begin(), levelString.end(), levelString.begin(), ::toupper);
 	auto const found = localLevelsMap.find(levelString);

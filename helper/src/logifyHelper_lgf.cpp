@@ -4,15 +4,19 @@
 #include<algorithm>
 #include<string>
 #include<unordered_set>
+#include <sys/stat.h>
 
 namespace Lgfypp
 {
+
 LgfHelper::LgfHelper()
 {
 }
+
 LgfHelper::~LgfHelper()
 {
 }
+
 LgfHelper& LgfHelper::getHelperInstance()
 {
 	static LgfHelper lgfHelper;
@@ -35,6 +39,10 @@ std::unordered_map<std::string, std::string> LgfHelper::discardInvalidConfig(std
 	}
 	return gConfig;
 }
+
+/*
+	Left-Right String Trimmer.
+*/
 std::string LgfHelper::stringTrim(std::string str)
 {
 	auto lSpace = str.find_first_not_of(WHITESPACES);
@@ -42,14 +50,22 @@ std::string LgfHelper::stringTrim(std::string str)
 	auto rSpace = str.find_last_not_of(WHITESPACES);
 	return (rSpace == std::string::npos) ? "" : str.substr(0, rSpace + 1);
 }
+
 std::string LgfHelper::toUpperCase(std::string& str) const
 {
 	std::transform(str.begin(), str.end(), str.begin(), ::toupper);
 	return str;
 }
+
 std::string LgfHelper::toLowerCase(std::string& str) const
 {
 	std::transform(str.begin(), str.end(), str.begin(), ::tolower);
 	return str;
 }
+bool LgfHelper::doesFileExist(const std::string& fileName) const
+{
+	struct stat buffer;
+	return (stat(fileName.c_str(), &buffer) == 0);
+}
+
 }
