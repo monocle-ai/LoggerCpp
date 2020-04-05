@@ -24,7 +24,7 @@ LgfHelper& LgfHelper::getHelperInstance()
 */
 std::unordered_map<std::string, std::string> LgfHelper::discardInvalidConfig(std::unordered_map<std::string, std::string>& gConfig) const
 {
-	std::unordered_set<std::string> configs = { "Level", "Precision" , "TimeFormat", "Color" };
+	std::unordered_set<std::string> configs = { "LEVEL", "PRECISION" , "TIMEFORMAT", "COLOR" };
 	auto it = gConfig.begin();
 	while (it != gConfig.end())
 	{

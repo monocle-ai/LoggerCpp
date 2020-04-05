@@ -1,8 +1,7 @@
 #include "configReader_lgf.h"
-#include <iostream>
 #include <string>
 #include <fstream>
-#include <unordered_map>
+#include <algorithm>
 #include "logifyHelper_lgf.h"
 #include "interface/iConfigReader_lgf.h"
 
@@ -34,13 +33,16 @@ std::unordered_map<std::string, std::string> Lgfypp::ConfigReader::getLoggerConf
 			auto configDelimiter = configLine.find("=");
 			if (configDelimiter != std::string::npos)
 			{
-				globalConfigs.emplace(
-					configLine.substr(0, configDelimiter),
-					configLine.substr(configDelimiter + 1));
+				auto key = configLine.substr(0, configDelimiter);
+				auto val = configLine.substr(configDelimiter + 1);
+				std::transform(key.begin(), key.end(), key.begin(), ::toupper);
+				std::transform(val.begin(), val.end(), val.begin(), ::toupper);
+				globalConfigs.emplace(key, val);
 			}
 		}
 	}
 	static auto lgfHelper = Lgfypp::LgfHelper::getHelperInstance();
 	return lgfHelper.discardInvalidConfig(globalConfigs);
 }
+
 }
