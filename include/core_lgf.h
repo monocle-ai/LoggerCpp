@@ -40,11 +40,18 @@ Contributors :
 #define LGF_STATIC_CONSTEXPR static LGF_CONSTEXPR_AUTO
 #define LGF_INLINE inline
 #define LGF_FORCE_INLINE __forceinline
-#define LGF_FALLTHROUGH = [[fallthrough]]
-#define LGF_NODISCARD = [[nodiscard]]
-#define LGF_MAYBE_UNUSED = [[maybe_unused]]
 
-// NAMESPACE
+// Attributes
+#define LGF_FALLTHROUGH    [[fallthrough]]
+#define LGF_NODISCARD      [[nodiscard]]
+#define LGF_MAYBE_UNUSED   [[maybe_unused]]
+#define LGF_MAYBE_USED     [[maybe_used]]
+#define LGF_NORETURN       [[noreturn]]
+#define LGF_DEPRECATED     [[deprecated]]
+
+
+// ------------------ NAMESPACES ----------------------------
+
 
 #define LGF_BEGIN namespace Lgfypp {
 #define LGF_END }
@@ -52,6 +59,9 @@ Contributors :
 
 #define COLOR_BEGIN namespace Lgfypp::Color {
 #define COLOR_END }
+
+#define INTERNAL_BEGIN namespace Lgfypp::Internal {
+#define INTERNAL_END }
 
 #define LGF_TRY try
 #define LGF_CATCH()                            \

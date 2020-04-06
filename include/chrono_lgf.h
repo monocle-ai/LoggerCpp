@@ -80,6 +80,7 @@ public:
 	 * @returns : a tuple containing the time info and the subsecond info
 	 */
 	std::tuple<tm, long long> getTimestamp(fmt::memory_buffer& buf);
+	std::tuple<tm, long long> getTimestamp();
 };
 
 LGF_END // Lgfypp Namespace end

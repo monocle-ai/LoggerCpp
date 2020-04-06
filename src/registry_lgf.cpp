@@ -14,7 +14,7 @@ void Lgfypp::Registry<T>::initiateDefaultLogger()
 	//TODO
 }
 template<typename T>
-void Lgfypp::Registry<T>::initiateSystemLogger()
+ void Lgfypp::Registry<T>::initiateSystemLogger()
 {
 	//TODO
 }

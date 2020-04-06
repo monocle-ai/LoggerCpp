@@ -62,7 +62,7 @@ private:
 	}
 
 public:
-	LGF_INLINE static std::tuple<const char*, const char*, int, uint32_t, int> current(const char* file, const char* func, int line, bool threadInfoReq = false) noexcept {
+	LGF_INLINE static std::tuple<const char*, const char*, int, uint32_t, int> current(const char* file, const char* func, int line, bool threadInfoReq = true) noexcept {
 		if (line != 0 && threadInfoReq) {
 			return  { file, func, line , getThreadId(), getProcessId() };
 		}

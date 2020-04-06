@@ -15,6 +15,17 @@ std::tuple<tm, long long> LGF::Chrono::getTimestamp(fmt::memory_buffer& buf)
 
 }
 
+std::tuple<tm, long long> LGF::Chrono::getTimestamp()
+{
+	const auto now = std::chrono::system_clock::now();
+	const auto nowAsTimeT = std::chrono::system_clock::to_time_t(now);
+	const auto nowMs = getSecondsWithPrecision(now);
+	auto timeinfo = fmt::localtime(nowAsTimeT);
+
+	return { timeinfo, nowMs };
+
+}
+
 LGF_INLINE long long  LGF::Chrono::getSecondsWithPrecision(std::chrono::system_clock::time_point const now)
 {
 	switch (gPrecision) {
