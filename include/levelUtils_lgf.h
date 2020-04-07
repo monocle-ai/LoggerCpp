@@ -60,7 +60,7 @@ LGF_INLINE const std::tuple<const char*, const char*, const char*> getLevelDetai
 	case Level::error: return { "E", "ERROR", Color::RED };
 	case Level::fatal: return { "F", "FATAL", Color::RED };
 	case Level::trace: return { "T", "TRACE", Color::LIGHT_CYAN };
-	case Level::none : return { "N", "TRACE", "" };
+	case Level::none : return { "N", "NONE", "" };
 	default: return {};
 	}
 };
