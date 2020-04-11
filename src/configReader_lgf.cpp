@@ -4,7 +4,7 @@
 #include <algorithm>
 #include "logifyHelper_lgf.h"
 #include "interface/iConfigReader_lgf.h"
-
+class ConfigReader;
 namespace Lgfypp
 {
 Lgfypp::ConfigReader::ConfigReader(
