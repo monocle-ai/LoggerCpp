@@ -32,7 +32,7 @@ Contributors :
 
 #if defined(_WIN32)
 #include <windows.h>
-#else defined(__linux__)
+#elif defined(__linux__)
 #include <sys/syscall.h>
 #include <unistd.h>
 #endif
@@ -51,14 +51,14 @@ private:
 	LGF_INLINE static uint32_t getThreadId() noexcept {
 #if defined(_WIN32)
 		return static_cast<uint32_t>(::GetCurrentThreadId());
-#else defined(__linux__)
+#elif defined(__linux__)
 		return static_cast<uint32_t>(::syscall(SYS_gettid));
 #endif
 	}
 	LGF_INLINE static int getProcessId() noexcept {
 #ifdef _WIN32
 		return static_cast<int>(::GetCurrentProcessId());
-#else
+#elif defined(__linux__)
 		return static_cast<int>(::getpid());
 #endif
 	}
