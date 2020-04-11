@@ -73,7 +73,7 @@ void Lgfypp::Registry<T>::removeLogger(const char* key)
 template<typename T>
 void Lgfypp::Registry<T>::cleanRegistry()
 {
-	std::lock_guard<std::mutex> gaurd(std::reg_mutex);
+	std::lock_guard<std::mutex> gaurd(reg_mutex);
 	for (auto it = loggerRegistry.begin(); it != loggerRegistry.end(); ++it) {
 		it = loggerRegistry.erase(it);
 	}
