@@ -29,12 +29,12 @@ void someFunction()
 int main()
 {
 	Log("One Msg");
-	Log("format {} one msg", "One Msg");
+	/*Log("format {} one msg", "One Msg");
 	Log("format {} {} two args", 2, "teo");
 	Log("format {} {} {}  args", "One", "teo", "three");
 	Log("format {} {} {} {} {:x}  args", "One", "two", "three", "four", 312321);
 	Log("format {} {} {} {:f} {}  args", "One", "two", "three", 2.2, 43);
-	printf("format {} {} {} {:f} {}  args", "One", "two", "three", 2.2, 43);
+	printf("format {} {} {} {:f} {}  args", "One", "two", "three", 2.2, 43);*/
 	Logify(warn, "format {} one msg", "sdse Msg");
 	Logify(fatal,"format {} one msg", "sdse Msg");
 	Logify(info, "format {} one msg", "sdse Msg");
