@@ -38,7 +38,13 @@ Contributors :
 #include "core_lgf.h"
 #include <thread>
 #include <tuple>
+
+#if defined(_WIN32)
+
 #include <windows.h>
+
+#endif
+
 #pragma comment(lib, "user32.lib")
 LGF_BEGIN
 
