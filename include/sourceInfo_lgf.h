@@ -30,7 +30,9 @@ Contributors :
 #ifndef LGF_SOURCE_INFO
 #define LGF_SOURCE_INFO
 
-#if defined(__linux__)
+#if defined(_WIN32)
+#include <windows.h>
+#else defined(__linux__)
 #include <sys/syscall.h>
 #include <unistd.h>
 #endif
@@ -38,12 +40,6 @@ Contributors :
 #include "core_lgf.h"
 #include <thread>
 #include <tuple>
-
-#if defined(_WIN32)
-
-#include <windows.h>
-
-#endif
 
 #pragma comment(lib, "user32.lib")
 LGF_BEGIN
