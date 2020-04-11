@@ -126,18 +126,18 @@ public:
 	template<typename... T>
 	static std::string_view log(Level level, const char* format, T&... args)
 	{
+		fmt::memory_buffer buf;
 		LGF_TRY
 		{
-			fmt::memory_buffer buf;
-		auto [sName, name, color] = Lgfypp::getLevelDetails(level);
+			auto [sName, name, color] = Lgfypp::getLevelDetails(level);
 
 			fmt::format_to(buf, name);
 			fmt::format_to(buf, format, args...);
 
 			std::cout << toStringView(buf) << std::endl;
-			return toStringView(buf);
 		}
-			LGF_CATCH()
+		LGF_CATCH()
+		return toStringView(buf);
 	}
 	template<typename T>
 	static void logOnlyMsg(std::tuple<const char*, const char*, int, uint32_t, int>& loc, T msg)

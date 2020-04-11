@@ -26,10 +26,13 @@ If you contribute to this file please add your name to the contributors list bel
 Author		 : Dipanjan Das
 Contributors :
 */
+
 #pragma once
 #ifndef LGF_LGFHELPER_H
 #define LGF_LGFHELPER_H
+
 constexpr auto WHITESPACES = " \t";
+
 #include "core_lgf.h"
 
 LGF_BEGIN

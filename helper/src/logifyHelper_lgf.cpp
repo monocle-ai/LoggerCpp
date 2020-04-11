@@ -28,9 +28,17 @@ LgfHelper& LgfHelper::getHelperInstance()
 	If the config names are valid but values are not, replace with a default.
 	If the config names are invaild that <Key, value> will be deleted.
 */
-std::unordered_map<std::string, std::string> LgfHelper::discardInvalidConfig(std::unordered_map<std::string, std::string>& gConfig) const
+std::unordered_map<std::string, std::string> LgfHelper::discardInvalidConfig(
+	std::unordered_map<std::string, std::string>& gConfig) const
 {
-	std::unordered_set<std::string> configs = { "LEVEL", "PRECISION" , "TIMEFORMAT", "COLOR" };
+	std::unordered_set<std::string> configs = 
+	{ 
+		"LEVEL",
+		"PRECISION",
+		"TIMEFORMAT",
+		"COLOR"
+	};
+
 	auto it = gConfig.begin();
 	while (it != gConfig.end())
 	{
