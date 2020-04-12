@@ -34,29 +34,32 @@ Contributors :
 #include "core_lgf.h"
 #include <chrono>
 #include <fmt/format.h>
-
+#include <time.h>
 LGF_BEGIN
 
 /*
  * Chrono format Consts
  */
-LGF_CONSTEXPR_AUTO TIME_FORMAT       = "{%F %T}" ;
-LGF_CONSTEXPR_AUTO TIME_FORMAT_ALT   = "{%D %T}";
+
+LGF_CONSTEXPR_AUTO TIME_FORMAT = "{%F %T}";
+LGF_CONSTEXPR_AUTO TIME_FORMAT_ALT = "{%D %T}";
 LGF_CONSTEXPR_AUTO TIME_FORMAT_SHORT = "{%T}";
 /*
-Chrono Precision Consts
+Chrono Precision Modulo Consts
 */
 LGF_CONSTEXPR_AUTO PRECISION_MOD_MILLI = static_cast<int>(1e3);
 LGF_CONSTEXPR_AUTO PRECISION_MOD_MICRO = static_cast<int>(1e6);
-LGF_CONSTEXPR_AUTO PRECISION_MOD_NANO  = static_cast<int>(1e9);
+LGF_CONSTEXPR_AUTO PRECISION_MOD_NANO = static_cast<int>(1e9);
 
 enum class Timeformat : uint32_t { standard, concise, alternative, none };
-enum class Precision  : uint32_t { milli, micro, nano };
+enum class Precision : uint32_t { milli, micro, nano };
+
+static clock_t  lastRecordedCycles = clock();
 /**
  * Global Chrono values. These are set via configuration.
  * Default Precision is milliseconds and default time format is {%F %T}
  */
-static LGF::Precision  gPrecision  = Precision::milli;
+static LGF::Precision  gPrecision = Precision::milli;
 static LGF::Timeformat gTimeFormat = Timeformat::standard;
 
 class Chrono
@@ -75,12 +78,20 @@ public:
 	 */
 	~Chrono();
 	/*
-	 *	Public function call for getting the timestamp in a format as set in the configuration
+	 *Public function call for getting the timestamp in a format as set in the configuration
 	 * @param   : fmt::memory_buffer& buf - Reference of the memory buffer to be written into.
-	 * @returns : a tuple containing the time info and the subsecond info
+	 * @returns : a tuple containing the time info and the subsecond info. The time is passed as a && so it has to be
+	 * saved as a local tm() object in order to preserve the values.
 	 */
-	std::tuple<tm, long long> getTimestamp(fmt::memory_buffer& buf);
 	std::tuple<tm, long long> getTimestamp();
+
+	LGF_INLINE long getCycles() noexcept {
+		auto currentCycles = clock();
+		auto delta = currentCycles - lastRecordedCycles;
+		lastRecordedCycles = currentCycles;
+
+		return delta;
+	}
 };
 
 LGF_END // Lgfypp Namespace end

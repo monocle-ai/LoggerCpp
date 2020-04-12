@@ -37,114 +37,39 @@ Contributors :
 #include "sourceInfo_lgf.h"
 #include "levelUtils_lgf.h"
 #include "sourceInfo_lgf.h"
-#include "cpuCycles_lgf.h"
+#include "color_lgf.h"
 #include <fmt/chrono.h>
 LGF_BEGIN
 
 class LogBuilder : public StaticBase
 {
 public:
+	static void writePreambleInfo(fmt::memory_buffer& buf, std::tuple<const char*, const char*, int, uint32_t, int>& loc, LGF::Level level) {
+		Lgfypp::Chrono clock;
+		auto [time, subsec] = clock.getTimestamp();
+		auto [file, func, line, threadId, ProcessId] = loc;
+		auto [sName, name, scolors] = getLevelDetails(level);
+		fmt::format_to(buf, "{:%F %T}.{:0^3} {} {}:{} {} {} {} {}{}|", time, subsec, file, func, line, threadId, ProcessId, scolors, sName, LGF::Color::RESET_COLOR);
+	}
+
 	template<typename... arguments>
 	static void logWithLevel(std::tuple<const char*, const char*, int, uint32_t, int>& loc, Lgfypp::Level level, const char* format, arguments... args) {
-		fmt::memory_buffer buf;
-		Lgfypp::Chrono sds;
-		auto [time, subsec] = sds.getTimestamp();
-		//fmt::format_to(buf, "{:%F %T}.{:0^3}", time, subsec);
-		auto [file, func, line, threadId, ProcessId] = loc;
-		fmt::format_to(buf, "{} {} {} {} {} ", file, func, line, threadId, ProcessId);
-	
-
-		Lgfypp::Formatter ff;
-		std::cout << toStringView(buf) << std::endl;
-		STRING_VIEW ssdds("ADSAD");
-
-		ff.appendColorFormattedSVToBuf(ssdds, Lgfypp::Color::RED, buf);
-
-		auto [sName, name, color] = Lgfypp::getLevelDetails(level);
-
-		fmt::format_to(buf, name);
-		std::cout << "___________________________" << toStringView(buf) << std::endl;
-	}
-
-	template<typename... arguments, typename S>
-	static void log(std::tuple<const char*, const char*, int, uint32_t, int>& loc, Lgfypp::Level level, const char* format, S msg)
-	{
 		LGF_TRY
 		{
-			fmt::memory_buffer buf;
-		LGF::Chrono chrono;
-		auto [time, subsec] = chrono.getTimestamp();
-		//fmt::format_to(buf, "{:%F %T}.{:0^3}", time , subsec);
-		auto [file, func, line, threadId, ProcessId] = loc;
-		fmt::format_to(buf, " {} {} {} {} {} ", file, func, line, threadId, ProcessId);
-			fmt::format_to(buf, format, msg);
-			std::cout << toStringView(buf) << std::endl;
+		  fmt::memory_buffer buf;
+		  writePreambleInfo(buf, loc,level);
+		  fmt::format_to(buf, format, args...);
+		  fmt::print("{}\n", toStringView(buf));
 		}
-			LGF_CATCH()
-	}
-	template<typename... arguments>
-	static void logWithFormat(std::tuple<const char*, const char*, int, uint32_t, int>& loc, const char* format, arguments... message)
-	{
-		LGF_TRY
-		{
-			fmt::memory_buffer buf;
-		LGF::Chrono chrono;
-		auto [time, subsec] = chrono.getTimestamp();
-		//fmt::format_to(buf, "{:%F %T}.{:0^3}", time, subsec);
-		auto [file, func, line, threadId, ProcessId] = loc;
-		fmt::format_to(buf, " {} {} {} {} {} ", file, func, line, threadId, ProcessId);
-						fmt::format_to(buf, format, message...);
-			std::cout << toStringView(buf) << std::endl;
-		}
-			LGF_CATCH()
-	}
-	template<typename... arguments>
-
-	 static void logWithFormat(std::tuple<const char*, const char*, int, uint32_t, int>& loc, LGF::Level level, const char* format, arguments... message)
-	{
-		LGF_TRY
-		{
-			fmt::memory_buffer buf;
-		LGF::Chrono chrono;
-
-		auto [time, subsec] = chrono.getTimestamp();
-		auto t = time;
-		const auto now = std::chrono::system_clock::now();
-		const auto nowAsTimeT = std::chrono::system_clock::to_time_t(now);
-		auto timeinfo = fmt::localtime(nowAsTimeT);
-		fmt::format_to(buf, "{:%F %T}.{:0^3}", timeinfo, subsec);
-	
-		auto [file, func, line, threadId, ProcessId] = loc;
-		fmt::format_to(buf, " {} {} {} {} {} ", file, func, line, threadId, ProcessId);
-			fmt::format_to(buf, format, message...);
-			std::cout << toStringView(buf) << std::endl;
-		}
-			LGF_CATCH()
+		LGF_CATCH()
 	}
 
 	template<typename T>
 	static void logOnlyMsg(std::tuple<const char*, const char*, int, uint32_t, int>& loc, T msg)
 	{
-		LGF_TRY
-		{
-			fmt::memory_buffer buf;
-		auto [file, func, line, threadId, ProcessId] = loc;
-		fmt::format_to(buf, "{} {} {} {} {} ", file, func, line, threadId, ProcessId);
-		
-			fmt::format_to(buf, msg);
-			std::cout << toStringView(buf) << std::endl;
-		}
-			LGF_CATCH()
+		logWithLevel(loc, LGF::Level::all, "{}", msg);
 	}
 
-	template<typename... arguments>
-	static void warn(const char* file, int line, const char* function, const arguments&... args) {
-		log(Lgfypp::Level::warn, file, line, function, args...);
-	}
-	template<typename... arguments>
-	static void debug(const char* file, int line, const char* function, const arguments&... args) {
-		log(Lgfypp::Level::debug, file, line, function, args...);
-	}
 };
 
 LGF_END

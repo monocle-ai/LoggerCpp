@@ -20,10 +20,10 @@ int main()
 	Log("format {} {} {} {:f} {}  args", "One", "two", "three", 2.2, 43);
 	printf("format {} {} {} {:f} {}  args", "One", "two", "three", 2.2, 43);
 	Logify(warn, "format {} one msg", "sdse Msg");
-	Logify(fatal,"format {} one msg", "sdse Msg");
+	Logify(fatal,"format {} one msg", "sdse1 Msg");
 	Logify(info, "format {} one msg", "sdse Msg");
 	Logify(warn,"format {} {} {} {:f} {}  args", "One", "two", "three", 2.2, 43);
-	Logd("format {} one msg", "sdse Msg");
+	LogD("format {} one msg", "sdse Msg");
 	//Logd(debug,"format {} {} {} {:f} {}  args", "One", "two", "three", 2.2, 43);
 	someFunction();
 	std::cout << (Lgfypp::Level::all == Lgfypp::convertToLevel("All")) << std::endl;

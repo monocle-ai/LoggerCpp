@@ -27,6 +27,17 @@ Author		 : Sayantan Roy
 Contributors :
 */
 
+/* Log level
+	none  = 0,
+	all   = 1,
+	trace = 2,
+	debug = 3,
+	info  = 4,
+	warn  = 5,
+	fatal = 6,
+	error = 7
+*/
+
 #pragma once
 #ifndef LGF_LOGIFY_H
 #define LGF_LOGIFY_H
@@ -42,10 +53,18 @@ Contributors :
 #define GET_MACRO(_1, _2, NAME, ...) NAME
 
 #define LOGIFY1(message)            LGF::LogBuilder::logOnlyMsg(LGF::SourceInfo::current(__FILENAME__,__FUNCTION__,__LINE__,true),message)
-#define LOGIFY2(format,...)         LGF::LogBuilder::logWithFormat(LGF::SourceInfo::current(__FILENAME__,__FUNCTION__,__LINE__,true),format, __VA_ARGS__)
+#define LOGIFY2(format,...)         LGF::LogBuilder::logWithLevel(LGF::SourceInfo::current(__FILENAME__,__FUNCTION__,__LINE__,true),LVL(all), format, __VA_ARGS__)
 
-#define Logify(level,...)			Log( LVL(level),__VA_ARGS__)
-#define Logd(...)				    Log( LVL(debug),__VA_ARGS__)
+
+#define Logify(level,format, ...)   LGF::LogBuilder::logWithLevel(LGF::SourceInfo::current(__FILENAME__,__FUNCTION__,__LINE__,true),LVL(level), format, __VA_ARGS__)
+
+#define LogD(format,...)		    Logify(debug, format, __VA_ARGS__)
+#define LogE(format,...)		    Logify(error, format, __VA_ARGS__)
+#define LogW(format,...)		    Logify(warn , format, __VA_ARGS__)
+#define LogI(format,...)		    Logify(info , format, __VA_ARGS__)
+#define LogT(format,...)		    Logify(trace, format, __VA_ARGS__)
+#define LogF(format,...)		    Logify(fatal, format, __VA_ARGS__)
+
 #define printf(...)					Log(__VA_ARGS__)
 
 #endif
