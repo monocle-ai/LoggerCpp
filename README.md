@@ -74,3 +74,5 @@ Central Logging in C++
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsayantanroy47%2FLoggerCpp.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsayantanroy47%2FLoggerCpp?ref=badge_large)
+
+5/18 516p
